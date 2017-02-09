@@ -11,7 +11,7 @@ class SimuStore extends ReduceStore {
 
     getInitialState() {
         return {
-            theme: Constants.Theme.GROMMET,
+            theme: Constants.Theme.MARKETING,
             defaultNet: "13677",
             net: 13677,
             newSeries: SeriesForBareme(13677, NouveauBareme),

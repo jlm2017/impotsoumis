@@ -3,15 +3,19 @@ import React, {Component} from 'react';
 class MarketingApp extends Component {
   constructor() {
     super();
-    this.state = { someKey: 'Marketing App' };
+    this.state = {
+      someKey: 'Marketing App'
+    };
   }
 
   render() {
-    return <p>{this.state.someKey}</p>;
+    return <div className="container">
+      <h1>{this.state.someKey}</h1>
+    </div>;
   }
 
   componentDidMount() {
-    this.setState({ someKey: 'Other Marketing App' });
+    this.setState({someKey: 'Heading'});
   }
 }
 
