@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import SimuStore from './stores/SimuStore';
-import Constants from './constants/Constants';
-import SimuActions from './actions/SimuActions';
+import SimuStore from './../stores/SimuStore';
+import Constants from './../constants/Constants';
+import SimuActions from './../actions/SimuActions';
 
-import GrommetApp from './views/grommet/GrommetApp.jsx'
-import MarketingApp from './views/marketing/MarketingApp.jsx'
+import GrommetApp from './grommet/GrommetApp.jsx'
+import MarketingApp from './marketing/MarketingApp.jsx'
 
 var _token;
 
-class App extends Component {
+class AppView extends Component {
   constructor() {
     super();
     this.state = SimuStore.getState();
@@ -61,4 +61,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default AppView;
