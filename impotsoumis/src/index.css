@@ -1,5 +1,29 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+  text-align: center;
+  color: #0098b6;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+h2 {
+  text-align: center;
+  color: #0098b6;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+  text-align: center;
+  color: #bc5841;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

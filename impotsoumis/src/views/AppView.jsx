@@ -37,7 +37,10 @@ class AppView extends Component {
           currentSeries={this.state.currentSeries}/>);
 
       case Constants.Theme.MARKETING:
-        return (<MarketingApp/>);
+        return (<MarketingApp defaultNet={this.state.defaultNet}
+          net={this.state.net}
+          newSeries={this.state.newSeries}
+          currentSeries={this.state.currentSeries}/>);
 
       default:
         return (
