@@ -11,6 +11,7 @@ class SimuStore extends ReduceStore {
 
     getInitialState() {
         return {
+            theme: Constants.Theme.MARKETING,
             defaultNet: "13677",
             net: 13677,
             newSeries: SeriesForBareme(13677, NouveauBareme),
@@ -22,10 +23,19 @@ class SimuStore extends ReduceStore {
         switch (action.actionType) {
             case Constants.Action.NET_CHANGED:
                 return {
+                    theme: state.theme,
                     defaultNet: state.defaultNet,
                     net: action.net,
                     newSeries: SeriesForBareme(action.net, NouveauBareme),
                     currentSeries: SeriesForBareme(action.net, BaremeActuel)
+                };
+            case Constants.Action.THEME_CHANGED:
+                return {
+                    theme: action.theme,
+                    defaultNet: state.defaultNet,
+                    net: state.net,
+                    newSeries: state.newSeries,
+                    currentSeries: state.currentSeries
                 };
             default:
                 return state;

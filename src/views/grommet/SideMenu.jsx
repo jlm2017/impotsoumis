@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 
 import Sidebar from 'grommet/components/Sidebar';
 
-import LogoHeader from '../filters/LogoHeader.jsx'
-import FiltersList from '../filters/FiltersList.jsx'
+import LogoHeader from './LogoHeader.jsx'
+import FiltersList from './FiltersList.jsx'
 
 class SideMenu extends Component {
     constructor(props) {

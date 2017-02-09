@@ -8,8 +8,8 @@ import FormField from 'grommet/components/FormField';
 import TextInput from 'grommet/components/TextInput';
 import Select from 'grommet/components/Select';
 
-import SimuActions from './../actions/SimuActions';
-import Constants from './../constants/Constants';
+import SimuActions from './../../actions/SimuActions';
+import Constants from './../../constants/Constants';
 
 class FiltersList extends Component {
     constructor(props) {

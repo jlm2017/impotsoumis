@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 
-import App from 'grommet/components/App';
-import Split from 'grommet/components/Split';
-
-import SideMenu from './SideMenu.jsx'
-import MainContent from './MainContent.jsx'
-
 import SimuStore from './../stores/SimuStore';
+import Constants from './../constants/Constants';
 import SimuActions from './../actions/SimuActions';
+
+import GrommetApp from './grommet/GrommetApp.jsx'
+import MarketingApp from './marketing/MarketingApp.jsx'
 
 var _token;
 
@@ -15,7 +13,9 @@ class AppView extends Component {
   constructor() {
     super();
     this.state = SimuStore.getState();
-    this._onChange = this._onChange.bind(this);
+    this._onChange = this
+      ._onChange
+      .bind(this);
   }
 
   componentDidMount() {
@@ -26,13 +26,34 @@ class AppView extends Component {
     _token.remove();
   }
 
+  _renderTheme(theme) {
+    switch (theme) {
+
+      case Constants.Theme.GROMMET:
+        return (<GrommetApp
+          defaultNet={this.state.defaultNet}
+          net={this.state.net}
+          newSeries={this.state.newSeries}
+          currentSeries={this.state.currentSeries}/>);
+
+      case Constants.Theme.MARKETING:
+        return (<MarketingApp/>);
+
+      default:
+        return (
+          <h1>Default</h1>
+        );
+    }
+  }
+
   render() {
-    return <App centered={false}>
-      <Split flex='right' showOnResponsive='both'>
-        <SideMenu defaultNet={this.state.defaultNet}/>
-        <MainContent net={this.state.net} newSeries={this.state.newSeries} currentSeries={this.state.currentSeries}/>
-      </Split>
-    </App>;
+    return <div>
+      { this._renderTheme(this.state.theme) }
+      <select value={this.state.theme} onChange={ (event) => { SimuActions.themeChanged(event.target.value) }}>
+        <option value="grommet">Grommet</option>
+        <option value="marketing">Marketing</option>
+      </select>
+    </div>
   }
 
   _onChange() {
