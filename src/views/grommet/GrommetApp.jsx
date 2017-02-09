@@ -1,3 +1,5 @@
+import 'grommet/scss/vanilla/index';
+
 import React, {Component} from 'react';
 
 import App from 'grommet/components/App';
