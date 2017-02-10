@@ -57,8 +57,8 @@ class SimuStore extends ReduceStore {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
                     net: action.net,
-                    newSeries: this.generateSeries(action.net, 0, 0, 0, 0),
-                    currentSeries: this.generateSeries(action.net, 0, 0, 0, 0)
+                    newSeries: this.generateSeries(action.net, 0, 0, 1, 2),
+                    currentSeries: this.generateSeries(action.net, 0, 0, 1, 2)
                 };
             case Constants.Action.THEME_CHANGED:
                 return {theme: action.theme, defaultNet: state.defaultNet, net: state.net, newSeries: state.newSeries, currentSeries: state.currentSeries};
