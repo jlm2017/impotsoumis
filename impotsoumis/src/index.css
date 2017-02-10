@@ -22,6 +22,11 @@ h3 {
   color: #bc5841;
 }
 
+h4 {
+  text-align: center;
+  color: black;
+}
+
 .align-center {
   display: flex;
   justify-content: center;

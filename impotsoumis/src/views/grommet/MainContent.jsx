@@ -16,7 +16,6 @@ class MainContent extends Component {
       <p>{this.props.net}</p>
       <br/>
       <Box>
-        <ChartCard series={this.props.newSeries}/>
         <ChartCard series={this.props.currentSeries}/>
       </Box>
     </Box>;
