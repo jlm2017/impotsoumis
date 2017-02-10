@@ -5,14 +5,8 @@ import {Container, Row, Col, Visible, Hidden} from 'react-grid-system';
 import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
 
 class MarketingApp extends Component {
-  constructor(props) {
-    super(props);
-    console.log("MarketingApp");
-  }
 
   render() {
-    console.log(this.state);
-    console.log(this.props.newSeries);
     return <Container>
       <h2>9 SECONDES POUR CALCULER VOTRE IMPOSITION AVEC</h2>
       <h1>LA RÉVOLUTION FISCALE</h1>

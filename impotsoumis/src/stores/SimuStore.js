@@ -36,8 +36,6 @@ class SimuStore extends ReduceStore {
         var nombreEnfantsACharge = nbenf;
 
         var result = CalculImpot(sal_net, retraiteMensuelle, allocationsChomageMensuelle, marieOuPacse, nombreEnfantsACharge);
-        console.log(sal_net);
-        console.log(result);
 
         return [
             {

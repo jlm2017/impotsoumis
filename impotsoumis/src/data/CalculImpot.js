@@ -2,11 +2,6 @@ import SeriesForBareme from './SeriesForBareme'
 import BaremeActuel from './BaremeActuel'
 
 const CalculImpot = function (sal_net, retraite, alloc_cho, couple, nbenf) {
-    console.log("===========================")
-    console.log("CalculImpot")
-    console.log("Salaire NET")
-    console.log(sal_net);
-
     var Param_Legislatif = {
         "tx_sal_CSG": 0.075,
         "txd_sal_CSG": 0.051,
@@ -28,8 +23,8 @@ const CalculImpot = function (sal_net, retraite, alloc_cho, couple, nbenf) {
         ? 1 * (nbenf >= 1
             ? 1
             : 0) + 0.5 * (nbenf == 2
-            ? 1
-            : 0)
+                ? 1
+                : 0)
         : 0.5 * Math.min(nbenf, 2);
 
     var nbparts = 1 + couple + nbparts_couple + Math.max(nbenf - 2, 0)
@@ -146,7 +141,7 @@ const CalculImpot = function (sal_net, retraite, alloc_cho, couple, nbenf) {
         ? soustraction
         : 0;
 
-    return {'IR': impotDu, 'CSG': CSG_TauxPlein_CRDS_Salarie};
+    return { 'IR': impotDu, 'CSG': CSG_TauxPlein_CRDS_Salarie };
 
 }
 
