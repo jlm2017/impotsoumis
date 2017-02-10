@@ -1,3 +1,5 @@
+import './../../grommet.min.css';
+
 import React, {Component} from 'react';
 
 import App from 'grommet/components/App';

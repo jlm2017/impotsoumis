@@ -1,32 +1,32 @@
 const BaremeActuel = [
     {
-        "label": "Tranche 0%",
+        "label": "Tranche 0",
         "taux": 0,
         "min": 0,
-        "max": 9710,
+        "max": 810,
         "colorIndex": "grey-2"
     }, {
-        "label": "Tranche 14%",
+        "label": "Tranche 1",
         "taux": 0.14,
-        "min": 9710,
-        "max": 26818,
+        "min": 810,
+        "max": 2230,
         "colorIndex": "neutral-4"
     }, {
-        "label": "Thanche 30%",
+        "label": "Thanche 2",
         "taux": 0.3,
-        "min": 26818,
-        "max": 71898,
+        "min": 2230,
+        "max": 5990,
         "colorIndex": "neutral-1"
     }, {
-        "label": "Tranche 40%",
+        "label": "Tranche 3",
         "taux": 0.41,
-        "min": 71898,
-        "max": 152260,
+        "min": 5990,
+        "max": 12680,
         "colorIndex": "neutral-3"
     }, {
-        "label": "Tranche 45%",
+        "label": "Tranche 4",
         "taux": 0.45,
-        "min": 152260,
+        "min": 12680,
         "max": Number.MAX_SAFE_INTEGER,
         "colorIndex": "neutral-2"
     }

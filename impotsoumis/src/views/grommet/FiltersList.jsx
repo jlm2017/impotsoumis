@@ -22,7 +22,7 @@ class FiltersList extends Component {
                 <FormField label='Net imposable'>
                     <TextInput
                         defaultValue={this.props.defaultNet}
-                        onDOMChange={(event) => { SimuActions.netChanged(event.target.value);
+                        onDOMChange={(event) => { SimuActions.netChanged(Number(event.target.value));
                     }}/>
                 </FormField>
 

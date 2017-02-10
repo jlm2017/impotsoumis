@@ -1,0 +1,24 @@
+{
+  "name": "impotsoumis",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "node-sass": "^4.5.0",
+    "react-scripts": "0.8.5"
+  },
+  "dependencies": {
+    "flux": "^3.1.2",
+    "grommet": "^1.2.1",
+    "grommet-addons": "^0.3.0",
+    "immutable": "^3.8.1",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-grid-system": "^2.4.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
