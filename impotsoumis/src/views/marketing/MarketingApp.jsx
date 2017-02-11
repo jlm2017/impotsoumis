@@ -6,11 +6,8 @@ import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
 import SimuActions from './../../actions/SimuActions';
 
 class MarketingApp extends Component {
-
   constructor(props) {
     super(props);
-    console.log('MarketingApp');
-    console.log(props);
     this.state = {
       series: []
     }
