@@ -6,18 +6,7 @@ import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
 import SimuActions from './../../actions/SimuActions';
 
 class MarketingApp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      series: []
-    }
-  }
 
-  componentDidMount() {
-    this.setState({
-      series: []
-    })
-  }
   render() {
     return <Container>
       <h2>10 SECONDES POUR CALCULER VOTRE IMPOSITION AVEC</h2>
@@ -75,10 +64,8 @@ class MarketingApp extends Component {
                     size='large'
                     type='bar'
                     units='€'
-                    series={this.state.series}/>
+                    series={this.props.currentSeries}/>
       </Row>
-
-      <p>Mon imposition actuelle</p>
 
       <h3>Pour comprendre la révolution fiscale</h3>
       <p>Victus universis caro ferina est lactisque abundans copia qua sustentantur, et herbae multiplices et siquae alites capi per aucupium possint, et plerosque mos vidimus frumenti usum et vini penitus ignorantes.</p>

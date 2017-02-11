@@ -37,7 +37,7 @@ class App extends Component {
           currentSeries={this.state.currentSeries}/>);
 
       case Constants.Theme.MARKETING:
-        return (<MarketingApp/>);
+        return (<MarketingApp currentSeries={this.state.currentSeries}/>);
 
       default:
         return (
