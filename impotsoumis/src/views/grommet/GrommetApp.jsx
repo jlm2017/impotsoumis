@@ -9,9 +9,6 @@ import SideMenu from './SideMenu.jsx'
 import MainContent from './MainContent.jsx'
 
 class GrommetApp extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return <App centered={false}>
