@@ -6,9 +6,6 @@ import LogoHeader from './LogoHeader.jsx'
 import FiltersList from './FiltersList.jsx'
 
 class SideMenu extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

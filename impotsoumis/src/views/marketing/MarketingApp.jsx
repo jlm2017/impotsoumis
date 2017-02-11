@@ -1,7 +1,7 @@
 import './../../index.css';
 
 import React, { Component } from 'react';
-import { Container, Row, Col, Visible, Hidden } from 'react-grid-system';
+import { Container, Row } from 'react-grid-system';
 import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
 import SimuActions from './../../actions/SimuActions';
 
@@ -39,7 +39,7 @@ class MarketingApp extends Component {
 
       <Row className="align-center">
         <select value="celibataire" onChange={(event) => {
-          SimuActions.maritalStatusChanged(event.target.value == 'marieoupacse' ? 1 : 0);
+          SimuActions.maritalStatusChanged(event.target.value === 'marieoupacse' ? 1 : 0);
         }}>
           <option value="celibataire">Célibataire</option>
           <option value="marieoupacse">Marié / Pacsé</option>

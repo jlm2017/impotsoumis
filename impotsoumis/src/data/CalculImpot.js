@@ -17,10 +17,10 @@ const CalculImpot = function (sal_net, retraite, alloc_cho, couple, nbenf) {
     };
     var sal_brut = Math.round(sal_net * 1.2);
 
-    var nbparts_couple = (couple == 0)
+    var nbparts_couple = (couple === 0)
         ? 1 * (nbenf >= 1
             ? 1
-            : 0) + 0.5 * (nbenf == 2
+            : 0) + 0.5 * (nbenf === 2
                 ? 1
                 : 0)
         : 0.5 * Math.min(nbenf, 2);
@@ -52,7 +52,7 @@ const CalculImpot = function (sal_net, retraite, alloc_cho, couple, nbenf) {
     var Rvn_Imposable_par_PF = Math.round(RFR_Salarie / nbparts);
     // A21
 
-    var Rvn_Imposable_par_PF_sans_QF = (couple == 1)
+    var Rvn_Imposable_par_PF_sans_QF = (couple === 1)
         ? Math.round(RFR_Salarie / 2.0)
         : Math.round(RFR_Salarie);
     // B21
@@ -62,12 +62,12 @@ const CalculImpot = function (sal_net, retraite, alloc_cho, couple, nbenf) {
     var Impot_avt_Decote_avec_QF_par_PF = 0;
 
     for (var serie of Sommes_par_Tranche_avec_QF) {
-        Impot_avt_Decote_avec_QF_par_PF = Impot_avt_Decote_avec_QF_par_PF + serie.value;
+        Impot_avt_Decote_avec_QF_par_PF += serie.value;
     }
 
     // C21
 
-    var Sommes_par_Tranche_sans_QF = SeriesForBareme(Rvn_Imposable_par_PF_sans_QF, BaremeActuel)
+    //var Sommes_par_Tranche_sans_QF = SeriesForBareme(Rvn_Imposable_par_PF_sans_QF, BaremeActuel)
 
     // D21
     var b21 = Rvn_Imposable_par_PF_sans_QF

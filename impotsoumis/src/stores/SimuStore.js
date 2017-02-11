@@ -2,9 +2,6 @@ import { ReduceStore } from 'flux/utils';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import Constants from './../constants/Constants';
 
-import BaremeActuel from '../data/BaremeActuel'
-import NouveauBareme from '../data/NouveauBareme'
-import SeriesForBareme from '../data/SeriesForBareme'
 import CalculImpot from '../data/CalculImpot'
 
 // Catch: State must be immutable
