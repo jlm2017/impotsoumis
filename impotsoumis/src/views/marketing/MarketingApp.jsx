@@ -36,7 +36,7 @@ class MarketingApp extends Component {
       </Row>
       <div className="align-center">
         <p>Nombre d'enfants
-        <select value="0" onChange={(event) => {
+        <select value={this.props.numberOfChildren} onChange={(event) => {
             SimuActions.numberofChildrenChanged(Number(event.target.value));
           }}>
             <option value="0">0</option>
