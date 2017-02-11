@@ -37,7 +37,11 @@ class App extends Component {
           currentSeries={this.state.currentSeries}/>);
 
       case Constants.Theme.MARKETING:
-        return (<MarketingApp currentSeries={this.state.currentSeries}/>);
+        return (<MarketingApp 
+        net={this.state.net}
+        currentSeries={this.state.currentSeries} 
+        isMarried={this.state.isMarried} 
+        numberOfChildren={this.state.numberOfChildren}/>);
 
       default:
         return (

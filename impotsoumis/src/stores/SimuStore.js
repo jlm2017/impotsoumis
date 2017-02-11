@@ -12,7 +12,7 @@ class SimuStore extends ReduceStore {
         var retraiteMensuelle = 0;
         var allocationsChomageMensuelle = 0;
         var isMarried = 1;
-        var numberOfChildren = 0;
+        var numberOfChildren = 2;
 
         return {
             theme: Constants.Theme.MARKETING,
@@ -20,7 +20,6 @@ class SimuStore extends ReduceStore {
             net: salaireMensuelNetDuFoyer,
             isMarried: isMarried,
             numberOfChildren: numberOfChildren,
-            newSeries: this.generateSeries(salaireMensuelNetDuFoyer, retraiteMensuelle, allocationsChomageMensuelle, isMarried, numberOfChildren),
             currentSeries: this.generateSeries(salaireMensuelNetDuFoyer, retraiteMensuelle, allocationsChomageMensuelle, isMarried, numberOfChildren)
         }
     }
@@ -56,7 +55,6 @@ class SimuStore extends ReduceStore {
                     net: action.net,
                     isMarried: state.isMarried,
                     numberOfChildren: state.numberOfChildren,
-                    newSeries: this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren),
                     currentSeries: this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren)
                 };
             case Constants.Action.MARITAL_STATUS_CHANGED:
@@ -89,7 +87,13 @@ class SimuStore extends ReduceStore {
                 };
 
             case Constants.Action.THEME_CHANGED:
-                return {theme: action.theme, defaultNet: state.defaultNet, net: state.net, newSeries: state.newSeries, currentSeries: state.currentSeries, numberOfChildren: state.numberOfChildren};
+                return {
+                    theme: action.theme, 
+                    defaultNet: state.defaultNet, 
+                    net: state.net,
+                    isMarried: state.isMarried,
+                    numberOfChildren: state.numberOfChildren,
+                    currentSeries: state.currentSeries};
             default:
                 return state;
         }
