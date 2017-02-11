@@ -5,9 +5,6 @@ import Titre from './Titre.jsx';
 import ChartCard from './ChartCard.jsx';
 
 class MainContent extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     /*<Box appCentered="true" justify="left" align="left" full={true} pad="large">*/

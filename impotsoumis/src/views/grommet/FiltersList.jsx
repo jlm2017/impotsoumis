@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 
 import Box from 'grommet/components/Box';
 
@@ -9,12 +8,8 @@ import TextInput from 'grommet/components/TextInput';
 import Select from 'grommet/components/Select';
 
 import SimuActions from './../../actions/SimuActions';
-import Constants from './../../constants/Constants';
 
 class FiltersList extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return <Box>

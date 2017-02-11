@@ -2,9 +2,6 @@ import {ReduceStore} from 'flux/utils';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import Constants from './../constants/Constants';
 
-import BaremeActuel from '../data/BaremeActuel'
-import NouveauBareme from '../data/NouveauBareme'
-import SeriesForBareme from '../data/SeriesForBareme'
 import CalculImpot from '../data/CalculImpot'
 
 // Catch: State must be immutable
@@ -12,23 +9,22 @@ class SimuStore extends ReduceStore {
 
     getInitialState() {
         var salaireMensuelNetDuFoyer = 15000;
-
         var retraiteMensuelle = 0;
         var allocationsChomageMensuelle = 0;
-        var marieOuPacse = 1;
-        var nbEnfantsACharge = 2;
+        var isMarried = 1;
+        var numberOfChildren = 2;
 
         return {
-            theme: Constants.Theme.GROMMET,
+            theme: Constants.Theme.MARKETING,
             defaultNet: "15000",
             net: salaireMensuelNetDuFoyer,
-            newSeries: this.generateSeries(salaireMensuelNetDuFoyer, retraiteMensuelle, allocationsChomageMensuelle, marieOuPacse, nbEnfantsACharge),
-            currentSeries: this.generateSeries(salaireMensuelNetDuFoyer, retraiteMensuelle, allocationsChomageMensuelle, marieOuPacse, nbEnfantsACharge)
+            isMarried: isMarried,
+            numberOfChildren: numberOfChildren,
+            currentSeries: this.generateSeries(salaireMensuelNetDuFoyer, retraiteMensuelle, allocationsChomageMensuelle, isMarried, numberOfChildren)
         }
     }
 
     generateSeries(sal_net, retraite, alloc_cho, couple, nbenf) {
-
         var retraiteMensuelle = retraite;
         var allocationsChomageMensuelle = alloc_cho;
 
@@ -36,8 +32,6 @@ class SimuStore extends ReduceStore {
         var nombreEnfantsACharge = nbenf;
 
         var result = CalculImpot(sal_net, retraiteMensuelle, allocationsChomageMensuelle, marieOuPacse, nombreEnfantsACharge);
-        console.log(sal_net);
-        console.log(result);
 
         return [
             {
@@ -59,11 +53,47 @@ class SimuStore extends ReduceStore {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
                     net: action.net,
-                    newSeries: this.generateSeries(action.net, 0, 0, 0, 0),
-                    currentSeries: this.generateSeries(action.net, 0, 0, 0, 0)
+                    isMarried: state.isMarried,
+                    numberOfChildren: state.numberOfChildren,
+                    currentSeries: this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren)
                 };
+            case Constants.Action.MARITAL_STATUS_CHANGED:
+                return {
+                    theme: state.theme,
+                    defaultNet: state.defaultNet,
+                    net: state.net,
+                    isMarried: action.isMarried,
+                    numberOfChildren: state.numberOfChildren,
+                    currentSeries: this.generateSeries(state.net, 0, 0, action.isMarried, state.numberOfChildren)
+
+                };
+            case Constants.Action.MARITAL_STATUS:
+                return {
+                    theme: state.theme,
+                    defaultNet: state.defaultNet,
+                    net: state.net,
+                    isMarried: state.isMarried,
+                    numberOfChildren: action.numberOfChildren,
+                    currentSeries: this.generateSeries(state.net, 0, 0, state.isMarried, action.numberOfChildren)
+                };
+            case Constants.Action.NUMBER_OF_CHILDREN_CHANGED:
+                return {
+                    theme: state.theme,
+                    defaultNet: state.defaultNet,
+                    net: state.net,
+                    isMarried: state.isMarried,
+                    numberOfChildren: action.numberOfChildren,
+                    currentSeries: this.generateSeries(state.net, 0, 0, state.isMarried, action.numberOfChildren)
+                };
+
             case Constants.Action.THEME_CHANGED:
-                return {theme: action.theme, defaultNet: state.defaultNet, net: state.net, newSeries: state.newSeries, currentSeries: state.currentSeries};
+                return {
+                    theme: action.theme, 
+                    defaultNet: state.defaultNet, 
+                    net: state.net,
+                    isMarried: state.isMarried,
+                    numberOfChildren: state.numberOfChildren,
+                    currentSeries: state.currentSeries};
             default:
                 return state;
         }

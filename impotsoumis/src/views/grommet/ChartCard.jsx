@@ -5,9 +5,6 @@ import Heading from 'grommet/components/Heading';
 import AnnotatedMeter from 'grommet-addons/components/AnnotatedMeter';
 
 class ChartCard extends Component {
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return <div>
