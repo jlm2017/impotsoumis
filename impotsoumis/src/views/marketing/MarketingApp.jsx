@@ -11,8 +11,16 @@ class MarketingApp extends Component {
     super(props);
     console.log('MarketingApp');
     console.log(props);
+    this.state = {
+      series: []
+    }
   }
 
+  componentDidMount() {
+    this.setState({
+      series: []
+    })
+  }
   render() {
     return <Container>
       <h2>10 SECONDES POUR CALCULER VOTRE IMPOSITION AVEC</h2>
@@ -70,7 +78,7 @@ class MarketingApp extends Component {
                     size='large'
                     type='bar'
                     units='€'
-                    series={this.props.series}/>
+                    series={this.state.series}/>
       </Row>
 
       <p>Mon imposition actuelle</p>
