@@ -101,6 +101,52 @@ function _revenu_declare(sal_net, ret, alloc_cho, csgTauxPlein, csgTauxReduit, c
     }
 }
 
+function _revenu_fiscal_de_reference(revenu_declare) {
+    var result = {
+        "salarie": 0,
+        "retraite": 0,
+        "chomeur": 0
+    }
+
+    // Salarié
+
+    var planch_abatpro = CurrentIR.plancher.abattement.fraisPro.value
+    var abat_pro_ret = CurrentIR.abattement.fraisProEtRetraites.value
+    var plaf_abatpro = CurrentIR.plafond.abattement.fraisPro.value
+
+    var valeurMin = 0
+    var revenuDeclare = revenu_declare.salarie
+    
+    var maxCalcul = Math.max(planch_abatpro, abat_pro_ret * revenuDeclare)
+    var minCalcul = Math.min(maxCalcul, plaf_abatpro)
+
+    result.salarie  = Math.max(valeurMin, revenuDeclare - minCalcul)
+
+    // Retraité
+    revenuDeclare = revenu_declare.retraite
+
+    var planch_abatret = CurrentIR.plancher.abattement.retraites.value
+    var plaf_abatret = CurrentIR.plafond.abattement.retraites.value
+
+    maxCalcul = Math.max(planch_abatret, abat_pro_ret * revenuDeclare)
+    minCalcul = Math.min(maxCalcul, plaf_abatret)
+
+    result.retraite  = Math.max(valeurMin, revenuDeclare - minCalcul)
+
+    // Chômeur
+    revenuDeclare = revenu_declare.chomeur
+
+    var planch_abatchom = CurrentIR.plancher.abattement.chomage.value
+
+    maxCalcul = Math.max(planch_abatchom, abat_pro_ret * revenuDeclare)
+    minCalcul = Math.min(maxCalcul, plaf_abatpro)
+
+    result.chomeur  = Math.max(valeurMin, revenuDeclare - minCalcul)
+
+    return result
+
+}
+
 function IRParams(userParams) {
     var salaireNet = userParams.salaire.net.value
     var salaireBrut = userParams.salaire.brut.value
@@ -117,6 +163,8 @@ function IRParams(userParams) {
 
     var revenuDeclare = _revenu_declare(salaireNet, retraite, chomage, csgTauxPlein, csgTauxReduit, csgDeductible)
 
+    var revenuFiscalDeReference = _revenu_fiscal_de_reference(revenuDeclare)
+
     return {
         "csg": {
             "taux": {
@@ -127,7 +175,7 @@ function IRParams(userParams) {
         },
         "revenu": {
             "declare": revenuDeclare,
-            "fiscalDeReference": revenuDeclare
+            "fiscalDeReference": revenuFiscalDeReference
         }
     }
 }

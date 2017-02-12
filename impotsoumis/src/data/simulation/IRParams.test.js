@@ -5,6 +5,48 @@ import CurrentCSG from './../legislative_parameters/CurrentCSG'
 
 var assert = require('assert');
 
+describe('Le revenu fiscal de référence', () => {
+    describe('doit être correct', () => {
+        it('pour un salarié', () => {
+            var net = 1500,
+                retraite = 500,
+                chomage = 1500,
+                couple = 1,
+                nbEnfants = 4
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.revenu.fiscalDeReference.salarie), 1398)
+        });
+
+        it('pour un retraité', () => {
+            var net = 1500,
+                retraite = 500,
+                chomage = 1500,
+                couple = 1,
+                nbEnfants = 4
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.revenu.fiscalDeReference.retraite), 450)
+        });
+
+        it('pour un chômeur', () => {
+            var net = 1500,
+                retraite = 500,
+                chomage = 1500,
+                couple = 1,
+                nbEnfants = 4
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.revenu.fiscalDeReference.chomeur), 1357)
+        });
+    });
+});
 describe('Le revenu déclaré', () => {
     describe('doit être correct', () => {
         it('pour un salarié', () => {
