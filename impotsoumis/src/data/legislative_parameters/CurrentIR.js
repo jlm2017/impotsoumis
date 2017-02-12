@@ -55,15 +55,15 @@ const CurrentIR = {
         "abattement": {
             "fraisPro": {
                 "id": "plaf_abatpro",
-                "value": 1024
+                "value": 122290/12
             },
             "retraites": {
                 "id": "plaf_abatret",
-                "value": 309
+                "value": 3711/12
             },
             "chomage": {
                 "id": "plaf_abatchom",
-                "value": 13076
+                "value": 156912/12
             }
         }
     },
@@ -77,11 +77,15 @@ const CurrentIR = {
         "abattement": {
             "fraisPro": {
                 "id": "planch_abatpro",
-                "value": 36
+                "value": 430/12
             },
             "retraites": {
                 "id": "planch_abatret",
-                "value": 32
+                "value": 379/12
+            },
+            "chomage": {
+                "id": "planch_abatchom",
+                "value": 930/12
             }
         }
     },

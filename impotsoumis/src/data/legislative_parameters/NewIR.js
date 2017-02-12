@@ -1,5 +1,5 @@
 const NewIR = {
-    "creditImpotEnfant": 83,
+    "creditImpotEnfant": 1000/12,
     "bareme": [
         {
             "name": "0%",
