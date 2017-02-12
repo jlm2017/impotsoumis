@@ -1,0 +1,44 @@
+$darkred: #66160F;
+$red: #D1270C;
+$darkblue: #1A2D51;
+$blue: #22B9D0;
+
+.ResultChart {
+  border-radius: 100px;
+  margin: auto;
+  overflow: hidden;
+  width: 242px;
+
+  .left,
+  .right {
+    color: #fff;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 44px;
+  }
+
+  .left {
+    background: #aaa;
+    border-bottom-left-radius: 100px;
+    border-top-left-radius: 100px;
+    width: 65%;
+  }
+
+  .right {
+    background: #000;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+    width: 35%;
+  }
+
+  &.red {
+    .left {background: $darkred;}
+    .right {background: $red;}
+  }
+
+  &.blue {
+    .left {background: $darkblue;}
+    .right {background: $blue;}
+  }
+}

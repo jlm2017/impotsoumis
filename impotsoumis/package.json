@@ -13,11 +13,14 @@
     "immutable": "^3.8.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-grid-system": "^2.4.0"
+    "react-grid-system": "^2.4.0",
+    "react-select": "^1.0.0-rc.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build-css": "node-sass src/ -o src/",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch",
+    "start": "react-scripts start & npm run watch-css",
+    "build": "react-scripts build && npm run build-css",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

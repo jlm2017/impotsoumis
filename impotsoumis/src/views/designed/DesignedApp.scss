@@ -1,0 +1,27 @@
+$main: #818080;
+$blue: #33B9D3;
+
+.DesignedApp {
+  color: $main;
+  font-family: Montserrat, sans-serif;
+  text-align: center;
+
+  h2 {
+    color: $blue;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 20px 0 34px;
+
+    span {
+      font-size: 28px;
+      line-height: 34px;
+    }
+    strong {
+      font-size: 36px;
+      line-height: 44px;
+    }
+  }
+
+  .Filters {margin-bottom: 100px;}
+}

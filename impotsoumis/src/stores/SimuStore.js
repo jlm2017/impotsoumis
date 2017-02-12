@@ -15,7 +15,7 @@ class SimuStore extends ReduceStore {
         var numberOfChildren = 2;
 
         return {
-            theme: Constants.Theme.MARKETING,
+            theme: Constants.Theme.DESIGNED,
             defaultNet: "15000",
             net: salaireMensuelNetDuFoyer,
             isMarried: isMarried,
@@ -88,8 +88,8 @@ class SimuStore extends ReduceStore {
 
             case Constants.Action.THEME_CHANGED:
                 return {
-                    theme: action.theme, 
-                    defaultNet: state.defaultNet, 
+                    theme: action.theme,
+                    defaultNet: state.defaultNet,
                     net: state.net,
                     isMarried: state.isMarried,
                     numberOfChildren: state.numberOfChildren,

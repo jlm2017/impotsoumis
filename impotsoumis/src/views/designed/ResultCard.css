@@ -1,0 +1,47 @@
+.ResultCard {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  padding: 26px 0 0; }
+  .ResultCard h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px; }
+  .ResultCard .amount {
+    font-size: 90px;
+    line-height: 100px;
+    margin-bottom: 8px; }
+  .ResultCard .legend {
+    display: table;
+    height: 125px;
+    margin-top: 42px;
+    width: 100%; }
+    .ResultCard .legend .left,
+    .ResultCard .legend .right {
+      display: table-cell;
+      font-size: 13px;
+      height: 100%;
+      line-height: 16px;
+      width: 50%; }
+      .ResultCard .legend .left:before,
+      .ResultCard .legend .right:before {
+        background: #000;
+        display: block;
+        content: '';
+        height: 16px;
+        margin: 25px auto 7px;
+        width: 16px; }
+    .ResultCard .legend .left {
+      border-right: 1px solid #E9E7EA;
+      width: calc(50% - 1px); }
+  .ResultCard.red .amount {
+    color: #66160F; }
+  .ResultCard.red .legend .left:before {
+    background: #D1270C; }
+  .ResultCard.red .legend .right:before {
+    background: #66160F; }
+  .ResultCard.blue .amount {
+    color: #1A2D51; }
+  .ResultCard.blue .legend .left:before {
+    background: #22B9D0; }
+  .ResultCard.blue .legend .right:before {
+    background: #1A2D51; }

@@ -1,4 +1,4 @@
-import './../../index.css';
+import './MarketingApp.css';
 
 import React, {Component} from 'react';
 import {Container, Row, Col, Visible} from 'react-grid-system';
@@ -8,7 +8,7 @@ import SimuActions from './../../actions/SimuActions';
 class MarketingApp extends Component {
 
   render() {
-    return <Container>
+    return <Container className="MarketingApp">
       <Col xl={3} lg={2} md={1}></Col>
       <Col xl={6} lg={8} md={10}>
         <h2>10 SECONDES POUR CALCULER VOTRE IMPOSITION AVEC</h2>
