@@ -5,6 +5,49 @@ import CurrentCSG from './../legislative_parameters/CurrentCSG'
 
 var assert = require('assert');
 
+describe('Le revenu déclaré', () => {
+    describe('doit être correct', () => {
+        it('pour un salarié', () => {
+            var net = 1500,
+                retraite = 500,
+                chomage = 1500,
+                couple = 1,
+                nbEnfants = 4
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.revenu.declare.salarie), 1553)
+        });
+
+        it('pour un retraité', () => {
+            var net = 1500,
+                retraite = 500,
+                chomage = 1500,
+                couple = 1,
+                nbEnfants = 4
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.revenu.declare.retraite), 500)
+        });
+
+        it('pour un chômeur', () => {
+            var net = 1500,
+                retraite = 500,
+                chomage = 1500,
+                couple = 1,
+                nbEnfants = 4
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.revenu.declare.chomeur), 1507)
+        });
+    });
+});
+
 describe('La CSG déductible', () => {
     describe('doit être correcte', () => {
         it('pour un salarié', () => {

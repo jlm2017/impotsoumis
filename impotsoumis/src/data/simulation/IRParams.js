@@ -93,6 +93,14 @@ function _csg_deductible(sal_net, sal_brut, ret, alloc_cho, couple, nbparts, csg
     return result
 }
 
+function _revenu_declare(sal_net, ret, alloc_cho, csgTauxPlein, csgTauxReduit, csgDeductible) {
+    return {
+        "salarie": sal_net + csgTauxPlein.salarie - csgDeductible.salarie,
+        "retraite": ret + (csgTauxPlein.retraite + csgTauxReduit.retraite) - csgDeductible.retraite,
+        "chomeur": alloc_cho+(csgTauxPlein.chomeur + csgTauxReduit.chomeur)-csgDeductible.chomeur
+    }
+}
+
 function IRParams(userParams) {
     var salaireNet = userParams.salaire.net.value
     var salaireBrut = userParams.salaire.brut.value
@@ -107,6 +115,8 @@ function IRParams(userParams) {
 
     var csgDeductible = _csg_deductible(salaireNet, salaireBrut, retraite, chomage, couple, nbParts, csgTauxReduit.retraite, csgTauxPlein.chomeur)
 
+    var revenuDeclare = _revenu_declare(salaireNet, retraite, chomage, csgTauxPlein, csgTauxReduit, csgDeductible)
+
     return {
         "csg": {
             "taux": {
@@ -114,6 +124,10 @@ function IRParams(userParams) {
                 "reduit": csgTauxReduit
             },
             "deductible": csgDeductible
+        },
+        "revenu": {
+            "declare": revenuDeclare,
+            "fiscalDeReference": revenuDeclare
         }
     }
 }
