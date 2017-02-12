@@ -52,6 +52,12 @@ const CurrentIR = {
                 "value": 213
             }
         },
+        "qf": {
+            "parDemiPart": {
+                "id": "plaf_QF",
+                "value": 126
+            }
+        },
         "abattement": {
             "fraisPro": {
                 "id": "plaf_abatpro",

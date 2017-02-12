@@ -4,11 +4,19 @@ import CalculParTranche from './CalculParTranche'
 function Simulation(revenu_fiscal_ref, nbparts, couple) {
 
     var revenu_fiscal_ref_total = revenu_fiscal_ref.salarie + revenu_fiscal_ref.chomeur + revenu_fiscal_ref.retraite
+    var plaf_QF = CurrentIR.plafond.qf.parDemiPart.value
 
     var a20 = revenu_fiscal_ref_total / nbparts
-    var b20 = couple == 1 ? revenu_fiscal_ref.salarie / 2 : revenu_fiscal_ref.salarie 
+    var b20 = couple == 1
+        ? revenu_fiscal_ref.salarie / 2
+        : revenu_fiscal_ref.salarie
 
     var c20 = CalculParTranche(a20, CurrentIR.bareme).total
+    var d20 = CalculParTranche(b20, CurrentIR.bareme).total
+
+    var valeurMin = 0
+    var valeurMax = d20 * (1 + couple) - c20 * nbparts - plaf_QF * 2 * (nbparts - (1 + couple))
+    var e20 = Math.max(valeurMin, valeurMax)
 
     return {
         "revenu": {
@@ -35,7 +43,7 @@ function Simulation(revenu_fiscal_ref, nbparts, couple) {
                 "sansQF": {
                     "par": {
                         "partFiscale": {
-                            "value": -1
+                            "value": d20
                         }
                     }
                 }
@@ -54,7 +62,7 @@ function Simulation(revenu_fiscal_ref, nbparts, couple) {
         "montant": {
             "depassement": {
                 "plafondQF": {
-                    "value": -1
+                    "value": e20
                 }
             }
         },
