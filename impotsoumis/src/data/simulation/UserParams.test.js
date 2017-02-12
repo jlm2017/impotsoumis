@@ -34,5 +34,14 @@ describe('User Params', () => {
             
             assert.equal(2.5, params.nbPartsFiscales.value)
         });
+
+        it('Le calcul du nombre de parts fiscale doit aussi être correct', () => {
+            var net = 2800, retraite = 0, chomage = 0 
+            var couple = 0, nbEnfants = 0
+
+            var params = UserParams(net, retraite, chomage, couple, nbEnfants)
+            
+            assert.equal(1, params.nbPartsFiscales.value)
+        });
     });
 });
