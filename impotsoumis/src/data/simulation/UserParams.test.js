@@ -10,7 +10,7 @@ describe('User Params', () => {
 
             var params = UserParams(net, retraite, chomage, couple, nbEnfants)
             
-            assert.equal(2000, params.net.value)
+            assert.equal(2000, params.salaire.net.value)
             assert.equal(1000, params.retraite.value)
             assert.equal(500, params.chomage.value)
             assert.equal(1, params.couple.value)
@@ -23,7 +23,7 @@ describe('User Params', () => {
 
             var params = UserParams(net, retraite, chomage, couple, nbEnfants)
             
-            assert.equal(3750, params.salaireBrut.value)
+            assert.equal(3750, params.salaire.brut.value)
         });
 
         it('Le calcul du nombre de parts fiscale doit être correct', () => {

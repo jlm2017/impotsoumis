@@ -16,9 +16,15 @@ function _nombreDePartsFiscales(couple, nbenf) {
 
 function UserParams(net, retraite, chomage, couple, nbEnfants) {
     return {
-        "net": {
-            "id": "sal_net",
-            "value": net
+        "salaire": {
+            "net": {
+                "id": "sal_net",
+                "value": net
+            },
+            "brut": {
+                "id": "sal_brut",
+                "value": _salaireMentuelBrutDuLoyer(net)
+            }
         },
         "retraite": {
             "id": "ret",
@@ -35,10 +41,6 @@ function UserParams(net, retraite, chomage, couple, nbEnfants) {
         "nbEnfants": {
             "id": "nbenf",
             "value": nbEnfants
-        },
-        "salaireBrut": {
-            "id": "sal_brut",
-            "value": _salaireMentuelBrutDuLoyer(net)
         },
         "nbPartsFiscales": {
             "id": "nbparts",
