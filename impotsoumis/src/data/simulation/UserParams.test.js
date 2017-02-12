@@ -2,7 +2,7 @@ import UserParams from './UserParams'
 
 var assert = require('assert');
 
-describe('Computed User Params', () => {
+describe('User Params', () => {
     describe('#userParams()', () => {
         it('Les valeurs net, retraite, alloc, couple, nbEnfants doivent être reprises dans le resultat', () => {
             var net = 2000, retraite = 1000, chomage = 500 
@@ -18,21 +18,21 @@ describe('Computed User Params', () => {
         });
 
         it('Le calcul du salaire brut doit être correct', () => {
-            var net = 2000, retraite = 0, chomage = 0 
-            var couple = 1, nbEnfants = 2
+            var net = 3000, retraite = 0, chomage = 0 
+            var couple = 1, nbEnfants = 1
 
             var params = UserParams(net, retraite, chomage, couple, nbEnfants)
             
-            assert.equal(2500, params.salaireBrut.value)
+            assert.equal(3750, params.salaireBrut.value)
         });
 
         it('Le calcul du nombre de parts fiscale doit être correct', () => {
-            var net = 2000, retraite = 0, chomage = 0 
-            var couple = 1, nbEnfants = 2
+            var net = 3000, retraite = 0, chomage = 0 
+            var couple = 1, nbEnfants = 1
 
             var params = UserParams(net, retraite, chomage, couple, nbEnfants)
             
-            assert.equal(3, params.nbPartsFiscales.value)
+            assert.equal(2.5, params.nbPartsFiscales.value)
         });
     });
 });
