@@ -1,5 +1,5 @@
 const CurrentCSG = {
-    "salaires": {
+    "salaries": {
         "tauxPlein": {
             "id": "tx_sal_CSG",
             "value": 0.075,
@@ -57,6 +57,40 @@ const CurrentCSG = {
                 "demiPartSupplentaire": {
                     "id": "plaf_exo_demip",
                     "value": 238
+                }
+            }
+        }
+    },
+    "chomage": {
+        "tauxPlein": {
+            "id": "tx_chom_CSG",
+            "value": 0.062,
+            "tauxDeductible": {
+                "id": "Dont_taux_déductible",
+                "value": 0.038
+            }
+        },
+        "plafond": {
+            "tauxReduit": {
+                "celibataire": {
+                    "id": "plaf_txred_celib_chom",
+                    "value": 1198
+                },
+                "parQuartSupplementaire": {
+                    "id": "plaf_txred_part_chom",
+                    "value": 160
+                }
+            }
+        },
+        "seuil": {
+            "exoneration": {
+                "celibataire": {
+                    "id": "seuil_exo_cho_celib",
+                    "value": 916
+                },
+                "parQuartSupplementaire": {
+                    "id": "seuil_exo_cho_demip",
+                    "value": 122
                 }
             }
         }

@@ -60,6 +60,10 @@ const CurrentIR = {
             "retraites": {
                 "id": "plaf_abatret",
                 "value": 309
+            },
+            "chomage": {
+                "id": "plaf_abatchom",
+                "value": 13076
             }
         }
     },
