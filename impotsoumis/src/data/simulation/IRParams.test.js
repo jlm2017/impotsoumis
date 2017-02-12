@@ -1,22 +1,40 @@
 import IRParams from './IRParams'
 import UserParams from './UserParams'
 
+import CurrentCSG from './../legislative_parameters/CurrentCSG'
+
 var assert = require('assert');
 
 describe('IR Params', () => {
+
     describe('#IRParams()', () => {
-        it('B14-B16 - La CSG taux plein et CRDS doivent être corrects', () => {
-            var net = 3000,
-                retraite = 0,
-                chomage = 0
-            var couple = 1,
-                nbEnfants = 1
+
+        it('La CSG taux plein pour un salarié doit être correct', () => {
+            var net = 3000, retraite = 0, chomage = 0, couple = 1, nbEnfants = 2
 
             var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
             var irParams = IRParams(userParams)
+
             assert.equal(Math.round(irParams.csg.taux.plein.salarie), 295)
-            assert.equal(irParams.csg.taux.plein.retraite, 0)
-            assert.equal(irParams.csg.taux.plein.chomeur, 0)
+        });
+
+        it('La CSG taux plein pour un retraité doit être correct', () => {
+            var net = 1500, retraite = 1500, chomage = 0, couple = 1, nbEnfants = 2
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.csg.taux.plein.retraite), 107)
+        });
+
+        it('La CSG taux plein pour au chômage doit être correct', () => {
+            var net = 1500, retraite = 0, chomage = 2000, couple = 1, nbEnfants = 0
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            assert.equal(userParams.salaire.brut.value, 1875)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.csg.taux.plein.chomeur), 132)
         });
 
         xit('C14-C16 - La CSG taux réduit et CRDS doivent être corrects', () => {
