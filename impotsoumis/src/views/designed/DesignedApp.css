@@ -1,0 +1,12 @@
+.DesignedApp {
+  color: #818080;
+  font-family: Montserrat, sans-serif;
+  text-align: center; }
+
+.DesignedApp h2 {
+  font-weight: 400;
+  font-size: 36px;
+  margin: 38px 0; }
+
+.DesignedApp .filters {
+  margin-bottom: 100px; }

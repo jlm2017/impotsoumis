@@ -1,0 +1,72 @@
+$border: #E9E7EA;
+
+$darkred: #66160F;
+$red: #D1270C;
+$darkblue: #1A2D51;
+$blue: #22B9D0;
+
+.ResultCard {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px transparentize(#000, 0.88);
+  padding: 26px 0 0;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .amount {
+    font-size: 90px;
+    line-height: 100px;
+    margin-bottom: 8px;
+  }
+
+  .legend {
+    display: table;
+    height: 125px;
+    margin-top: 42px;
+    width: 100%;
+
+    .left,
+    .right {
+      display: table-cell;
+      font-size: 13px;
+      height: 100%;
+      line-height: 16px;
+      width: 50%;
+
+      &:before {
+        background: #000;
+        display: block;
+        content: '';
+        height: 16px;
+        margin: 25px auto 7px;
+        width: 16px;
+      }
+    }
+
+    .left {
+      border-right: 1px solid $border;
+      width: calc(50% - 1px);
+    }
+  }
+
+  &.red {
+    .amount {color: $darkred}
+
+    .legend {
+      .left:before {background: $red;}
+      .right:before {background: $darkred;}
+    }
+  }
+
+  &.blue {
+    .amount {color: $darkblue}
+
+    .legend {
+      .left:before {background: $blue;}
+      .right:before {background: $darkblue;}
+    }
+  }
+}

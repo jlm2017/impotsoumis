@@ -1,4 +1,4 @@
-import './../../grommet.min.css';
+import './grommet.min.css';
 
 import React, {Component} from 'react';
 

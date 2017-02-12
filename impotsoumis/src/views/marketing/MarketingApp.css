@@ -1,34 +1,22 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto Slab', serif;
-}
-
-h1 {
+.MarketingApp h1 {
   text-align: center;
   color: #0098b6;
   font-family: 'Montserrat', sans-serif;
 
 }
 
-h2 {
+.MarketingApp h2 {
   text-align: center;
   color: #0098b6;
   font-family: 'Montserrat', sans-serif;
 }
 
-h3 {
+.MarketingApp h3 {
   text-align: center;
   color: #bc5841;
 }
 
-h4 {
+.MarketingApp h4 {
   text-align: center;
   color: black;
-}
-
-.align-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

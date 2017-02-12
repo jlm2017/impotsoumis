@@ -4,8 +4,11 @@ import SimuStore from './stores/SimuStore';
 import Constants from './constants/Constants';
 import SimuActions from './actions/SimuActions';
 
-import GrommetApp from './views/grommet/GrommetApp.jsx'
-import MarketingApp from './views/marketing/MarketingApp.jsx'
+import GrommetApp from './views/grommet/GrommetApp.jsx';
+import MarketingApp from './views/marketing/MarketingApp.jsx';
+import DesignedApp from './views/designed/DesignedApp.jsx';
+
+import './main.css';
 
 var _token;
 
@@ -28,7 +31,6 @@ class App extends Component {
 
   _renderTheme(theme) {
     switch (theme) {
-
       case Constants.Theme.GROMMET:
         return (<GrommetApp
           defaultNet={this.state.defaultNet}
@@ -37,11 +39,14 @@ class App extends Component {
           currentSeries={this.state.currentSeries}/>);
 
       case Constants.Theme.MARKETING:
-        return (<MarketingApp 
+        return (<MarketingApp
         net={this.state.net}
-        currentSeries={this.state.currentSeries} 
-        isMarried={this.state.isMarried} 
+        currentSeries={this.state.currentSeries}
+        isMarried={this.state.isMarried}
         numberOfChildren={this.state.numberOfChildren}/>);
+
+      case Constants.Theme.DESIGNED:
+        return(<DesignedApp {...this.state} />);
 
       default:
         return (
@@ -56,6 +61,7 @@ class App extends Component {
       <select value={this.state.theme} onChange={ (event) => { SimuActions.themeChanged(event.target.value) }}>
         <option value="grommet">Grommet</option>
         <option value="marketing">Marketing</option>
+        <option value="designed">Designed</option>
       </select>
     </div>
   }

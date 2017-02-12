@@ -7,6 +7,7 @@ export default {
     THEME_CHANGED: 'theme_changed'
   },
   Theme: {
+    DESIGNED: 'designed',
     GROMMET: 'grommet',
     MARKETING: 'marketing'
   }
