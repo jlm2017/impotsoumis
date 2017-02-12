@@ -13,20 +13,27 @@ class DesignedApp extends Component {
 
   // TODO: Fixer la grille
   getChildContext = () => ({
-    containerWidths: [540, 750, 960, 1440],
-    gutterWidth: 50
+    containerWidths: [540, 750, 960, 1000],
+    gutterWidth: 40
   });
 
   render() {
-    const { currentSeries, net } = this.props;
+    const { currentSeries, isMarried, net, numberOfChildren } = this.props;
 
     return (
       <Container className="DesignedApp">
         <Row>
-          <Col offset={{ md: 3 }} xl={6}>
-            <h2>Faire ma simulation</h2>
+          <Col>
+            <h2>
+              <span>10 secondes</span> pour calculer votre imposition avec<br />
+              <strong>la Révolution Fiscale</strong>
+            </h2>
 
-            <Filters net={net} />
+            <Filters
+              isMarried={isMarried}
+              net={net}
+              numberOfChildren={numberOfChildren}
+            />
 
             <Row>
               <Col xl={6}>
