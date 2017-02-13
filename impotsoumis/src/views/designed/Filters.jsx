@@ -5,15 +5,21 @@ import 'react-select/dist/react-select.css';
 import SimuActions from '../../actions/SimuActions';
 import './Filters.css';
 
-const childrenOpt = [];
-for (var i = 0; i < 10; i++) {
-  childrenOpt.push({
-    value: i,
-    label: i
-  });
-}
-
 export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
+  const onlyNumber = (e) => {
+    if (e.target.value.length > 9) {
+      e.target.value = e.target.value.slice(0, 9);
+    }
+  };
+
+  const childrenOpt = [];
+  for (var i = 0; i < 10; i++) {
+    childrenOpt.push({
+      value: i,
+      label: i
+    });
+  }
+
   return (
     <div className="Filters">
       <div className="left">
@@ -24,7 +30,8 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             id="revenu"
             placeholder="en €"
             onChange={(e) => SimuActions.netChanged(e.target.value)}
-            type="text"
+            onInput={onlyNumber}
+            type="number"
             value={(net == 0) ? "" : net}
           />
         </div>
@@ -35,10 +42,12 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             <input
               id="retraite"
               placeholder="en €"
-              type="text"
+              type="number"
               onChange={(e) => SimuActions.retraiteChanged(e.target.value)}
+              onInput={onlyNumber}
               value={(retraite == 0) ? "" : retraite}
             />
+
           </div>
           <div className="right">
             <label htmlFor="chomage">Allocations chômage</label>
@@ -46,8 +55,9 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             <input
               id="chomage"
               placeholder="en €"
-              type="text"
+              type="number"
               onChange={(e) => SimuActions.chomageChanged(e.target.value)}
+              onInput={onlyNumber}
               value={(chomage == 0) ? "" : chomage}
             />
           </div>

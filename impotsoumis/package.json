@@ -11,6 +11,7 @@
     "grommet": "^1.2.1",
     "grommet-addons": "^0.3.0",
     "immutable": "^3.8.1",
+    "numeral": "^2.0.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-grid-system": "^2.4.0",

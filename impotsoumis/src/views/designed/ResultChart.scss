@@ -9,6 +9,8 @@ $blue: #33B9D3;
   overflow: hidden;
   width: 75%;
 
+  @media (max-width: 1039px) {width: 90%;}
+
   .left,
   .right {
     color: #fff;
@@ -30,6 +32,12 @@ $blue: #33B9D3;
     border-bottom-right-radius: 100px;
     border-top-right-radius: 100px;
     width: 35%;
+
+    @media (max-width: 1039px) {
+      vertical-align: top;
+      font-size: 20px;
+    }
+    @media(max-width: 767px) {font-size: 18px;}    
   }
 
   &.red {

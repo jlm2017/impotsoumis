@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-grid-system';
+import { Container, Row, Col, Visible } from 'react-grid-system';
+import numeral from 'numeral';
 
 import Filters from './Filters.jsx';
 import ResultCard from './ResultCard.jsx';
@@ -22,8 +23,9 @@ class DesignedApp extends Component {
   render() {
     const { currentSeries, newSeries } = this.props;
 
-    const purchase = (currentSeries[0].value + currentSeries[1].value) - (newSeries[0].value + newSeries[1].value);
+    let purchase = (currentSeries[0].value + currentSeries[1].value) - (newSeries[0].value + newSeries[1].value);
     const isPositive = (purchase >= 0) ? true : false;
+    purchase = (Math.abs(purchase) >= 99999) ? numeral(Math.abs(purchase)).format('€0a') : Math.abs(purchase)
 
     return (
       <Container className="DesignedApp">
@@ -37,8 +39,9 @@ class DesignedApp extends Component {
             <Filters {...this.props} />
 
             <div className="verdict">
+              <Visible xs>Avec la <em>Révolution Fiscale</em></Visible>
               <strong>
-                C'est {Math.abs(purchase)}€ en
+                C'est {purchase}€ en
                 <span className={(isPositive) ? "positive" : "negative"}>
                   {(isPositive) ? " plus " : " moins "}
                 </span>
