@@ -2,88 +2,143 @@ import {ReduceStore} from 'flux/utils';
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import Constants from './../constants/Constants';
 
-import CalculImpot from '../data/CalculImpot'
+import Simulation from '../data/simulation/Simulation'
+import JLMSimulation from '../data/simulation/JLMSimulation'
+
+import UserParams from '../data/simulation/UserParams'
+import IRParams from '../data/simulation/IRParams'
 
 // Catch: State must be immutable
 class SimuStore extends ReduceStore {
 
-    getInitialState() {
-        var salaireMensuelNetDuFoyer = 15000;
-        var retraiteMensuelle = 0;
-        var allocationsChomageMensuelle = 0;
-        var isMarried = 1;
-        var numberOfChildren = 2;
+    generateSeries(net, retraite, chomage, couple, nbEnfants) {
+        var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+        var irParams = IRParams(userParams)
+
+        var simulation = Simulation(irParams.revenu.fiscalDeReference, userParams.nbPartsFiscales.value, couple, irParams.csg.taux.plein.salarie, irParams.csg.taux.reduit.salarie)
+
+        var jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
 
         return {
-            theme: Constants.Theme.DESIGNED,
-            defaultNet: "15000",
-            net: salaireMensuelNetDuFoyer,
-            isMarried: isMarried,
-            numberOfChildren: numberOfChildren,
-            currentSeries: this.generateSeries(salaireMensuelNetDuFoyer, retraiteMensuelle, allocationsChomageMensuelle, isMarried, numberOfChildren)
+            "current": [
+                {
+                    "label": "IR",
+                    "value": Math.round(simulation.impot.du.value),
+                    "colorIndex": "neutral-4"
+                }, {
+                    "label": "CSG",
+                    "value": Math.round(simulation.csg.du.value),
+                    "colorIndex": "neutral-1"
+                }
+            ],
+            "new": [
+                {
+                    "label": "IR",
+                    "value": Math.round(jlmSimulation.impot.du),
+                    "colorIndex": "neutral-4"
+                }, {
+                    "label": "CSG",
+                    "value": 0,
+                    "colorIndex": "neutral-1"
+                }
+            ]
         }
     }
 
-    generateSeries(sal_net, retraite, alloc_cho, couple, nbenf) {
-        var retraiteMensuelle = retraite;
-        var allocationsChomageMensuelle = alloc_cho;
+    getInitialState() {
+        var net = 2800;
+        var retraite = 0;
+        var chomage = 0;
+        var couple = 0;
+        var nbEnfants = 0;
 
-        var marieOuPacse = couple;
-        var nombreEnfantsACharge = nbenf;
-
-        var result = CalculImpot(sal_net, retraiteMensuelle, allocationsChomageMensuelle, marieOuPacse, nombreEnfantsACharge);
-
-        return [
-            {
-                "label": "IR",
-                "value": result.IR,
-                "colorIndex": "neutral-4"
-            }, {
-                "label": "CSG",
-                "value": result.CSG,
-                "colorIndex": "neutral-1"
-            }
-        ];
+        var series = this.generateSeries(net, retraite, chomage, couple, nbEnfants)
+        console.log(series);
+        return {
+            theme: Constants.Theme.DESIGNED,
+            defaultNet: 2800,
+            net: net,
+            retraite: 0,
+            chomage: 0,
+            isMarried: couple,
+            numberOfChildren: nbEnfants,
+            currentSeries: series.current,
+            newSeries: series.new
+        }
     }
 
     reduce(state, action) {
+        console.log(action);
         switch (action.actionType) {
             case Constants.Action.NET_CHANGED:
+                var series = this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren);
                 return {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
                     net: action.net,
+                    retraite: state.retraite,
+                    chomage: state.chomage,
                     isMarried: state.isMarried,
                     numberOfChildren: state.numberOfChildren,
-                    currentSeries: this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren)
+                    currentSeries: series.current,
+                    newSeries: series.new
                 };
-            case Constants.Action.MARITAL_STATUS_CHANGED:
+
+            case Constants.Action.RETRAITE_CHANGED:
+                var series = this.generateSeries(state.net, action.retraite, state.chomage, state.isMarried, state.numberOfChildren);
                 return {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
                     net: state.net,
+                    retraite: action.retraite,
+                    chomage: state.chomage,
+                    isMarried: state.isMarried,
+                    numberOfChildren: state.numberOfChildren,
+                    currentSeries: series.current,
+                    newSeries: series.new
+                };
+
+            case Constants.Action.CHOMAGE_CHANGED:
+                var series = this.generateSeries(state.net, state.retraite, action.chomage, state.isMarried, state.numberOfChildren);
+                return {
+                    theme: state.theme,
+                    defaultNet: state.defaultNet,
+                    net: state.net,
+                    retraite: state.retraite,
+                    chomage: action.chomage,
+                    isMarried: state.isMarried,
+                    numberOfChildren: state.numberOfChildren,
+                    currentSeries: series.current,
+                    newSeries: series.new
+                };
+
+            case Constants.Action.MARITAL_STATUS_CHANGED:
+                var series = this.generateSeries(state.net, state.retraite, state.chomage, action.isMarried, state.numberOfChildren);
+                return {
+                    theme: state.theme,
+                    defaultNet: state.defaultNet,
+                    net: state.net,
+                    retraite: state.retraite,
+                    chomage: state.chomage,
                     isMarried: action.isMarried,
                     numberOfChildren: state.numberOfChildren,
-                    currentSeries: this.generateSeries(state.net, 0, 0, action.isMarried, state.numberOfChildren)
+                    currentSeries: series.current,
+                    newSeries: series.new
 
                 };
-            case Constants.Action.MARITAL_STATUS:
-                return {
-                    theme: state.theme,
-                    defaultNet: state.defaultNet,
-                    net: state.net,
-                    isMarried: state.isMarried,
-                    numberOfChildren: action.numberOfChildren,
-                    currentSeries: this.generateSeries(state.net, 0, 0, state.isMarried, action.numberOfChildren)
-                };
             case Constants.Action.NUMBER_OF_CHILDREN_CHANGED:
+                var series = this.generateSeries(state.net, state.retraite, state.chomage, state.isMarried, action.numberOfChildren);
+
                 return {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
                     net: state.net,
+                    retraite: state.retraite,
+                    chomage: state.chomage,
                     isMarried: state.isMarried,
                     numberOfChildren: action.numberOfChildren,
-                    currentSeries: this.generateSeries(state.net, 0, 0, state.isMarried, action.numberOfChildren)
+                    currentSeries: series.current,
+                    newSeries: series.new
                 };
 
             case Constants.Action.THEME_CHANGED:
@@ -91,9 +146,13 @@ class SimuStore extends ReduceStore {
                     theme: action.theme,
                     defaultNet: state.defaultNet,
                     net: state.net,
+                    retraite: state.retraite,
+                    chomage: state.chomage,
                     isMarried: state.isMarried,
                     numberOfChildren: state.numberOfChildren,
-                    currentSeries: state.currentSeries};
+                    currentSeries: state.currentSeries,
+                    newSeries: state.newSeries
+                };
             default:
                 return state;
         }
