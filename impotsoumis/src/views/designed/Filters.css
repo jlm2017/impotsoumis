@@ -3,13 +3,25 @@
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
   width: 100%; }
+  @media (max-width: 750px) {
+    .Filters {
+      display: block; } }
   .Filters .left,
   .Filters .right {
     display: table-cell;
     width: 50%; }
+    @media (max-width: 750px) {
+      .Filters .left,
+      .Filters .right {
+        display: block;
+        width: 100%; } }
   .Filters .left {
     border-right: 1px solid #DBDBDB;
     width: calc(50% - 1px); }
+    @media (max-width: 750px) {
+      .Filters .left {
+        border: 0;
+        width: 100%; } }
   .Filters .revenu,
   .Filters .situation {
     border-bottom: 1px solid #DBDBDB; }
@@ -37,25 +49,54 @@
       /* Firefox 18- */
       color: #B8B8BB; }
   .Filters .revenu {
-    padding: 34px 0 30px; }
+    padding: 34px 0 28px; }
+    @media (max-width: 750px) {
+      .Filters .revenu {
+        padding: 25px 0 22px; } }
+    .Filters .revenu label {
+      display: inline-block;
+      line-height: 19px;
+      width: 65%; }
     .Filters .revenu input {
       font-size: 15px;
-      margin-top: 18px;
-      width: 300px; }
+      margin-top: 20px;
+      width: 65%; }
+      @media (max-width: 750px) {
+        .Filters .revenu input {
+          margin-top: 8px; } }
   .Filters .pension {
     display: table;
     width: 100%; }
+    @media (max-width: 750px) {
+      .Filters .pension {
+        border-bottom: 1px solid #DBDBDB; } }
     .Filters .pension .left,
     .Filters .pension .right {
       padding: 14px 0 40px; }
+      @media (max-width: 750px) {
+        .Filters .pension .left,
+        .Filters .pension .right {
+          display: table-cell;
+          padding: 18px 12px 20px;
+          width: 50%; } }
     .Filters .pension label {
-      font-size: 12px; }
+      font-size: 12px;
+      line-height: 15px; }
+      @media (max-width: 750px) {
+        .Filters .pension label {
+          display: inline-block; } }
     .Filters .pension input {
       font-size: 13px;
       margin-top: 10px;
-      width: 132px; }
+      width: 58%; }
+      @media (max-width: 750px) {
+        .Filters .pension input {
+          margin-top: 2px; } }
   .Filters .situation {
     font-size: 14px; }
+    @media (max-width: 750px) {
+      .Filters .situation {
+        padding-top: 15px; } }
     .Filters .situation p {
       margin-bottom: 10px; }
     .Filters .situation label {
@@ -71,6 +112,9 @@
       margin: 0 5px 50px;
       padding: 0 15px;
       transition: .1s linear; }
+      @media (max-width: 750px) {
+        .Filters .situation label {
+          margin-bottom: 18px; } }
     .Filters .situation input {
       left: -9999px;
       position: absolute; }
@@ -79,12 +123,18 @@
       background: #33B9D3;
       border-color: transparent;
       color: #fff; }
+  @media (max-width: 750px) {
+    .Filters .enfant {
+      padding-bottom: 25px; } }
   .Filters .enfant p {
     font-size: 14px;
     margin: 16px 0 15px; }
   .Filters .enfant .Select {
     margin: auto;
-    width: 158px; }
+    width: 35%; }
+    @media (max-width: 750px) {
+      .Filters .enfant .Select {
+        width: 72%; } }
     .Filters .enfant .Select .Select-value-label {
       color: #818080 !important;
       font-family: 'Open Sans', sans-serif;

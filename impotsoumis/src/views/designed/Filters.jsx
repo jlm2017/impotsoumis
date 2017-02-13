@@ -22,7 +22,7 @@ export default ({ isMarried, net, numberOfChildren }) => {
           <br/>
           <input
             id="revenu"
-            placeholder="Votre salaire en €"
+            placeholder="en €"
             onChange={(e) => SimuActions.netChanged(e.target.value)}
             type="text"
             value={net}
@@ -32,13 +32,13 @@ export default ({ isMarried, net, numberOfChildren }) => {
           <div className="left">
             <label htmlFor="retraite">Pensions de retraite</label>
             <br/>
-            <input id="retraite" placeholder="Vos retraites en €" type="text"
+            <input id="retraite" placeholder="en €" type="text"
             onChange={(e) => SimuActions.retraiteChanged(e.target.value)}/>
           </div>
           <div className="right">
             <label htmlFor="chomage">Allocations chômage</label>
             <br/>
-            <input id="chomage" placeholder="Vos allocations en €" type="text"
+            <input id="chomage" placeholder="en €" type="text"
             onChange={(e) => SimuActions.chomageChanged(e.target.value)}/>
           </div>
         </div>

@@ -36,10 +36,10 @@ class DesignedApp extends Component {
             />
 
             <Row>
-              <Col xl={6}>
+              <Col md={6}>
                 <ResultCard color="red" data={currentSeries} title="Imposition actuelle" />
               </Col>
-              <Col xl={6}>
+              <Col md={6}>
                 <ResultCard color="blue" data={newSeries} title="Imposition fiscale" />
               </Col>
             </Row>

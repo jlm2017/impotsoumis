@@ -11,15 +11,27 @@ $blue: #33B9D3;
   box-shadow: 0 2px 12px transparentize(#000, .88);
   width: 100%;
 
+  @media (max-width: 750px) {display: block;}
+
   .left,
   .right {
     display: table-cell;
     width: 50%;
+
+    @media (max-width: 750px) {
+      display: block;
+      width: 100%;
+    }
   }
 
   .left {
     border-right: 1px solid $border;
     width: calc(50% - 1px);
+
+    @media (max-width: 750px) {
+      border: 0;
+      width: 100%;
+    }
   }
 
   .revenu,
@@ -54,12 +66,22 @@ $blue: #33B9D3;
   }
 
   .revenu {
-    padding: 34px 0 30px;
+    padding: 34px 0 28px;
+
+    @media (max-width: 750px) {padding: 25px 0 22px;}
+
+    label {
+      display: inline-block;
+      line-height: 19px;
+      width: 65%;
+    }
 
     input {
       font-size: 15px;
-      margin-top: 18px;
-      width: 300px;
+      margin-top: 20px;
+      width: 65%;
+
+      @media (max-width: 750px) {margin-top: 8px;}
     }
   }
 
@@ -67,20 +89,41 @@ $blue: #33B9D3;
     display: table;
     width: 100%;
 
-    .left,
-    .right {padding: 14px 0 40px;}
+    @media (max-width: 750px) {border-bottom: 1px solid $border;}
 
-    label {font-size: 12px;}
+    .left,
+    .right {
+      padding: 14px 0 40px;
+
+      @media (max-width: 750px) {
+        display: table-cell;
+        padding: 18px 12px 20px;
+        width: 50%;
+      }
+    }
+
+    label {
+      font-size: 12px;
+      line-height: 15px;
+
+      @media (max-width: 750px) {
+        display: inline-block;
+      }
+    }
 
     input {
       font-size: 13px;
       margin-top: 10px;
-      width: 132px;
+      width: 58%;
+
+      @media (max-width: 750px) {margin-top: 2px;}
     }
   }
 
   .situation {
     font-size: 14px;
+
+    @media (max-width: 750px) {padding-top: 15px;}
 
     p {margin-bottom: 10px;}
 
@@ -97,6 +140,8 @@ $blue: #33B9D3;
       margin: 0 5px 50px;
       padding: 0 15px;
       transition: .1s linear;
+
+      @media (max-width: 750px) {margin-bottom: 18px;}
     }
 
     input {
@@ -113,6 +158,8 @@ $blue: #33B9D3;
   }
 
   .enfant {
+    @media (max-width: 750px) {padding-bottom: 25px;}
+
     p {
       font-size: 14px;
       margin: 16px 0 15px;
@@ -120,7 +167,9 @@ $blue: #33B9D3;
 
     .Select {
       margin: auto;
-      width: 158px;
+      width: 35%;
+
+      @media (max-width: 750px) {width: 72%;}
 
       .Select-value-label {
         color: $main !important;

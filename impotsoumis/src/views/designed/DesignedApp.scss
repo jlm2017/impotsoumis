@@ -11,15 +11,32 @@ $blue: #33B9D3;
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
-    margin: 20px 0 34px;
+    margin: 46px auto 34px;
+    width: 70%;
+
+    @media (max-width: 750px) {
+      font-size: 20px;
+      line-height: 24px;
+      margin: 32px auto 34px;
+    }
 
     span {
       font-size: 28px;
       line-height: 34px;
+
+      @media (max-width: 750px) {
+        font-size: 24px;
+        line-height: 29px;
+      }
     }
     strong {
       font-size: 36px;
       line-height: 44px;
+
+      @media (max-width: 750px) {
+        font-size: 28px;
+        line-height: 34px;
+      }
     }
   }
 
