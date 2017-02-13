@@ -18,8 +18,9 @@ class DesignedApp extends Component {
   });
 
   render() {
-    const { currentSeries, newSeries, isMarried, net, numberOfChildren } = this.props;
+    const { currentSeries, newSeries } = this.props;
 
+    const purchase = 0;
     return (
       <Container className="DesignedApp">
         <Row>
@@ -29,11 +30,12 @@ class DesignedApp extends Component {
               <strong>la Révolution Fiscale</strong>
             </h2>
 
-            <Filters
-              isMarried={isMarried}
-              net={net}
-              numberOfChildren={numberOfChildren}
-            />
+            <Filters {...this.props} />
+
+            <div className="verdict">
+              <strong>C'est {purchase}€ en -</strong>
+              sur mon pouvoir d'achat !
+            </div>
 
             <Row>
               <Col md={6}>

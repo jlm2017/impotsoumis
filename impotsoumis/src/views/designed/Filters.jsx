@@ -13,7 +13,7 @@ for (var i = 0; i < 10; i++) {
   });
 }
 
-export default ({ isMarried, net, numberOfChildren }) => {
+export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
   return (
     <div className="Filters">
       <div className="left">
@@ -25,21 +25,31 @@ export default ({ isMarried, net, numberOfChildren }) => {
             placeholder="en €"
             onChange={(e) => SimuActions.netChanged(e.target.value)}
             type="text"
-            value={net}
+            value={(net == 0) ? "" : net}
           />
         </div>
         <div className="pension">
           <div className="left">
             <label htmlFor="retraite">Pensions de retraite</label>
             <br/>
-            <input id="retraite" placeholder="en €" type="text"
-            onChange={(e) => SimuActions.retraiteChanged(e.target.value)}/>
+            <input
+              id="retraite"
+              placeholder="en €"
+              type="text"
+              onChange={(e) => SimuActions.retraiteChanged(e.target.value)}
+              value={(retraite == 0) ? "" : retraite}
+            />
           </div>
           <div className="right">
             <label htmlFor="chomage">Allocations chômage</label>
             <br/>
-            <input id="chomage" placeholder="en €" type="text"
-            onChange={(e) => SimuActions.chomageChanged(e.target.value)}/>
+            <input
+              id="chomage"
+              placeholder="en €"
+              type="text"
+              onChange={(e) => SimuActions.chomageChanged(e.target.value)}
+              value={(chomage == 0) ? "" : chomage}
+            />
           </div>
         </div>
       </div>
