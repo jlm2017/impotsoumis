@@ -1,50 +1,38 @@
 .ResultChart {
   border-radius: 100px;
+  height: 44px;
   margin: auto;
   overflow: hidden;
   width: 75%; }
-
-@media (max-width: 1039px) {
-  .ResultChart {
-    width: 90%; } }
-
-.ResultChart .left,
-.ResultChart .right {
-  color: #fff;
-  display: inline-block;
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 44px; }
-
-.ResultChart .left {
-  background: #aaa;
-  border-bottom-left-radius: 100px;
-  border-top-left-radius: 100px;
-  width: 65%; }
-
-.ResultChart .right {
-  background: #000;
-  border-bottom-right-radius: 100px;
-  border-top-right-radius: 100px;
-  width: 35%; }
-
-@media (max-width: 1039px) {
+  @media (max-width: 1039px) {
+    .ResultChart {
+      width: 90%; } }
+  .ResultChart .center,
+  .ResultChart .left,
   .ResultChart .right {
-    vertical-align: top;
-    font-size: 20px; } }
-
-@media (max-width: 767px) {
+    color: #fff;
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 44px; }
+  .ResultChart .left,
   .ResultChart .right {
-    font-size: 18px; } }
-
-.ResultChart.red .left {
-  background: #D1270C; }
-
-.ResultChart.red .right {
-  background: #9C1B00; }
-
-.ResultChart.blue .left {
-  background: #33B9D3; }
-
-.ResultChart.blue .right {
-  background: #1B90A7; }
+    width: 50%;
+    transition: .7s width; }
+    @media (max-width: 1039px) {
+      .ResultChart .left,
+      .ResultChart .right {
+        vertical-align: top;
+        font-size: 18px; } }
+    @media (max-width: 767px) {
+      .ResultChart .left,
+      .ResultChart .right {
+        font-size: 16px; } }
+  .ResultChart.red {
+    background: #D1270C; }
+    .ResultChart.red .right {
+      background: #9C1B00; }
+  .ResultChart.blue {
+    background: #33B9D3; }
+    .ResultChart.blue .right {
+      background: #1B90A7; }

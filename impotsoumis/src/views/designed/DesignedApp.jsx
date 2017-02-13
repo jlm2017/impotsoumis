@@ -13,19 +13,67 @@ class DesignedApp extends Component {
     gutterWidth: React.PropTypes.number
   };
 
-  // TODO: Fixer la grille
-  getChildContext = () => ({
-    breakpoints: [768, 1040],
-    containerWidths: [728, 1000],
-    gutterWidth: 40
-  });
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  getChildContext() {
+    return {
+      breakpoints: [768, 1040],
+      containerWidths: [728, 1000],
+      gutterWidth: 40
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      purchase: this.nextPurchase
+    });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props) {
+      cancelAnimationFrame(this.state.verdictInterval);
+      this.setState({
+        verdictInterval: requestAnimationFrame(this.loopVerdict.bind(this))
+      });
+    }
+  }
+
+  loopVerdict() {
+    if (this.nextPurchase === this.state.purchase) {
+      cancelAnimationFrame(this.state.verdictInterval);
+    } else {
+      this.setState({
+        purchase: this.updateVerdict(),
+        verdictInterval: requestAnimationFrame(this.loopVerdict.bind(this))
+      });
+    }
+  }
+
+  updateVerdict() {
+    let next;
+    for(var i = 100000000; i >= 1; i = i / 10) {
+      if (this.nextPurchase >= this.state.purchase + i) {
+        next = this.state.purchase + i;
+        break;
+      } else if (this.nextPurchase <= this.state.purchase - i) {
+        next = this.state.purchase - i;
+        break;
+      }
+    }
+    return next;
+  }
 
   render() {
     const { currentSeries, newSeries } = this.props;
 
-    let purchase = (currentSeries[0].value + currentSeries[1].value) - (newSeries[0].value + newSeries[1].value);
-    const isPositive = (purchase >= 0) ? true : false;
-    purchase = (Math.abs(purchase) >= 99999) ? numeral(Math.abs(purchase)).format('€0a') : Math.abs(purchase)
+    const IR = currentSeries[0].value;
+    const CSG = currentSeries[1].value;
+    const NEW = newSeries[0].value;
+    this.nextPurchase = (IR + CSG) - NEW;
+    const isPositive = (this.nextPurchase >= 0) ? true : false;
 
     return (
       <Container className="DesignedApp">
@@ -41,8 +89,11 @@ class DesignedApp extends Component {
             <div className="verdict">
               <Visible xs>Avec la <em>Révolution Fiscale</em></Visible>
               <strong>
-                C'est {purchase}€ en
-                <span className={(isPositive) ? "positive" : "negative"}>
+                C'est
+                <span ref={(node) => this.verdict = node}>
+                  {` ${numeral(Math.abs(this.state.purchase)).format('€0a')}`}
+                </span>€ en
+                <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
                   {(isPositive) ? " plus " : " moins "}
                 </span>
               </strong>
@@ -51,10 +102,28 @@ class DesignedApp extends Component {
 
             <Row>
               <Col sm={6}>
-                <ResultCard color="red" data={currentSeries} title="Imposition actuelle" />
+                <ResultCard
+                  color="red"
+                  left={{
+                    legend: <span>Impôt<br /> sur le revenu<br /> (IR)</span>,
+                    value: IR
+                  }}
+                  right={{
+                    legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
+                    value: CSG
+                  }}
+                  title="Imposition actuelle"
+                />
               </Col>
               <Col sm={6}>
-                <ResultCard color="blue" data={newSeries} title="Révolution fiscale" />
+                <ResultCard
+                  center={{
+                    legend: "Nouvel Impôt Citoyen",
+                    value: NEW
+                  }}
+                  color="blue"
+                  title="Révolution fiscale"
+                />
               </Col>
             </Row>
           </Col>

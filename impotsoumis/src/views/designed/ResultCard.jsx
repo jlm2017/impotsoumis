@@ -5,30 +5,30 @@ import Chart from './ResultChart.jsx';
 import "./ResultCard.css";
 
 
-export default ({ color, data, title }) => {
-  let IR = 0, CSG = 0;
-  if (data) {
-    IR = data[0].value;
-    CSG = data[1].value;
-  }
-  let total = IR + CSG;
-  if (total > 999999) {
-    total = numeral(total).format('€0a');
-  }
+export default ({ center, color, left, right, title }) => {
+  const total = (center) ? numeral(center.value).format('€0a') : numeral(left.value + right.value).format('€0a');
 
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
       <div className="amount">{total}€</div>
-      <Chart color={color} left={IR} right={CSG} />
-      <div className="legend">
-        <span className="left">
-          Impôt<br /> sur le revenu<br /> (IR)
-        </span>
-        <span className="right">
-          Contribution <br />sociale généralisée<br /> (CSG)
-        </span>
-      </div>
+      <Chart
+        color={color}
+        center={(center) ? center.value : false}
+        left={(left) ? left.value : false}
+        right={(right) ? right.value : false}
+      />
+      {(center) ?
+        <div className="legend">
+          <span className="center">{center.legend}</span>
+        </div>
+      :
+        <div className="legend">
+          <span className="left">{left.legend}</span>
+          <span className="right">{right.legend}</span>
+        </div>
+      }
+
     </div>
   );
 };

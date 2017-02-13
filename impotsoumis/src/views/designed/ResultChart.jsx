@@ -3,32 +3,43 @@ import numeral from 'numeral';
 
 import './ResultChart.css';
 
-export default ({ color, left, right }) => {
-  let leftRatio = left * 100 / (left + right);
-  let rightRatio = 100 - leftRatio;
-  if (leftRatio < 25) {
-    leftRatio = 25;
-    rightRatio = 75;
-
-    left = numeral(left).format('€0a');
-  }
-  if (rightRatio < 25) {
-    leftRatio = 75;
-    rightRatio = 25;
-
-    right = numeral(right).format('€0a');
-  }
-  if (left > 99999) {
-    left = numeral(left).format('€0.0a');
-  }
-  if (right > 99999) {
-    right = numeral(right).format('€0a');
+export default ({ center, color, left, right }) => {
+  let leftRatio, rightRatio;
+  if (!center) {
+    leftRatio = left * 100 / (left + right);
+    rightRatio = 100 - leftRatio;
+    if (leftRatio < 22) {
+      leftRatio = 22;
+      rightRatio = 78;
+    }
+    if (rightRatio < 22) {
+      leftRatio = 78;
+      rightRatio = 22;
+    }
   }
 
   return (
     <div className={`ResultChart ${color}`}>
-      <span className="left" style={{width: `${leftRatio}%` }}>{left}€</span>
-      <span className="right" style={{width: `${rightRatio}%` }}>{right}€</span>
+      {(center !== false) ?
+        <span className="center">
+          {numeral(center).format('€0a')}€
+        </span>
+      :
+        <div>
+          <span
+            className="left"
+            style={{width: `${leftRatio}%`}}
+          >
+            {numeral(left).format('€0a')}€
+          </span>
+          <span
+            className="right"
+            style={{width: `${rightRatio}%`}}
+          >
+            {numeral(right).format('€0a')}€
+          </span>
+        </div>
+      }
     </div>
   );
 };

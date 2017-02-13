@@ -5,12 +5,14 @@ $blue: #33B9D3;
 
 .ResultChart {
   border-radius: 100px;
+  height: 44px;
   margin: auto;
   overflow: hidden;
   width: 75%;
 
   @media (max-width: 1039px) {width: 90%;}
 
+  .center,
   .left,
   .right {
     color: #fff;
@@ -20,33 +22,25 @@ $blue: #33B9D3;
     line-height: 44px;
   }
 
-  .left {
-    background: #aaa;
-    border-bottom-left-radius: 100px;
-    border-top-left-radius: 100px;
-    width: 65%;
-  }
-
+  .left,
   .right {
-    background: #000;
-    border-bottom-right-radius: 100px;
-    border-top-right-radius: 100px;
-    width: 35%;
+    width: 50%;
+    transition: .7s width;
 
     @media (max-width: 1039px) {
       vertical-align: top;
-      font-size: 20px;
+      font-size: 18px;
     }
-    @media(max-width: 767px) {font-size: 18px;}    
+    @media(max-width: 767px) {font-size: 16px;}
   }
 
   &.red {
-    .left {background: $red;}
+    background: $red;
     .right {background: $darkred;}
   }
 
   &.blue {
-    .left {background: $blue;}
+    background: $blue;
     .right {background: $darkblue;}
   }
 }

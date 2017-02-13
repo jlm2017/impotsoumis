@@ -3,190 +3,150 @@
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
   width: 100%; }
-
-@media (max-width: 767px) {
-  .Filters {
-    display: block; } }
-
-.Filters .left,
-.Filters .right {
-  display: table-cell;
-  width: 50%; }
-
-@media (max-width: 767px) {
+  @media (max-width: 767px) {
+    .Filters {
+      display: block; } }
   .Filters .left,
   .Filters .right {
-    display: block;
-    width: 100%; } }
-
-.Filters .left {
-  border-right: 1px solid #DBDBDB;
-  width: calc(50% - 1px); }
-
-@media (max-width: 767px) {
-  .Filters .left {
-    border: 0;
-    width: 100%; } }
-
-.Filters .revenu,
-.Filters .situation {
-  border-bottom: 1px solid #DBDBDB; }
-
-.Filters input {
-  border: 1px solid #C1C1C1;
-  border-radius: 5px;
-  color: #818080;
-  font-family: 'Open Sans', sans-serif;
-  height: 36px;
-  padding: 0px 14px; }
-
-.Filters input:focus {
-  outline: 0;
-  border-color: #33B9D3;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(51, 185, 211, 0.1); }
-
-.Filters input::-webkit-input-placeholder {
-  /* Chrome/Opera/Safari */
-  color: #B8B8BB; }
-
-.Filters input::-moz-placeholder {
-  /* Firefox 19+ */
-  color: #B8B8BB; }
-
-.Filters input:-ms-input-placeholder {
-  /* IE 10+ */
-  color: #B8B8BB; }
-
-.Filters input:-moz-placeholder {
-  /* Firefox 18- */
-  color: #B8B8BB; }
-
-.Filters .revenu {
-  padding: 34px 0 28px; }
-
-@media (max-width: 767px) {
-  .Filters .revenu {
-    padding: 25px 0 22px; } }
-
-.Filters .revenu label {
-  display: inline-block;
-  line-height: 19px;
-  width: 65%; }
-
-.Filters .revenu input {
-  font-size: 15px;
-  margin-top: 20px;
-  width: 65%; }
-
-@media (max-width: 767px) {
-  .Filters .revenu input {
-    margin-top: 8px; } }
-
-.Filters .pension {
-  display: table;
-  width: 100%; }
-
-@media (max-width: 767px) {
-  .Filters .pension {
-    border-bottom: 1px solid #DBDBDB; } }
-
-.Filters .pension .left,
-.Filters .pension .right {
-  padding: 14px 0 40px; }
-
-@media (max-width: 767px) {
-  .Filters .pension .left,
-  .Filters .pension .right {
     display: table-cell;
-    padding: 18px 12px 20px;
-    width: 50%; } }
-
-.Filters .pension label {
-  font-size: 12px;
-  line-height: 15px; }
-
-@media (max-width: 767px) {
-  .Filters .pension label {
-    display: inline-block; } }
-
-.Filters .pension input {
-  font-size: 13px;
-  margin-top: 10px;
-  width: 58%; }
-
-@media (max-width: 767px) {
-  .Filters .pension input {
-    margin-top: 2px; } }
-
-.Filters .situation {
-  font-size: 14px; }
-
-@media (max-width: 767px) {
+    width: 50%; }
+    @media (max-width: 767px) {
+      .Filters .left,
+      .Filters .right {
+        display: block;
+        width: 100%; } }
+  .Filters .left {
+    border-right: 1px solid #DBDBDB;
+    width: calc(50% - 1px); }
+    @media (max-width: 767px) {
+      .Filters .left {
+        border: 0;
+        width: 100%; } }
+  .Filters .revenu,
   .Filters .situation {
-    padding-top: 15px; } }
-
-.Filters .situation p {
-  margin-bottom: 10px; }
-
-.Filters .situation label {
-  border: 1px solid #DBDBDB;
-  border-radius: 20px;
-  color: #B8B8BB;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 300;
-  height: 25px;
-  line-height: 25px;
-  margin: 0 5px 50px;
-  padding: 0 15px;
-  transition: .1s linear; }
-
-@media (max-width: 767px) {
-  .Filters .situation label {
-    margin-bottom: 18px; } }
-
-.Filters .situation input {
-  left: -9999px;
-  position: absolute; }
-
-.Filters .situation label:hover,
-.Filters .situation input:checked + label {
-  background: #33B9D3;
-  border-color: transparent;
-  color: #fff; }
-
-@media (max-width: 767px) {
-  .Filters .enfant {
-    padding-bottom: 25px; } }
-
-.Filters .enfant p {
-  font-size: 14px;
-  margin: 16px 0 15px; }
-
-.Filters .enfant .Select {
-  margin: auto;
-  width: 35%; }
-
-@media (max-width: 767px) {
+    border-bottom: 1px solid #DBDBDB; }
+  .Filters input {
+    border: 1px solid #C1C1C1;
+    border-radius: 5px;
+    color: #818080;
+    font-family: 'Open Sans', sans-serif;
+    height: 36px;
+    padding: 0px 14px; }
+    .Filters input:focus {
+      outline: 0;
+      border-color: #33B9D3;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(51, 185, 211, 0.1); }
+    .Filters input::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: #B8B8BB; }
+    .Filters input::-moz-placeholder {
+      /* Firefox 19+ */
+      color: #B8B8BB; }
+    .Filters input:-ms-input-placeholder {
+      /* IE 10+ */
+      color: #B8B8BB; }
+    .Filters input:-moz-placeholder {
+      /* Firefox 18- */
+      color: #B8B8BB; }
+  .Filters .revenu {
+    padding: 34px 0 28px; }
+    @media (max-width: 767px) {
+      .Filters .revenu {
+        padding: 25px 0 22px; } }
+    .Filters .revenu label {
+      display: inline-block;
+      line-height: 19px;
+      width: 65%; }
+    .Filters .revenu input {
+      font-size: 15px;
+      margin-top: 20px;
+      width: 65%; }
+      @media (max-width: 767px) {
+        .Filters .revenu input {
+          margin-top: 8px; } }
+  .Filters .pension {
+    display: table;
+    width: 100%; }
+    @media (max-width: 767px) {
+      .Filters .pension {
+        border-bottom: 1px solid #DBDBDB; } }
+    .Filters .pension .left,
+    .Filters .pension .right {
+      padding: 14px 0 40px; }
+      @media (max-width: 767px) {
+        .Filters .pension .left,
+        .Filters .pension .right {
+          display: table-cell;
+          padding: 18px 12px 20px;
+          width: 50%; } }
+    .Filters .pension label {
+      font-size: 12px;
+      line-height: 15px; }
+      @media (max-width: 767px) {
+        .Filters .pension label {
+          display: inline-block; } }
+    .Filters .pension input {
+      font-size: 13px;
+      margin-top: 10px;
+      width: 58%; }
+      @media (max-width: 767px) {
+        .Filters .pension input {
+          margin-top: 2px; } }
+  .Filters .situation {
+    font-size: 14px; }
+    @media (max-width: 767px) {
+      .Filters .situation {
+        padding-top: 15px; } }
+    .Filters .situation p {
+      margin-bottom: 10px; }
+    .Filters .situation label {
+      border: 1px solid #DBDBDB;
+      border-radius: 20px;
+      color: #B8B8BB;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 300;
+      height: 25px;
+      line-height: 25px;
+      margin: 0 5px 50px;
+      padding: 0 15px;
+      transition: .1s linear; }
+      @media (max-width: 767px) {
+        .Filters .situation label {
+          margin-bottom: 18px; } }
+    .Filters .situation input {
+      left: -9999px;
+      position: absolute; }
+    .Filters .situation label:hover,
+    .Filters .situation input:checked + label {
+      background: #33B9D3;
+      border-color: transparent;
+      color: #fff; }
+  @media (max-width: 767px) {
+    .Filters .enfant {
+      padding-bottom: 25px; } }
+  .Filters .enfant p {
+    font-size: 14px;
+    margin: 16px 0 15px; }
   .Filters .enfant .Select {
-    width: 72%; } }
-
-.Filters .enfant .Select .Select-value-label {
-  color: #818080 !important;
-  font-family: 'Open Sans', sans-serif;
-  text-align: left; }
-
-.Filters .enfant .Select.is-focused:not(.is-open) > .Select-control {
-  border-color: #33B9D3;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(51, 185, 211, 0.1); }
-
-.Filters .enfant .Select .Select-option {
-  border-radius: 5px;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 12px;
-  margin: 0 8px;
-  text-align: left; }
-
-.Filters .enfant .Select .Select-option.is-focused, .Filters .enfant .Select .Select-option.is-selected {
-  background: rgba(51, 185, 211, 0.08); }
+    margin: auto;
+    width: 35%; }
+    @media (max-width: 767px) {
+      .Filters .enfant .Select {
+        width: 72%; } }
+    .Filters .enfant .Select .Select-value-label {
+      color: #818080 !important;
+      font-family: 'Open Sans', sans-serif;
+      text-align: left; }
+    .Filters .enfant .Select.is-focused:not(.is-open) > .Select-control {
+      border-color: #33B9D3;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px rgba(51, 185, 211, 0.1); }
+    .Filters .enfant .Select .Select-option {
+      border-radius: 5px;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+      margin: 0 8px;
+      text-align: left; }
+      .Filters .enfant .Select .Select-option.is-focused, .Filters .enfant .Select .Select-option.is-selected {
+        background: rgba(51, 185, 211, 0.08); }

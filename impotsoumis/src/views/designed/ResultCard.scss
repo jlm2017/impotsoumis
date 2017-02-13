@@ -44,7 +44,8 @@ $blue: #33B9D3;
     @media (max-width: 767px) {margin-top: 15px;}
 
     .left,
-    .right {
+    .right,
+    .center {
       display: table-cell;
       font-size: 13px;
       height: 100%;
@@ -67,6 +68,8 @@ $blue: #33B9D3;
       border-right: 1px solid $border;
       width: calc(50% - 1px);
     }
+
+    .center {width: 100%;}
   }
 
   &.red {
@@ -82,7 +85,8 @@ $blue: #33B9D3;
     .amount {color: $darkblue}
 
     .legend {
-      .left:before {background: $blue;}
+      .left:before,
+      .center:before {background: $blue;}
       .right:before {background: $darkblue;}
     }
   }

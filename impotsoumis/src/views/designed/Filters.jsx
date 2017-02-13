@@ -32,7 +32,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             onChange={(e) => SimuActions.netChanged(e.target.value)}
             onInput={onlyNumber}
             type="number"
-            value={(net == 0) ? "" : net}
+            value={(net === 0) ? "" : net}
           />
         </div>
         <div className="pension">
@@ -45,7 +45,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
               type="number"
               onChange={(e) => SimuActions.retraiteChanged(e.target.value)}
               onInput={onlyNumber}
-              value={(retraite == 0) ? "" : retraite}
+              value={(retraite === 0) ? "" : retraite}
             />
 
           </div>
@@ -58,7 +58,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
               type="number"
               onChange={(e) => SimuActions.chomageChanged(e.target.value)}
               onInput={onlyNumber}
-              value={(chomage == 0) ? "" : chomage}
+              value={(chomage === 0) ? "" : chomage}
             />
           </div>
         </div>
