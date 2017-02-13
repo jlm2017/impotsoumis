@@ -18,7 +18,7 @@ class DesignedApp extends Component {
   });
 
   render() {
-    const { currentSeries, isMarried, net, numberOfChildren } = this.props;
+    const { currentSeries, newSeries, isMarried, net, numberOfChildren } = this.props;
 
     return (
       <Container className="DesignedApp">
@@ -40,7 +40,7 @@ class DesignedApp extends Component {
                 <ResultCard color="red" data={currentSeries} title="Imposition actuelle" />
               </Col>
               <Col xl={6}>
-                <ResultCard color="blue" title="Imposition fiscale" />
+                <ResultCard color="blue" data={newSeries} title="Imposition fiscale" />
               </Col>
             </Row>
           </Col>
