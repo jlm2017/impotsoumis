@@ -14,14 +14,14 @@ export default ({ color, data, title }) => {
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
-      <div className="amount">{(IR + CSG) || 0}</div>
-      <Chart color={color} left={`${IR || 0}€`} right={`${CSG || 0}€`} />
+      <div className="amount">{IR + CSG}€</div>
+      <Chart color={color} left={`${IR}€`} right={`${CSG}€`} />
       <div className="legend">
         <span className="left">
           Impôt<br /> sur le revenu<br /> (IR)
         </span>
         <span className="right">
-          Contribution <br />sociale<br /> généralisée<br /> (CSG)
+          Contribution <br />sociale généralisée<br /> (CSG)
         </span>
       </div>
     </div>

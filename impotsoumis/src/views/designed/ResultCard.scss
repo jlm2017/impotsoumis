@@ -1,9 +1,9 @@
 $border: #E9E7EA;
 
-$darkred: #66160F;
+$darkred: #9C1B00;
 $red: #D1270C;
-$darkblue: #1A2D51;
-$blue: #22B9D0;
+$darkblue: #1B90A7;
+$blue: #33B9D3;
 
 .ResultCard {
   border-radius: 8px;
@@ -13,13 +13,13 @@ $blue: #22B9D0;
   h3 {
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 8px;
+    margin-bottom: 42px;
   }
 
   .amount {
-    font-size: 90px;
-    line-height: 100px;
-    margin-bottom: 8px;
+    font-size: 50px;
+    line-height: 61px;
+    margin-bottom: 15px;
   }
 
   .legend {

@@ -7,20 +7,24 @@ import './DesignedApp.css';
 
 class DesignedApp extends Component {
   static childContextTypes = {
+    breakpoints: React.PropTypes.arrayOf(React.PropTypes.number),
     containerWidths: React.PropTypes.arrayOf(React.PropTypes.number),
     gutterWidth: React.PropTypes.number
   };
 
   // TODO: Fixer la grille
   getChildContext = () => ({
-    containerWidths: [540, 750, 960, 1000],
+    breakpoints: [768, 1040],
+    containerWidths: [728, 1000],
     gutterWidth: 40
   });
 
   render() {
     const { currentSeries, newSeries } = this.props;
 
-    const purchase = 0;
+    const purchase = (currentSeries[0].value + currentSeries[1].value) - (newSeries[0].value + newSeries[1].value);
+    const isPositive = (purchase >= 0) ? true : false;
+
     return (
       <Container className="DesignedApp">
         <Row>
@@ -33,16 +37,21 @@ class DesignedApp extends Component {
             <Filters {...this.props} />
 
             <div className="verdict">
-              <strong>C'est {purchase}€ en -</strong>
+              <strong>
+                C'est {Math.abs(purchase)}€ en
+                <span className={(isPositive) ? "positive" : "negative"}>
+                  {(isPositive) ? " plus " : " moins "}
+                </span>
+              </strong>
               sur mon pouvoir d'achat !
             </div>
 
             <Row>
-              <Col md={6}>
+              <Col sm={6}>
                 <ResultCard color="red" data={currentSeries} title="Imposition actuelle" />
               </Col>
-              <Col md={6}>
-                <ResultCard color="blue" data={newSeries} title="Imposition fiscale" />
+              <Col sm={6}>
+                <ResultCard color="blue" data={newSeries} title="Révolution fiscale" />
               </Col>
             </Row>
           </Col>
