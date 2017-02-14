@@ -24,9 +24,10 @@ export default ({ center, color, left, right }) => {
       {(center !== false) ?
         <span className="center">
           <AnimatedNumber
-            format={(val) => `${numeral(val).format('€0a')}€`}
+            format={(val) => numeral(val).format('€0a')}
             value={center}
           />
+          €
         </span>
       :
         <div>
@@ -35,18 +36,19 @@ export default ({ center, color, left, right }) => {
             style={{width: `${leftRatio}%`}}
           >
             <AnimatedNumber
-              format={(val) => `${numeral(val).format('€0a')}€`}
+              format={(val) => numeral(val).format('€0a')}
               value={left}
             />
+            €
           </span>
           <span
             className="right"
             style={{width: `${rightRatio}%`}}
           >
             <AnimatedNumber
-              format={(val) => `${numeral(val).format('€0a')}€`}
+              format={(val) => numeral(val).format('€0a')}
               value={right}
-            />
+            />€
           </span>
         </div>
       }
