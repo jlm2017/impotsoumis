@@ -5,41 +5,61 @@ import 'react-select/dist/react-select.css';
 import SimuActions from '../../actions/SimuActions';
 import './Filters.css';
 
-const childrenOpt = [];
-for (var i = 0; i < 10; i++) {
-  childrenOpt.push({
-    value: i,
-    label: i
-  });
-}
+export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
+  const onlyNumber = (e) => {
+    if (e.target.value.length > 9) {
+      e.target.value = e.target.value.slice(0, 9);
+    }
+  };
 
-export default ({ isMarried, net, numberOfChildren }) => {
+  const childrenOpt = [];
+  for (var i = 0; i < 10; i++) {
+    childrenOpt.push({
+      value: i,
+      label: i
+    });
+  }
+
   return (
     <div className="Filters">
       <div className="left">
         <div className="revenu">
-          <label htmlFor="revenu">Salaire net mensuel du foyer</label>
+          <label htmlFor="revenu">Salaire net <strong>mensuel</strong> du foyer</label>
           <br/>
           <input
             id="revenu"
-            placeholder="Votre salaire en €"
+            placeholder="en €"
             onChange={(e) => SimuActions.netChanged(e.target.value)}
-            type="text"
-            value={net}
+            onInput={onlyNumber}
+            type="number"
+            value={(net === 0) ? "" : net}
           />
         </div>
         <div className="pension">
           <div className="left">
             <label htmlFor="retraite">Pensions de retraite</label>
             <br/>
-            <input id="retraite" placeholder="Vos retraites en €" type="text"
-            onChange={(e) => SimuActions.retraiteChanged(e.target.value)}/>
+            <input
+              id="retraite"
+              placeholder="en €"
+              type="number"
+              onChange={(e) => SimuActions.retraiteChanged(e.target.value)}
+              onInput={onlyNumber}
+              value={(retraite === 0) ? "" : retraite}
+            />
+
           </div>
           <div className="right">
             <label htmlFor="chomage">Allocations chômage</label>
             <br/>
-            <input id="chomage" placeholder="Vos allocations en €" type="text"
-            onChange={(e) => SimuActions.chomageChanged(e.target.value)}/>
+            <input
+              id="chomage"
+              placeholder="en €"
+              type="number"
+              onChange={(e) => SimuActions.chomageChanged(e.target.value)}
+              onInput={onlyNumber}
+              value={(chomage === 0) ? "" : chomage}
+            />
           </div>
         </div>
       </div>

@@ -1,25 +1,42 @@
 $border: #E9E7EA;
 
-$darkred: #66160F;
+$darkred: #9C1B00;
 $red: #D1270C;
-$darkblue: #1A2D51;
-$blue: #22B9D0;
+$darkblue: #1B90A7;
+$blue: #33B9D3;
 
 .ResultCard {
   border-radius: 8px;
   box-shadow: 0 2px 12px transparentize(#000, 0.88);
   padding: 26px 0 0;
 
+  @media (max-width: 767px) {
+    margin-bottom: 31px;
+    padding-bottom: 4px;
+  }
+
   h3 {
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 8px;
+    margin-bottom: 42px;
+
+    @media (max-width: 767px) {margin-bottom: 18px;}
   }
 
   .amount {
-    font-size: 90px;
-    line-height: 100px;
-    margin-bottom: 8px;
+    font-size: 50px;
+    line-height: 61px;
+    margin-bottom: 15px;
+
+    @media (max-width: 767px) {
+      font-size: 36px;
+      line-height: 44px;
+      margin-bottom: 10px;
+    }
+  }
+
+  sup {
+    font-size: 12px;
   }
 
   .legend {
@@ -28,8 +45,11 @@ $blue: #22B9D0;
     margin-top: 42px;
     width: 100%;
 
+    @media (max-width: 767px) {margin-top: 15px;}
+
     .left,
-    .right {
+    .right,
+    .center {
       display: table-cell;
       font-size: 13px;
       height: 100%;
@@ -43,6 +63,8 @@ $blue: #22B9D0;
         height: 16px;
         margin: 25px auto 7px;
         width: 16px;
+
+        @media (max-width: 767px) {margin-bottom: 14px;}
       }
     }
 
@@ -50,6 +72,8 @@ $blue: #22B9D0;
       border-right: 1px solid $border;
       width: calc(50% - 1px);
     }
+
+    .center {width: 100%;}
   }
 
   &.red {
@@ -65,7 +89,8 @@ $blue: #22B9D0;
     .amount {color: $darkblue}
 
     .legend {
-      .left:before {background: $blue;}
+      .left:before,
+      .center:before {background: $blue;}
       .right:before {background: $darkblue;}
     }
   }

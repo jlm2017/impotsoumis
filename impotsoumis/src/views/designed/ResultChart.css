@@ -1,8 +1,13 @@
 .ResultChart {
   border-radius: 100px;
+  height: 44px;
   margin: auto;
   overflow: hidden;
-  width: 242px; }
+  width: 75%; }
+  @media (max-width: 1039px) {
+    .ResultChart {
+      width: 90%; } }
+  .ResultChart .center,
   .ResultChart .left,
   .ResultChart .right {
     color: #fff;
@@ -10,21 +15,24 @@
     font-size: 22px;
     font-weight: 300;
     line-height: 44px; }
-  .ResultChart .left {
-    background: #aaa;
-    border-bottom-left-radius: 100px;
-    border-top-left-radius: 100px;
-    width: 65%; }
+  .ResultChart .left,
   .ResultChart .right {
-    background: #000;
-    border-bottom-right-radius: 100px;
-    border-top-right-radius: 100px;
-    width: 35%; }
-  .ResultChart.red .left {
-    background: #66160F; }
-  .ResultChart.red .right {
+    width: 50%;
+    transition: .7s width; }
+    @media (max-width: 1039px) {
+      .ResultChart .left,
+      .ResultChart .right {
+        vertical-align: top;
+        font-size: 18px; } }
+    @media (max-width: 767px) {
+      .ResultChart .left,
+      .ResultChart .right {
+        font-size: 16px; } }
+  .ResultChart.red {
     background: #D1270C; }
-  .ResultChart.blue .left {
-    background: #1A2D51; }
-  .ResultChart.blue .right {
-    background: #22B9D0; }
+    .ResultChart.red .right {
+      background: #9C1B00; }
+  .ResultChart.blue {
+    background: #33B9D3; }
+    .ResultChart.blue .right {
+      background: #1B90A7; }

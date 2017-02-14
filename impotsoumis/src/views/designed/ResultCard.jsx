@@ -1,29 +1,41 @@
 import React from 'react';
+import numeral from 'numeral';
 
+import AnimatedNumber from './AnimatedNumber.jsx';
 import Chart from './ResultChart.jsx';
 import "./ResultCard.css";
 
 
-export default ({ color, data, title }) => {
-  let IR = 0, CSG = 0;
-  if (data) {
-    IR = data[0].value;
-    CSG = data[1].value;
-  }
+export default ({ center, color, left, right, title }) => {
+  const total = (center) ? center.value : left.value + right.value;
 
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
-      <div className="amount">{(IR + CSG) || 0}</div>
-      <Chart color={color} left={`${IR || 0}€`} right={`${CSG || 0}€`} />
-      <div className="legend">
-        <span className="left">
-          Impôt<br /> sur le revenu<br /> (IR)
-        </span>
-        <span className="right">
-          Contribution <br />sociale<br /> généralisée<br /> (CSG)
-        </span>
+      <div className="amount">
+        <AnimatedNumber
+          format={(val) => numeral(val).format('€0a')}
+          value={total}
+        />
+        €<sup>/mois</sup>
       </div>
+      <Chart
+        color={color}
+        center={(center) ? center.value : false}
+        left={(left) ? left.value : false}
+        right={(right) ? right.value : false}
+      />
+      {(center) ?
+        <div className="legend">
+          <span className="center">{center.legend}</span>
+        </div>
+      :
+        <div className="legend">
+          <span className="left">{left.legend}</span>
+          <span className="right">{right.legend}</span>
+        </div>
+      }
+
     </div>
   );
 };

@@ -1,14 +1,18 @@
-$darkred: #66160F;
+$darkred: #9C1B00;
 $red: #D1270C;
-$darkblue: #1A2D51;
-$blue: #22B9D0;
+$darkblue: #1B90A7;
+$blue: #33B9D3;
 
 .ResultChart {
   border-radius: 100px;
+  height: 44px;
   margin: auto;
   overflow: hidden;
-  width: 242px;
+  width: 75%;
 
+  @media (max-width: 1039px) {width: 90%;}
+
+  .center,
   .left,
   .right {
     color: #fff;
@@ -18,27 +22,25 @@ $blue: #22B9D0;
     line-height: 44px;
   }
 
-  .left {
-    background: #aaa;
-    border-bottom-left-radius: 100px;
-    border-top-left-radius: 100px;
-    width: 65%;
-  }
-
+  .left,
   .right {
-    background: #000;
-    border-bottom-right-radius: 100px;
-    border-top-right-radius: 100px;
-    width: 35%;
+    width: 50%;
+    transition: .7s width;
+
+    @media (max-width: 1039px) {
+      vertical-align: top;
+      font-size: 18px;
+    }
+    @media(max-width: 767px) {font-size: 16px;}
   }
 
   &.red {
-    .left {background: $darkred;}
-    .right {background: $red;}
+    background: $red;
+    .right {background: $darkred;}
   }
 
   &.blue {
-    .left {background: $darkblue;}
-    .right {background: $blue;}
+    background: $blue;
+    .right {background: $darkblue;}
   }
 }
