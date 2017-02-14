@@ -36,7 +36,7 @@ describe("Révolution fiscale ", () => {
             var irParams = IRParams(userParams)
 
             var jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
-            assert.equal(Math.round(jlmSimulation.impot.par.partFiscal.avant.ci.qf), 206)
+            assert.equal(Math.round(jlmSimulation.impot.par.partFiscal.avant.ci.qf), 432)
         });
     });
 
@@ -53,7 +53,7 @@ describe("Révolution fiscale ", () => {
             var irParams = IRParams(userParams)
 
             var jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
-            assert.equal(Math.round(jlmSimulation.impot.total), 206)
+            assert.equal(Math.round(jlmSimulation.impot.total), 432)
         });
     });
     describe("L'impôt après CI QF", () => {
@@ -69,7 +69,7 @@ describe("Révolution fiscale ", () => {
             var irParams = IRParams(userParams)
 
             var jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
-            assert.equal(Math.round(jlmSimulation.impot.apres.ci.qf), 206)
+            assert.equal(Math.round(jlmSimulation.impot.apres.ci.qf), 432)
         });
     });
 });

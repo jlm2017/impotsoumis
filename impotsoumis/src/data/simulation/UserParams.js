@@ -4,8 +4,8 @@ function _salaireMentuelBrutDuLoyer(sal_net) {
 
 function _nombreDePartsFiscales(couple, nbenf) {
     var nbPartsFiscales = 1 + couple;
-    if (couple == 0) {
-        nbPartsFiscales += 1 * (nbenf >= 1) + 0.5 * (nbenf == 2)
+    if (couple === 0) {
+        nbPartsFiscales += 1 * (nbenf >= 1) + 0.5 * (nbenf === 2)
     } else {
         nbPartsFiscales += 0.5 * Math.min(nbenf, 2)
     }
