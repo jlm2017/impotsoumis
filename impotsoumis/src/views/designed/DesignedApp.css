@@ -122,3 +122,6 @@
         .DesignedApp .verdict strong {
           font-size: 26px;
           line-height: 28px; } }
+    .DesignedApp .verdict span.amountSuffix {
+      font-size: 12px;
+      font-weight: 400; }
