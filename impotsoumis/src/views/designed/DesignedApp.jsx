@@ -92,12 +92,11 @@ class DesignedApp extends Component {
                 C'est
                 <span ref={(node) => this.verdict = node}>
                   {` ${numeral(Math.abs(this.state.purchase)).format('€0a')}`}
-                </span>€ en
-                <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
+                </span> €<span className="amountSuffix">/mois</span> en <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
                   {(isPositive) ? " plus " : " moins "}
                 </span>
               </strong>
-              sur mon pouvoir d'achat !
+              sur mon pouvoir d'achat !<br/>
             </div>
 
             <Row>
@@ -122,7 +121,7 @@ class DesignedApp extends Component {
                     value: NEW
                   }}
                   color="blue"
-                  title="Révolution fiscale"
+                  title="Avec la Révolution Fiscale"
                 />
               </Col>
             </Row>

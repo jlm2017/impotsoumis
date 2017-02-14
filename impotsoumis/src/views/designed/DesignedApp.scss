@@ -29,6 +29,7 @@ $blue: #33B9D3;
         line-height: 29px;
       }
     }
+
     strong {
       font-size: 36px;
       line-height: 44px;
@@ -156,6 +157,11 @@ $blue: #33B9D3;
         font-size: 26px;
         line-height: 28px;
       }
+    }
+
+    span.amountSuffix {
+      font-size: 12px;
+      font-weight: 400;
     }
   }
 }

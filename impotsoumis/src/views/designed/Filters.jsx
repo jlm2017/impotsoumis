@@ -24,7 +24,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
     <div className="Filters">
       <div className="left">
         <div className="revenu">
-          <label htmlFor="revenu">Salaire net mensuel du foyer</label>
+          <label htmlFor="revenu">Salaire net <strong>mensuel</strong> du foyer</label>
           <br/>
           <input
             id="revenu"

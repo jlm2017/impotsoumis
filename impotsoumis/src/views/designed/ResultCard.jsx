@@ -11,7 +11,7 @@ export default ({ center, color, left, right, title }) => {
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
-      <div className="amount">{total}€</div>
+      <div className="amount">{total}€<span className="amountSuffix">/mois</span></div>
       <Chart
         color={color}
         center={(center) ? center.value : false}
