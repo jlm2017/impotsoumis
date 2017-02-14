@@ -28,7 +28,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
           <br/>
           <input
             id="revenu"
-            placeholder="en €"
+            placeholder="en €/mois"
             onChange={(e) => SimuActions.netChanged(e.target.value)}
             onInput={onlyNumber}
             type="number"
@@ -41,7 +41,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             <br/>
             <input
               id="retraite"
-              placeholder="en €"
+              placeholder="en €/mois"
               type="number"
               onChange={(e) => SimuActions.retraiteChanged(e.target.value)}
               onInput={onlyNumber}
@@ -54,7 +54,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             <br/>
             <input
               id="chomage"
-              placeholder="en €"
+              placeholder="en €/mois"
               type="number"
               onChange={(e) => SimuActions.chomageChanged(e.target.value)}
               onInput={onlyNumber}

@@ -33,7 +33,7 @@ class SimuStore extends ReduceStore {
     }
 
     getInitialState() {
-        var net = 2800;
+        var net = 0;
         var retraite = 0;
         var chomage = 0;
         var couple = 0;
