@@ -176,3 +176,35 @@ describe("Total", () => {
         assert.equal(Math.round(simulation.total.du.value), 588)
     });
 });
+
+describe("Quand un salarié", () => {
+    describe("a un salaire net de 15K", () => {
+
+        it("le Revenu déclaré est bon", () => {
+            var net = 15000,
+                retraite = 0,
+                chomage = 0,
+                couple = 0,
+                nbEnfants = 0
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            assert.equal(Math.round(irParams.revenu.declare.salarie), 15503)
+        });
+
+        it("le Revenu fiscal de référence est bon", () => {
+            var net = 15000,
+                retraite = 0,
+                chomage = 0,
+                couple = 0,
+                nbEnfants = 0
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+
+            assert.equal(Math.round(irParams.revenu.fiscalDeReference.salarie), 14479)
+        });
+    });
+});
