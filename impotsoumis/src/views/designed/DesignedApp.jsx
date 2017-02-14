@@ -3,6 +3,7 @@ import { Container, Row, Col, Visible } from 'react-grid-system';
 import numeral from 'numeral';
 
 import Filters from './Filters.jsx';
+import AnimatedNumber from './AnimatedNumber.jsx';
 import ResultCard from './ResultCard.jsx';
 import './DesignedApp.css';
 
@@ -13,11 +14,6 @@ class DesignedApp extends Component {
     gutterWidth: React.PropTypes.number
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   getChildContext() {
     return {
       breakpoints: [768, 1040],
@@ -26,54 +22,14 @@ class DesignedApp extends Component {
     };
   }
 
-  componentDidMount() {
-    this.setState({
-      purchase: this.nextPurchase
-    });
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps !== this.props) {
-      cancelAnimationFrame(this.state.verdictInterval);
-      this.setState({
-        verdictInterval: requestAnimationFrame(this.loopVerdict.bind(this))
-      });
-    }
-  }
-
-  loopVerdict() {
-    if (this.nextPurchase === this.state.purchase) {
-      cancelAnimationFrame(this.state.verdictInterval);
-    } else {
-      this.setState({
-        purchase: this.updateVerdict(),
-        verdictInterval: requestAnimationFrame(this.loopVerdict.bind(this))
-      });
-    }
-  }
-
-  updateVerdict() {
-    let next;
-    for(var i = 100000000; i >= 1; i = i / 10) {
-      if (this.nextPurchase >= this.state.purchase + i) {
-        next = this.state.purchase + i;
-        break;
-      } else if (this.nextPurchase <= this.state.purchase - i) {
-        next = this.state.purchase - i;
-        break;
-      }
-    }
-    return next;
-  }
-
   render() {
     const { currentSeries, newSeries } = this.props;
 
     const IR = currentSeries[0].value;
     const CSG = currentSeries[1].value;
     const NEW = newSeries[0].value;
-    this.nextPurchase = (IR + CSG) - NEW;
-    const isPositive = (this.nextPurchase >= 0) ? true : false;
+    const purchase = (IR + CSG) - NEW;
+    const isPositive = (purchase >= 0) ? true : false;
 
     return (
       <Container className="DesignedApp">
@@ -90,9 +46,12 @@ class DesignedApp extends Component {
               <Visible xs>Avec la <em>Révolution Fiscale</em></Visible>
               <strong>
                 C'est
-                <span ref={(node) => this.verdict = node}>
-                  {` ${numeral(Math.abs(this.state.purchase)).format('€0a')}`}
-                </span> €<span className="amountSuffix">/mois</span> en <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
+                <AnimatedNumber
+                  format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}€`}
+                  value={purchase}
+                />
+                <sup>/mois</sup> en
+                <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
                   {(isPositive) ? " plus " : " moins "}
                 </span>
               </strong>

@@ -1,6 +1,7 @@
 import React from 'react';
 import numeral from 'numeral';
 
+import AnimatedNumber from './AnimatedNumber.jsx';
 import './ResultChart.css';
 
 export default ({ center, color, left, right }) => {
@@ -22,7 +23,10 @@ export default ({ center, color, left, right }) => {
     <div className={`ResultChart ${color}`}>
       {(center !== false) ?
         <span className="center">
-          {numeral(center).format('€0a')}€
+          <AnimatedNumber
+            format={(val) => `${numeral(val).format('€0a')}€`}
+            value={center}
+          />
         </span>
       :
         <div>
@@ -30,13 +34,19 @@ export default ({ center, color, left, right }) => {
             className="left"
             style={{width: `${leftRatio}%`}}
           >
-            {numeral(left).format('€0a')}€
+            <AnimatedNumber
+              format={(val) => `${numeral(val).format('€0a')}€`}
+              value={left}
+            />
           </span>
           <span
             className="right"
             style={{width: `${rightRatio}%`}}
           >
-            {numeral(right).format('€0a')}€
+            <AnimatedNumber
+              format={(val) => `${numeral(val).format('€0a')}€`}
+              value={right}
+            />
           </span>
         </div>
       }
