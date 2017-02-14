@@ -61,7 +61,7 @@ const CurrentIR = {
         "abattement": {
             "fraisPro": {
                 "id": "plaf_abatpro",
-                "value": 122290/12
+                "value": 12290/12
             },
             "retraites": {
                 "id": "plaf_abatret",
