@@ -3,6 +3,9 @@
 # dependencies
 node_modules
 
+# sass processing
+src/views/designed/*.css
+
 # testing
 coverage
 

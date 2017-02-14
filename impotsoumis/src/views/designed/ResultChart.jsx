@@ -23,7 +23,11 @@ export default ({ center, color, left, right }) => {
     <div className={`ResultChart ${color}`}>
       {(center !== false) ?
         <span className="center">
-          {center}
+          <AnimatedNumber
+            format={(val) => numeral(val).format('€0a')}
+            value={center}
+          />
+          €
         </span>
       :
         <div>
@@ -31,13 +35,20 @@ export default ({ center, color, left, right }) => {
             className="left"
             style={{width: `${leftRatio}%`}}
           >
-            {left}
+            <AnimatedNumber
+              format={(val) => numeral(val).format('€0a')}
+              value={left}
+            />
+            €
           </span>
           <span
             className="right"
             style={{width: `${rightRatio}%`}}
           >
-            {right}
+            <AnimatedNumber
+              format={(val) => numeral(val).format('€0a')}
+              value={right}
+            />€
           </span>
         </div>
       }
