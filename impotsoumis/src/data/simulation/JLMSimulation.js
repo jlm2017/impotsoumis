@@ -38,7 +38,7 @@ function JLMSimulation(revenu_fiscal_ref, couple, nbenf) {
                     "qf": d24
                 }
             },
-            "du": d24
+            "du": e24
         }
     }
 

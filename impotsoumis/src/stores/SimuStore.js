@@ -68,10 +68,10 @@ class SimuStore extends ReduceStore {
     }
 
     reduce(state, action) {
-        console.log(action);
+        var series = {}
         switch (action.actionType) {
             case Constants.Action.NET_CHANGED:
-                var series = this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren);
+                series = this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren);
                 return {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
@@ -85,7 +85,7 @@ class SimuStore extends ReduceStore {
                 };
 
             case Constants.Action.RETRAITE_CHANGED:
-                var series = this.generateSeries(state.net, action.retraite, state.chomage, state.isMarried, state.numberOfChildren);
+                series = this.generateSeries(state.net, action.retraite, state.chomage, state.isMarried, state.numberOfChildren);
                 return {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
@@ -99,7 +99,7 @@ class SimuStore extends ReduceStore {
                 };
 
             case Constants.Action.CHOMAGE_CHANGED:
-                var series = this.generateSeries(state.net, state.retraite, action.chomage, state.isMarried, state.numberOfChildren);
+                series = this.generateSeries(state.net, state.retraite, action.chomage, state.isMarried, state.numberOfChildren);
                 return {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
@@ -113,7 +113,7 @@ class SimuStore extends ReduceStore {
                 };
 
             case Constants.Action.MARITAL_STATUS_CHANGED:
-                var series = this.generateSeries(state.net, state.retraite, state.chomage, action.isMarried, state.numberOfChildren);
+                series = this.generateSeries(state.net, state.retraite, state.chomage, action.isMarried, state.numberOfChildren);
                 return {
                     theme: state.theme,
                     defaultNet: state.defaultNet,
@@ -127,7 +127,7 @@ class SimuStore extends ReduceStore {
 
                 };
             case Constants.Action.NUMBER_OF_CHILDREN_CHANGED:
-                var series = this.generateSeries(state.net, state.retraite, state.chomage, state.isMarried, action.numberOfChildren);
+                series = this.generateSeries(state.net, state.retraite, state.chomage, state.isMarried, action.numberOfChildren);
 
                 return {
                     theme: state.theme,

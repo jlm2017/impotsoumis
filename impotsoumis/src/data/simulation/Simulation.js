@@ -7,7 +7,7 @@ function Simulation(revenu_fiscal_ref, nbparts, couple, csg_taux_plein, csg_taux
     var plaf_QF = CurrentIR.plafond.qf.parDemiPart.value
 
     var a20 = revenu_fiscal_ref_total / nbparts
-    var b20 = couple == 1
+    var b20 = couple === 1
         ? revenu_fiscal_ref.salarie / 2
         : revenu_fiscal_ref.salarie
 
@@ -23,7 +23,7 @@ function Simulation(revenu_fiscal_ref, nbparts, couple, csg_taux_plein, csg_taux
     var plaf_decote_celib = CurrentIR.plafond.decote.celibataire.value
     var plaf_decote_couple = CurrentIR.plafond.decote.couple.value
 
-    var plafond = couple == 0 ?  plaf_decote_celib : plaf_decote_couple
+    var plafond = couple === 0 ?  plaf_decote_celib : plaf_decote_couple
     var tx_decote = CurrentIR.tauxDecote.value
 
     var g20 = Math.max(0, tx_decote * (plafond - f20))
