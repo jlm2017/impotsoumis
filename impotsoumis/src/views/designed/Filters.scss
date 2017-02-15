@@ -9,6 +9,7 @@ $blue: #33B9D3;
   display: table;
   border-radius: 8px;
   box-shadow: 0 2px 12px transparentize(#000, .88);
+  position: relative;
   width: 100%;
 
   @media (max-width: 767px) {display: block;}

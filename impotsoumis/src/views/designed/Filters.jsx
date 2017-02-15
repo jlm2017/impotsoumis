@@ -3,6 +3,7 @@ import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
 import SimuActions from '../../actions/SimuActions';
+import HelpPopin from './HelpPopin.jsx';
 import './Filters.css';
 
 export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
@@ -22,13 +23,14 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
 
   return (
     <div className="Filters">
+      <HelpPopin />
       <div className="left">
         <div className="revenu">
           <label htmlFor="revenu">Salaire net <strong>mensuel</strong> du foyer</label>
           <br/>
           <input
             id="revenu"
-            placeholder="en €"
+            placeholder="en €/mois"
             onChange={(e) => SimuActions.netChanged(e.target.value)}
             onInput={onlyNumber}
             type="number"
@@ -41,7 +43,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             <br/>
             <input
               id="retraite"
-              placeholder="en €"
+              placeholder="en €/mois"
               type="number"
               onChange={(e) => SimuActions.retraiteChanged(e.target.value)}
               onInput={onlyNumber}
@@ -54,7 +56,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             <br/>
             <input
               id="chomage"
-              placeholder="en €"
+              placeholder="en €/mois"
               type="number"
               onChange={(e) => SimuActions.chomageChanged(e.target.value)}
               onInput={onlyNumber}
