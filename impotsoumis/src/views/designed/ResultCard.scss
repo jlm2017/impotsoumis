@@ -1,3 +1,4 @@
+$main: #818080;
 $border: #E9E7EA;
 
 $darkred: #9C1B00;
@@ -8,18 +9,15 @@ $blue: #33B9D3;
 .ResultCard {
   border-radius: 8px;
   box-shadow: 0 2px 12px transparentize(#000, 0.88);
-  //min-height: 380px;
   padding: 26px 0 0;
-
-  //@media (max-width: 1039px) {min-height: 364px;}
 
   @media (max-width: 767px) {
     margin-bottom: 31px;
-    //min-height: 0;
     padding-bottom: 4px;
   }
 
   h3 {
+    color: $main;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 40px;
@@ -59,7 +57,7 @@ $blue: #33B9D3;
       font-size: 13px;
       height: 100%;
       line-height: 16px;
-      padding-bottom: 30px;
+      padding-bottom: 38px;
       width: 50%;
 
       &:before {

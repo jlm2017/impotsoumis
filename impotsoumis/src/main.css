@@ -8,6 +8,9 @@ input {
   -moz-appearance: none;
   appearance: none; }
 
+label {
+  font-weight: 400; }
+
 sup {
   position: static; }
 
