@@ -4,6 +4,7 @@ $blue: #33B9D3;
 .DesignedApp {
   color: $main;
   font-family: Montserrat, sans-serif;
+  padding-bottom: 80px;
   text-align: center;
 
   h2 {
@@ -46,14 +47,14 @@ $blue: #33B9D3;
     font-size: 36px;
     font-weight: 700;
     line-height: 40px;
-    margin: 40px auto 52px;
+    margin: 40px auto 38px;
 
     @media (max-width: 767px) {
       border-radius: 8px;
       box-shadow: 0 2px 12px transparentize(#000, .88);
       font-size: 16px;
       line-height: 19px;
-      margin: 36px auto 36px;
+      margin: 36px auto;
       padding: 25px 15px;
     }
 
@@ -103,7 +104,6 @@ $blue: #33B9D3;
         height: 22px;
         left: calc(50% - 2px);
         top: calc(50% - 11px);
-        transition: .2s linear;
         width: 4px;
 
         @media (max-width: 767px) {
@@ -157,10 +157,10 @@ $blue: #33B9D3;
         }
 
         &:after {
-          height: 10px;
-          left: calc(50% - 1px);
-          top: calc(50% - 5px);
-          width: 2px;
+          height: 14px;
+          left: calc(50% - 2px);
+          top: calc(50% - 7px);
+          width: 4px;
 
           @media (max-width: 767px) {
             height: 10px;

@@ -54,10 +54,7 @@ class DesignedApp extends Component {
               </div>
             :
               <div className="verdict">
-                Vous faites partie des
-                <AnimatedNumber
-                  value=" 9"
-                />
+                Vous faites partie des <AnimatedNumber value={9} />
                 % des plus riches.
                 <div className="negative">
                   Vous contribuez à la <strong>solidarité nationale de
