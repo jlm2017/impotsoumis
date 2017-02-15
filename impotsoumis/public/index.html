@@ -1,28 +1,105 @@
-<!doctype html>
-<html lang="fr">
+  <!doctype html>
+  <html lang="fr">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-  <title>JLM 2017 - La révolution fiscale</title>
-</head>
+    <title>JLM 2017 - La révolution fiscale</title>
 
-<body>
-  <div id="root"></div>
-  <script>
+    <!--<link rel="canonical" href="" />-->
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:type" content="object" />
+    <meta property="og:title" content="La révolution fiscale - JLM 2017" />
+    <!--<meta property="og:url" content="" />-->
+    <meta property="og:site_name" content="JLM 2017" />
+    <meta property="og:image" content="https://actus.jlm2017.fr/app/uploads/2016/05/jean_luc_melenchon_2017_jlm2017.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="La révolution fiscale - JLM 2017" />
+    <meta name="twitter:site" content="@JLM_2017" />
+    <meta name="twitter:image" content="https://actus.jlm2017.fr/app/uploads/2016/05/jean_luc_melenchon_2017_jlm2017.jpg" />
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://jlm2017.github.io/theme/dist/theme.css" media="screen">
+
+    <link rel="icon" href="https://actus.jlm2017.fr//app/uploads/2017/01/cropped-cropped-phi-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://actus.jlm2017.fr//app/uploads/2017/01/cropped-cropped-phi-192x192.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="https://actus.jlm2017.fr//app/uploads/2017/01/cropped-cropped-phi-180x180.png" />
+    <meta name="msapplication-TileImage" content="https://actus.jlm2017.fr//app/uploads/2017/01/cropped-cropped-phi-270x270.png" />
+  </head>
+
+  <body>
+    <header class="banner">
+      <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-collapse">
+              <span class="sr-only">Activer la navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img alt=" " src="https://jlm2017.github.io/theme/images/jlm_2017.png"></a>
+          </div>
+          <div id="menu-collapse" class="collapse navbar-collapse">
+            <div id="menu-export"></div>
+            <script>
+            (function() {
+              /** SETTINGS **/
+              var themeLocation = 'primary_navigation';
+              var addBootstrapCSS = true;
+              var menu_class = 'nav%20navbar-nav%20navbar-right';
+              var container = '';
+
+              var r = new XMLHttpRequest();
+              r.open('GET', 'https://actus.jlm2017.fr/?menu_export=1&theme_location='+themeLocation+
+              '&menu_class='+menu_class+'&container='+container+
+              (addBootstrapCSS?'&bootstrap=1':''),true);
+              r.onreadystatechange=function(){if(r.readyState!=4||r.status!=200)return;
+                document.getElementById('menu-export').innerHTML = r.responseText;};
+                r.send();
+              })();
+              </script>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <nav class="navbar navbar-supporter">
+            <div class="container">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#supporter-nav-collapse">
+                  <span class="sr-only">Activer la navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
+              <div id="supporter-nav-collapse" class="collapse navbar-collapse">
+
+              </div>
+            </div>
+          </nav>
+    </header>
+
+
+
+    <div id="root"></div>
+
+
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://jlm2017.github.io/theme/dist/components.js"></script>
+    <script>
     (function (i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
         (i[r].q = i[r].q || []).push(arguments)
       }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-57940932-11', 'auto');
     ga('send', 'pageview');
-  </script>
-</body>
-</html>
+    </script>
+  </body>
+  </html>
