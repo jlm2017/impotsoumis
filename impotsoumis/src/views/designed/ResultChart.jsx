@@ -9,13 +9,13 @@ export default ({ center, color, left, right }) => {
   if (!center) {
     leftRatio = left * 100 / (left + right);
     rightRatio = 100 - leftRatio;
-    if (leftRatio < 22) {
-      leftRatio = 22;
-      rightRatio = 78;
+    if (leftRatio < 25) {
+      leftRatio = 25;
+      rightRatio = 75;
     }
-    if (rightRatio < 22) {
-      leftRatio = 78;
-      rightRatio = 22;
+    if (rightRatio < 25) {
+      leftRatio = 75;
+      rightRatio = 25;
     }
   }
 
