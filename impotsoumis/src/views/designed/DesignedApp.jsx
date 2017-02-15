@@ -28,7 +28,8 @@ class DesignedApp extends Component {
     const IR = currentSeries[0].value;
     const CSG = currentSeries[1].value;
     const NEW = newSeries[0].value;
-    const purchase = ((IR + CSG) - NEW) * 12;
+    const CSGP = newSeries[1].value;
+    const purchase = ((IR + CSG) - (NEW + CSGP)) * 12;
     const isPositive = (purchase >= 0) ? true : false;
 
     return (
@@ -86,12 +87,12 @@ class DesignedApp extends Component {
               <Col sm={6}>
                 <ResultCard
                   left={{
-                    legend: "Nouvel Impôt Citoyen",
+                    legend: <span>Nouvel impôt<br /> citoyen sur les<br /> revenus</span>,
                     value: NEW
                   }}
                   right={{
-                    legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
-                    value: NEW_CSG
+                    legend: <span>CSG progressive</span>,
+                    value: CSGP
                   }}
                   color="blue"
                   title="Avec la Révolution Fiscale"
