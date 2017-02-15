@@ -1,0 +1,74 @@
+.ResultCard {
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  padding: 26px 0 0; }
+  @media (max-width: 767px) {
+    .ResultCard {
+      margin-bottom: 31px;
+      padding-bottom: 4px; } }
+  .ResultCard h3 {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 42px; }
+    @media (max-width: 767px) {
+      .ResultCard h3 {
+        margin-bottom: 18px; } }
+  .ResultCard .amount {
+    font-size: 50px;
+    line-height: 61px;
+    margin-bottom: 15px; }
+    @media (max-width: 767px) {
+      .ResultCard .amount {
+        font-size: 36px;
+        line-height: 44px;
+        margin-bottom: 10px; } }
+  .ResultCard sup {
+    font-size: 12px; }
+  .ResultCard .legend {
+    display: table;
+    height: 125px;
+    margin-top: 42px;
+    width: 100%; }
+    @media (max-width: 767px) {
+      .ResultCard .legend {
+        margin-top: 15px; } }
+    .ResultCard .legend .left,
+    .ResultCard .legend .right,
+    .ResultCard .legend .center {
+      display: table-cell;
+      font-size: 13px;
+      height: 100%;
+      line-height: 16px;
+      width: 50%; }
+      .ResultCard .legend .left:before,
+      .ResultCard .legend .right:before,
+      .ResultCard .legend .center:before {
+        background: #000;
+        display: block;
+        content: '';
+        height: 16px;
+        margin: 25px auto 7px;
+        width: 16px; }
+        @media (max-width: 767px) {
+          .ResultCard .legend .left:before,
+          .ResultCard .legend .right:before,
+          .ResultCard .legend .center:before {
+            margin-bottom: 14px; } }
+    .ResultCard .legend .left {
+      border-right: 1px solid #E9E7EA;
+      width: calc(50% - 1px); }
+    .ResultCard .legend .center {
+      width: 100%; }
+  .ResultCard.red .amount {
+    color: #9C1B00; }
+  .ResultCard.red .legend .left:before {
+    background: #D1270C; }
+  .ResultCard.red .legend .right:before {
+    background: #9C1B00; }
+  .ResultCard.blue .amount {
+    color: #1B90A7; }
+  .ResultCard.blue .legend .left:before,
+  .ResultCard.blue .legend .center:before {
+    background: #33B9D3; }
+  .ResultCard.blue .legend .right:before {
+    background: #1B90A7; }
