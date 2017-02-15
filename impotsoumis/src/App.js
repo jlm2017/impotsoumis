@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import SimuStore from './stores/SimuStore';
 import Constants from './constants/Constants';
-import SimuActions from './actions/SimuActions';
 
 import GrommetApp from './views/grommet/GrommetApp.jsx';
 import MarketingApp from './views/marketing/MarketingApp.jsx';
@@ -40,13 +39,13 @@ class App extends Component {
 
       case Constants.Theme.MARKETING:
         return (<MarketingApp
-        net={this.state.net}
-        currentSeries={this.state.currentSeries}
-        isMarried={this.state.isMarried}
-        numberOfChildren={this.state.numberOfChildren}/>);
+          net={this.state.net}
+          currentSeries={this.state.currentSeries}
+          isMarried={this.state.isMarried}
+          numberOfChildren={this.state.numberOfChildren}/>);
 
       case Constants.Theme.DESIGNED:
-        return(<DesignedApp {...this.state} />);
+        return (<DesignedApp {...this.state}/>);
 
       default:
         return (
@@ -56,14 +55,7 @@ class App extends Component {
   }
 
   render() {
-    return <div>
-      { this._renderTheme(this.state.theme) }
-      <select value={this.state.theme} onChange={ (event) => { SimuActions.themeChanged(event.target.value) }}>
-        <option value="grommet">Grommet</option>
-        <option value="marketing">Marketing</option>
-        <option value="designed">Designed</option>
-      </select>
-    </div>
+    return this._renderTheme(this.state.theme)
   }
 
   _onChange() {
