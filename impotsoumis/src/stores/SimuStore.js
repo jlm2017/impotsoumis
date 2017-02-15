@@ -23,23 +23,19 @@ class SimuStore extends ReduceStore {
             "current": [
                 {
                     "label": "IR",
-                    "value": Math.round(simulation.impot.du.value),
-                    "colorIndex": "neutral-4"
+                    "value": Math.round(simulation.impot.du.value)
                 }, {
                     "label": "CSG",
-                    "value": Math.round(simulation.csg.du.value),
-                    "colorIndex": "neutral-1"
+                    "value": Math.round(simulation.csg.du.value)
                 }
             ],
             "new": [
                 {
                     "label": "IR",
-                    "value": Math.round(jlmSimulation.impot.du),
-                    "colorIndex": "neutral-4"
+                    "value": Math.round(jlmSimulation.impot.du)
                 }, {
                     "label": "CSG",
-                    "value": 0,
-                    "colorIndex": "neutral-1"
+                    "value": 0
                 }
             ]
         }
@@ -53,7 +49,7 @@ class SimuStore extends ReduceStore {
         var nbEnfants = 0;
 
         var series = this.generateSeries(net, retraite, chomage, couple, nbEnfants)
-        console.log(series);
+
         return {
             theme: Constants.Theme.DESIGNED,
             defaultNet: 2800,
