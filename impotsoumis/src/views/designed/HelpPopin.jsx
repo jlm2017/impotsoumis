@@ -27,10 +27,10 @@ class HelpPopin extends Component {
         <div className={`popin${(this.state.popinVisible) ? ' visible' : ''}`}>
           <ul>
             <li>
-              <span>Tous les montants à déclarer (salaire, retraite, chômage) <strong>mensuels</strong> et net imposables.</span>
+              <span>Tous les montants à déclarer (salaire, retraite, chômage) sont en <strong>net mensuels</strong>.</span>
             </li>
             <li>
-              <span>Si vous êtes une personne divorcée, veuillez indiquer que vous êtes «Célibataire ».</span>
+              <span>Si vous êtes une personne divorcée, veuillez indiquer que vous êtes «Célibataire».</span>
             </li>
           </ul>
         </div>
