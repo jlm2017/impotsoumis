@@ -72,4 +72,20 @@ describe("Révolution fiscale ", () => {
             assert.equal(Math.round(jlmSimulation.impot.apres.ci.qf), 432)
         });
     });
+    describe("L'impôt du après seuil de recouvrement", () => {
+        it('est correct', () => {
+
+            var net = 2800,
+                retraite = 0,
+                chomage = 0,
+                couple = 0,
+                nbEnfants = 0
+
+            var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+            var irParams = IRParams(userParams)
+
+            var jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
+            assert.equal(Math.round(jlmSimulation.impot.du), 432)
+        });
+    });
 });
