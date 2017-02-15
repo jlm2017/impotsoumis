@@ -8,14 +8,14 @@ $blue: #33B9D3;
 .ResultCard {
   border-radius: 8px;
   box-shadow: 0 2px 12px transparentize(#000, 0.88);
-  min-height: 380px;
+  //min-height: 380px;
   padding: 26px 0 0;
 
-  @media (max-width: 1039px) {min-height: 364px;}
+  //@media (max-width: 1039px) {min-height: 364px;}
 
   @media (max-width: 767px) {
     margin-bottom: 31px;
-    min-height: 0;
+    //min-height: 0;
     padding-bottom: 4px;
   }
 
@@ -63,7 +63,6 @@ $blue: #33B9D3;
       width: 50%;
 
       &:before {
-        background: #000;
         display: block;
         content: '';
         height: 16px;
@@ -94,6 +93,7 @@ $blue: #33B9D3;
     .amount {color: $darkred}
 
     .legend {
+      .center,
       .left {
         .absolute {color: $red}
         &:before {background: $red;}
@@ -109,9 +109,14 @@ $blue: #33B9D3;
     .amount {color: $darkblue}
 
     .legend {
-      .center{
+      .center,
+      .left {
         .absolute {color: $blue;}
         &:before {background: $blue;}
+      }
+      .right {
+        .absolute {color: $darkblue;}
+        &:before {background: $darkblue;}
       }
     }
   }
