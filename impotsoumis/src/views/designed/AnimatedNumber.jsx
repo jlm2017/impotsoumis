@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class AnimatedNumber extends Component {
+  static defaultProps = {
+    format: (val) => val
+  }
+
   constructor(props) {
     super(props);
     this.state= {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Visible } from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
 
 import Filters from './Filters.jsx';
@@ -25,11 +25,10 @@ class DesignedApp extends Component {
   render() {
     const { currentSeries, newSeries } = this.props;
 
-    const IR = currentSeries.IR;
-    const CSG = currentSeries.CSG;
-    const NEW = newSeries.IR;
-    const NEW_CSG = newSeries.CSG
-    const purchase = (IR + CSG) - NEW;
+    const IR = currentSeries[0].value;
+    const CSG = currentSeries[1].value;
+    const NEW = newSeries[0].value;
+    const purchase = ((IR + CSG) - NEW) * 12;
     const isPositive = (purchase >= 0) ? true : false;
 
     return (
@@ -43,17 +42,34 @@ class DesignedApp extends Component {
 
             <Filters {...this.props} />
 
-            <div className="verdict">
-              <Visible xs>Avec la <em>Révolution Fiscale</em></Visible>
-              <strong>
-                C'est {purchase} 
-                <sup>/mois</sup> en
-                <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
-                  {(isPositive) ? " plus " : " moins "}
-                </span>
-              </strong>
-              sur mon pouvoir d'achat !<br/>
-            </div>
+            {(isPositive) ?
+              <div className="verdict">
+                Vous gagnez
+                <AnimatedNumber
+                  format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+                  value={purchase}
+                />
+                €<br />
+                en <span className="sign">plus</span> par an.
+              </div>
+            :
+              <div className="verdict">
+                Vous faites partie des
+                <AnimatedNumber
+                  value=" 9"
+                />
+                % des plus riches.
+                <div className="negative">
+                  Vous contribuez à la <strong>solidarité nationale de
+                  <AnimatedNumber
+                    format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+                    value={purchase}
+                  />
+                  € en <span className="sign">plus</span> par an.
+                  </strong>
+                </div>
+              </div>
+            }
 
             <Row>
               <Col sm={6}>
@@ -75,7 +91,7 @@ class DesignedApp extends Component {
                   left={{
                     legend: "Nouvel Impôt Citoyen",
                     value: NEW
-                  }} 
+                  }}
                   right={{
                     legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
                     value: NEW_CSG
