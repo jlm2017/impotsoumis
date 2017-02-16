@@ -17,6 +17,9 @@ input {
   display: none; }
 
 /* Hack jlm theme */
+#menu-menu-categories a {
+  font-weight: 700; }
+
 label {
   font-weight: 400; }
 
