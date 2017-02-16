@@ -23,14 +23,7 @@ class DesignedApp extends Component {
   }
 
   render() {
-    const { currentSeries, newSeries } = this.props;
-
-    const IR = currentSeries[0].value;
-    const CSG = currentSeries[1].value;
-    const NEW = newSeries[0].value;
-    const CSGP = newSeries[1].value;
-    const purchase = ((IR + CSG) - (NEW + CSGP)) * 12;
-    const isPositive = (purchase >= 0) ? true : false;
+    const { current, revolution, gain } = this.props.results;
 
     return (
       <Container className="DesignedApp">
@@ -43,31 +36,29 @@ class DesignedApp extends Component {
 
             <Filters {...this.props} />
 
-            {(isPositive) ?
-              <div className="verdict">
-                Vous gagnez
+
+            <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
+              Vous gagnez
+              <AnimatedNumber
+                format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+                value={gain}
+              />
+              €<br />
+              en <span className="sign">plus</span> par an.
+            </div>
+            <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
+              Vous faites partie des <AnimatedNumber value={9} />
+              % des plus riches.
+              <div className="negative">
+                Vous contribuez à la <strong>solidarité nationale de
                 <AnimatedNumber
                   format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-                  value={purchase}
+                  value={gain}
                 />
-                €<br />
-                en <span className="sign">plus</span> par an.
+                € en <span className="sign">plus</span> par an.
+                </strong>
               </div>
-            :
-              <div className="verdict">
-                Vous faites partie des <AnimatedNumber value={9} />
-                % des plus riches.
-                <div className="negative">
-                  Vous contribuez à la <strong>solidarité nationale de
-                  <AnimatedNumber
-                    format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-                    value={purchase}
-                  />
-                  € en <span className="sign">plus</span> par an.
-                  </strong>
-                </div>
-              </div>
-            }
+            </div>
 
             <Row>
               <Col sm={6}>
@@ -75,27 +66,29 @@ class DesignedApp extends Component {
                   color="red"
                   left={{
                     legend: <span>Impôt<br /> sur le revenu<br /> (IR)</span>,
-                    value: IR
+                    value: current.IR
                   }}
                   right={{
                     legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
-                    value: CSG
+                    value: current.CSG
                   }}
                   title="Imposition actuelle"
+                  total={current.total}
                 />
               </Col>
               <Col sm={6}>
                 <ResultCard
                   left={{
                     legend: <span>Nouvel impôt<br /> citoyen sur les<br /> revenus</span>,
-                    value: NEW
+                    value: revolution.IR
                   }}
                   right={{
                     legend: <span>CSG progressive</span>,
-                    value: CSGP
+                    value: revolution.CSG
                   }}
                   color="blue"
                   title="Avec la Révolution Fiscale"
+                  total={revolution.total}
                 />
               </Col>
             </Row>

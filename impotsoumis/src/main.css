@@ -13,6 +13,9 @@ input {
   justify-content: center;
   align-items: center; }
 
+.hide {
+  display: none; }
+
 /* Hack jlm theme */
 label {
   font-weight: 400; }

@@ -5,10 +5,7 @@ import AnimatedNumber from './AnimatedNumber.jsx';
 import Chart from './ResultChart.jsx';
 import "./ResultCard.css";
 
-
-export default ({ center, color, left, right, title }) => {
-  const total = (center) ? center.value * 12 : (left.value + right.value) * 12;
-
+export default ({ color, left, right, title, total }) => {
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
@@ -21,44 +18,30 @@ export default ({ center, color, left, right, title }) => {
       </div>
       <Chart
         color={color}
-        center={(center) ? center.value * 12 : false}
-        left={(left) ? left.value * 12 : false}
-        right={(right) ? right.value * 12 : false}
+        left={left.value}
+        right={right.value}
       />
-      {(center) ?
-        <div className="legend">
-          <span className="center">
-            <span className="absolute">
-              <AnimatedNumber
-                format={(val) => numeral(val).format('€0,0')}
-                value={center.value * 12}
-              />€
-            </span>
-            {center.legend}
+
+      <div className="legend">
+        <span className="left">
+          <span className="absolute">
+            <AnimatedNumber
+              format={(val) => numeral(val).format('€0,0')}
+              value={left.value}
+            />€
           </span>
-        </div>
-      :
-        <div className="legend">
-          <span className="left">
-            <span className="absolute">
-              <AnimatedNumber
-                format={(val) => numeral(val).format('€0,0')}
-                value={left.value * 12}
-              />€
-            </span>
-            {left.legend}
+          {left.legend}
+        </span>
+        <span className="right">
+          <span className="absolute">
+            <AnimatedNumber
+              format={(val) => numeral(val).format('€0,0')}
+              value={right.value}
+            />€
           </span>
-          <span className="right">
-            <span className="absolute">
-              <AnimatedNumber
-                format={(val) => numeral(val).format('€0,0')}
-                value={right.value * 12}
-              />€
-            </span>
-            {right.legend}
-          </span>
-        </div>
-      }
+          {right.legend}
+        </span>
+      </div>
 
     </div>
   );
