@@ -25,9 +25,10 @@ class DesignedApp extends Component {
   render() {
     const { currentSeries, newSeries } = this.props;
 
-    const IR = currentSeries[0].value;
-    const CSG = currentSeries[1].value;
-    const NEW = newSeries[0].value;
+    const IR = currentSeries.IR;
+    const CSG = currentSeries.CSG;
+    const NEW = newSeries.IR;
+    const NEW_CSG = newSeries.CSG
     const purchase = (IR + CSG) - NEW;
     const isPositive = (purchase >= 0) ? true : false;
 
@@ -45,11 +46,7 @@ class DesignedApp extends Component {
             <div className="verdict">
               <Visible xs>Avec la <em>Révolution Fiscale</em></Visible>
               <strong>
-                C'est
-                <AnimatedNumber
-                  format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}€`}
-                  value={purchase}
-                />
+                C'est {purchase} 
                 <sup>/mois</sup> en
                 <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
                   {(isPositive) ? " plus " : " moins "}
@@ -75,9 +72,13 @@ class DesignedApp extends Component {
               </Col>
               <Col sm={6}>
                 <ResultCard
-                  center={{
+                  left={{
                     legend: "Nouvel Impôt Citoyen",
                     value: NEW
+                  }} 
+                  right={{
+                    legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
+                    value: NEW_CSG
                   }}
                   color="blue"
                   title="Avec la Révolution Fiscale"

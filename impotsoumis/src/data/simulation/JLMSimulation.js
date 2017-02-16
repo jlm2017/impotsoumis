@@ -7,7 +7,7 @@ function JLMSimulation(revenu_fiscal_ref, couple, nbenf) {
     var seuil_recouv = CurrentIR.seuilRecouvrement.value
     var a24 = (revenu_fiscal_ref.salarie + revenu_fiscal_ref.chomeur + revenu_fiscal_ref.retraite) / (1 + couple)
 
-    var calcul = CalculParTranche(a24, NewIR.bareme).total
+    var calcul = CalculParTranche(a24, NewIR.bareme)
     var b24 = calcul.total
 
     var c24 = b24 * (1 + couple)

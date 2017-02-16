@@ -11,7 +11,7 @@ function CalculParTranche(impot, tranches) {
                 : impot;
             var montantAImposer = margeHaute - tranche.min;
             var sommeAPayerSurTranche = montantAImposer * tranche.tauxMarginal
-            var csgSurTranches = sommeAPayerSurTranche * tranche.csg
+            var csgSurTranches = sommeAPayerSurTranche * tranche.tauxCSG
 
             var serie = {
                 "id": tranche.name,
@@ -27,8 +27,7 @@ function CalculParTranche(impot, tranches) {
     }
 
     var finalCSG = (csg / total) < 0.075 ? csg : (total * 0.075)
-    
-    return { "tranches": series, "total": total, "csg": csg }
+    return { "tranches": series, "total": total, "csg": finalCSG }
 }
 
 export default CalculParTranche;
