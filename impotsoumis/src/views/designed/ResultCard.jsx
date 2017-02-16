@@ -13,10 +13,7 @@ export default ({ center, color, left, right, title }) => {
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
       <div className="amount">
-        <AnimatedNumber
-          format={(val) => numeral(val).format('€0a')}
-          value={total}
-        />
+        {total}
         €<sup>/mois</sup>
       </div>
       <Chart

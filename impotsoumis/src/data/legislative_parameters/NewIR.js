@@ -5,72 +5,86 @@ const NewIR = {
             "name": "0%",
             "min": 0,
             "max": 400,
-            "tauxMarginal": 0.01
+            "tauxMarginal": 0.01,
+            "tauxCSG": 0.5
         }, {
             "name": "3%",
             "min": 400,
             "max": 800,
-            "tauxMarginal": 0.03
+            "tauxMarginal": 0.03,
+            "tauxCSG": 0.5
         }, {
             "name": "7%",
             "min": 800,
             "max": 1000,
-            "tauxMarginal": 0.07
+            "tauxMarginal": 0.07,
+            "tauxCSG": 0.5
         }, {
             "name": "14%",
             "min": 1000,
             "max": 1200,
-            "tauxMarginal": 0.14
+            "tauxMarginal": 0.14,
+            "tauxCSG": 0.5
         }, {
             "name": "20%",
             "min": 1200,
             "max": 1600,
-            "tauxMarginal": 0.2
+            "tauxMarginal": 0.2,
+            "tauxCSG": 0.5
         }, {
             "name": "25%",
             "min": 1600,
             "max": 2000,
-            "tauxMarginal": 0.25
+            "tauxMarginal": 0.25,
+            "tauxCSG": 0.5
         }, {
             "name": "30%",
             "min": 2000,
             "max": 2500,
-            "tauxMarginal": 0.3
+            "tauxMarginal": 0.3,
+            "tauxCSG": 0.5
         }, {
             "name": "40%",
             "min": 2500,
             "max": 3000,
-            "tauxMarginal": 0.4
+            "tauxMarginal": 0.4,
+            "tauxCSG": 0.5
         }, {
             "name": "50%",
             "min": 3000,
             "max": 4000,
-            "tauxMarginal": 0.5
+            "tauxMarginal": 0.5,
+            "tauxCSG": 0.5
         }, {
             "name": "55%",
             "min": 4000,
             "max": 5000,
-            "tauxMarginal": 0.55
+            "tauxMarginal": 0.55,
+            "tauxCSG": 0.5
         }, {
             "name": "60%",
             "min": 5000,
             "max": 10000,
-            "tauxMarginal": 0.6
+            "tauxMarginal": 0.6,
+            "tauxCSG": 0.5
         }, {
             "name": "70%",
             "min": 10000,
             "max": 15000,
-            "tauxMarginal": 0.7
+            "tauxMarginal": 0.7,
+            "tauxCSG": 0.5
         }, {
             "name": "80%",
             "min": 15000,
             "max": 33000,
-            "tauxMarginal": 0.8
+            "tauxMarginal": 0.8,
+            "tauxCSG": 0.5
         }, {
             "name": "90%",
             "min": 33000,
             "max": Number.MAX_SAFE_INTEGER,
-            "tauxMarginal": 0.9
+            "tauxMarginal": 0.9,
+            "tauxCSG": 0.5
         }
     ]
 

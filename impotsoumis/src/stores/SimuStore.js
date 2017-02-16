@@ -19,26 +19,17 @@ class SimuStore extends ReduceStore {
 
         var jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
 
-        return {
-            "current": [
-                {
-                    "label": "IR",
-                    "value": Math.round(simulation.impot.du.value)
-                }, {
-                    "label": "CSG",
-                    "value": Math.round(simulation.csg.du.value)
-                }
-            ],
-            "new": [
-                {
-                    "label": "IR",
-                    "value": Math.round(jlmSimulation.impot.du)
-                }, {
-                    "label": "CSG",
-                    "value": 0
-                }
-            ]
+        var result = {
+            "current": {
+                "IR": Math.round(simulation.impot.du.value),
+                "CSG": Math.round(simulation.csg.du.value)
+            },
+            "new": {
+                "IR": Math.round(jlmSimulation.impot.du),
+                "CSG": Math.round(jlmSimulation.csg)
+            }
         }
+        return result
     }
 
     getInitialState() {
