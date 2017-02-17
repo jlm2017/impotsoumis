@@ -26,8 +26,8 @@ function CalculParTranche(impot, tranches) {
         }
     }
 
-    var finalCSG = (csg / total) < 0.075 ? csg : (total * 0.075)
-    return { "tranches": series, "total": total, "csg": finalCSG }
+    var finalCSG = csg < (0.075 * impot) ? csg : impot * 0.075
+    return { "tranches": series, "total": total, "ir": total - finalCSG, "csg": finalCSG }
 }
 
 export default CalculParTranche;

@@ -18,7 +18,8 @@ function JLMSimulation(revenu_fiscal_ref, couple, nbenf) {
     var e24 = (d24 > 0) ? somme_apres_seuil_recouv : d24
 
     var csg = calcul.csg
-    
+    var ir = calcul.ir
+
     return {
         "revenu": {
             "imposable": a24
@@ -42,9 +43,9 @@ function JLMSimulation(revenu_fiscal_ref, couple, nbenf) {
             },
             "du": e24
         },
-        "csg": csg
+        "csg": csg,
+        "newIR": ir
     }
-
 }
 
 export default JLMSimulation;

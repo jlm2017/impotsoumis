@@ -47,17 +47,18 @@ class DesignedApp extends Component {
               en <span className="sign">plus</span> par an.
             </div>
             <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
+              <div className="negative">
               Vous faites partie des <AnimatedNumber value={9} />
               % des plus riches.
-              <div className="negative">
-                Vous contribuez à la <strong>solidarité nationale de
+              </div>
+                Vous contribuez<br/>
                 <AnimatedNumber
                   format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
                   value={gain}
                 />
-                € en <span className="sign">plus</span> par an.
-                </strong>
-              </div>
+                € en <span className="sign">plus</span> par an <br/> pour la solidarité nationale.
+             
+              
             </div>
 
             <Row>
