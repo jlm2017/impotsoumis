@@ -48,7 +48,7 @@ class DesignedApp extends Component {
             </div>
             <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
               <div className="negative">
-              Vous faites partie des <AnimatedNumber value={9} />
+              Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
               % des plus riches.
               </div>
                 Vous contribuez<br/>
