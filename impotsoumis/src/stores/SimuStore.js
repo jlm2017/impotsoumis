@@ -21,7 +21,7 @@ class SimuStore extends ReduceStore {
 
         const IR = Math.round(simulation.impot.du.value) * 12,
               CSG = Math.round(simulation.csg.du.value) * 12,
-              NEW_IR = Math.round(jlmSimulation.impot.du) * 12,
+              NEW_IR = Math.round(jlmSimulation.newIR) * 12,
               CSG_P = Math.round(jlmSimulation.csg) * 12;
 
         return {
