@@ -7,10 +7,23 @@ import JLMSimulation from '../data/simulation/JLMSimulation'
 
 import UserParams from '../data/simulation/UserParams'
 import IRParams from '../data/simulation/IRParams'
+import DistributionRevenus from '../data/DistributionRevenus'
 
 // Catch: State must be immutable
 class SimuStore extends ReduceStore {
 
+    percentageRicher(net) {
+        var bareme = DistributionRevenus.bareme
+        var percentage = 0
+        for (var item of bareme) {
+            if (net > item.revenu) {
+                percentage = item.percentile
+            } else {
+                break;
+            }
+        }
+        return percentage
+    }
     generateSeries(net, retraite, chomage, couple, nbEnfants) {
         const userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
         const irParams = IRParams(userParams)
@@ -52,6 +65,7 @@ class SimuStore extends ReduceStore {
             net: net,
             retraite: 0,
             chomage: 0,
+            percentile: this.percentageRicher(0),
             isMarried: couple,
             numberOfChildren: nbEnfants,
             results: this.generateSeries(net, retraite, chomage, couple, nbEnfants)
@@ -64,6 +78,7 @@ class SimuStore extends ReduceStore {
             return {
                 ...state,
                 net: action.net,
+                percentile: this.percentageRicher(action.net),
                 results: this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren)
             };
 
