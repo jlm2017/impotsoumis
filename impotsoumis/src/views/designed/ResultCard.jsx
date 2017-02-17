@@ -5,33 +5,43 @@ import AnimatedNumber from './AnimatedNumber.jsx';
 import Chart from './ResultChart.jsx';
 import "./ResultCard.css";
 
-
-export default ({ center, color, left, right, title }) => {
-  const total = (center) ? center.value : left.value + right.value;
-
+export default ({ color, left, right, title, total }) => {
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
       <div className="amount">
-        {total}
-        €<sup>/mois</sup>
+        <AnimatedNumber
+          format={(val) => numeral(val).format('€0,0')}
+          value={total}
+        />
+        €
       </div>
       <Chart
         color={color}
-        center={(center) ? center.value : false}
-        left={(left) ? left.value : false}
-        right={(right) ? right.value : false}
+        left={left.value}
+        right={right.value}
       />
-      {(center) ?
-        <div className="legend">
-          <span className="center">{center.legend}</span>
-        </div>
-      :
-        <div className="legend">
-          <span className="left">{left.legend}</span>
-          <span className="right">{right.legend}</span>
-        </div>
-      }
+
+      <div className="legend">
+        <span className="left">
+          <span className="absolute">
+            <AnimatedNumber
+              format={(val) => numeral(val).format('€0,0')}
+              value={left.value}
+            />€
+          </span>
+          {left.legend}
+        </span>
+        <span className="right">
+          <span className="absolute">
+            <AnimatedNumber
+              format={(val) => numeral(val).format('€0,0')}
+              value={right.value}
+            />€
+          </span>
+          {right.legend}
+        </span>
+      </div>
 
     </div>
   );

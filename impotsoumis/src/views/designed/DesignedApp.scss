@@ -4,6 +4,7 @@ $blue: #33B9D3;
 .DesignedApp {
   color: $main;
   font-family: Montserrat, sans-serif;
+  padding-bottom: 80px;
   text-align: center;
 
   h2 {
@@ -11,7 +12,7 @@ $blue: #33B9D3;
     font-weight: 400;
     font-size: 24px;
     line-height: 29px;
-    margin: 46px auto 34px;
+    margin: 25px auto 34px;
     width: 70%;
 
     @media (max-width: 767px) {
@@ -43,45 +44,18 @@ $blue: #33B9D3;
 
   .verdict {
     color: $blue;
-    font-size: 24px;
-    font-weight: 300;
-    line-height: 29px;
-    margin: 30px auto 52px;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 40px;
+    margin: 40px auto 35px;
 
     @media (max-width: 767px) {
       border-radius: 8px;
       box-shadow: 0 2px 12px transparentize(#000, .88);
-      font-size: 17px;
-      line-height: 20px;
-      margin: 36px auto 36px;
-      padding: 27px 15px;
-
-      div {
-        font-size: 16px;
-        line-height: 19px;
-      }
-
-      em {
-        font-style: normal;
-        font-weight: 400;
-      }
-    }
-
-    strong {
-      font-size: 36px;
-      font-weight: 700;
-      display: block;
-      line-height: 44px;
-
-      @media (max-width: 767px) {
-        font-size: 24px;
-        line-height: 28px;
-      }
-    }
-
-    sup {
-      font-size: 12px;
-      font-weight: 400;
+      font-size: 16px;
+      line-height: 19px;
+      margin: 36px auto;
+      padding: 25px 15px;
     }
 
     .sign {
@@ -89,17 +63,17 @@ $blue: #33B9D3;
       border-radius: 50%;
       color: transparent;
       display: inline-block;
-      height: 34px;
-      left: 8px;
+      height: 38px;
+      margin: 0 8px;
       position: relative;
       top: 6px;
-      width: 34px;
+      width: 38px;
 
       @media (max-width: 767px) {
         border-width: 2px;
         height: 18px;
-        left: 4px;
-        top: 6px;
+        margin: 0 6px;
+        top: 3px;
         width: 18px;
       }
 
@@ -130,7 +104,6 @@ $blue: #33B9D3;
         height: 22px;
         left: calc(50% - 2px);
         top: calc(50% - 11px);
-        transition: .2s linear;
         width: 4px;
 
         @media (max-width: 767px) {
@@ -143,24 +116,59 @@ $blue: #33B9D3;
       }
     }
 
-    .negative:after {transform: rotate(90deg);}
-
-    .negative:after {
-      background: $blue;
-      display: block;
-      content: '';
-      height: 22px;
-      left: calc(50% - 2px);
-      position: absolute;
-      top: calc(50% - 11px);
-      width: 4px;
+    .negative {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 30px;
 
       @media (max-width: 767px) {
-        height: 12px;
-        left: calc(50% - 1px);
-        position: absolute;
-        top: calc(50% - 6px);
-        width: 2px;
+        font-size: 13px;
+        line-height: 16px;
+        margin-top: 10px;
+      }
+
+      .sign {
+        border-width: 4px;
+        height: 24px;
+        margin: 0 4px;
+        top: 4px;
+        width: 24px;
+
+        @media (max-width: 767px) {
+          border-width: 2px;
+          height: 14px;
+          margin: 0 2px;
+          top: 2px;
+          width: 14px;
+        }
+
+        &:before {
+          height: 4px;
+          left: calc(50% - 7px);
+          top: calc(50% - 2px);
+          width: 14px;
+
+          @media (max-width: 767px) {
+            height: 2px;
+            left: calc(50% - 5px);
+            top: calc(50% - 1px);
+            width: 10px;
+          }
+        }
+
+        &:after {
+          height: 14px;
+          left: calc(50% - 2px);
+          top: calc(50% - 7px);
+          width: 4px;
+
+          @media (max-width: 767px) {
+            height: 10px;
+            left: calc(50% - 1px);
+            top: calc(50% - 5px);
+            width: 2px;
+          }
+        }
       }
     }
   }

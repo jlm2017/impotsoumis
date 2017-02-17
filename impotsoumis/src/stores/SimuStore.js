@@ -12,34 +12,39 @@ import IRParams from '../data/simulation/IRParams'
 class SimuStore extends ReduceStore {
 
     generateSeries(net, retraite, chomage, couple, nbEnfants) {
-        var userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
-        var irParams = IRParams(userParams)
+        const userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
+        const irParams = IRParams(userParams)
 
-        var simulation = Simulation(irParams.revenu.fiscalDeReference, userParams.nbPartsFiscales.value, couple, irParams.csg.taux.plein.salarie, irParams.csg.taux.reduit.salarie)
+        const simulation = Simulation(irParams.revenu.fiscalDeReference, userParams.nbPartsFiscales.value, couple, irParams.csg.taux.plein.salarie, irParams.csg.taux.reduit.salarie)
 
-        var jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
+        const jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
 
-        var result = {
-            "current": {
-                "IR": Math.round(simulation.impot.du.value),
-                "CSG": Math.round(simulation.csg.du.value)
+        const IR = Math.round(simulation.impot.du.value) * 12,
+              CSG = Math.round(simulation.csg.du.value) * 12,
+              NEW_IR = Math.round(jlmSimulation.impot.du) * 12,
+              CSG_P = Math.round(jlmSimulation.csg) * 12;
+
+        return {
+            current: {
+                IR: IR,
+                CSG: CSG,
+                total: IR + CSG
             },
-            "new": {
-                "IR": Math.round(jlmSimulation.impot.du),
-                "CSG": Math.round(jlmSimulation.csg)
-            }
-        }
-        return result
+            revolution: {
+                IR: NEW_IR,
+                CSG: CSG_P,
+                total: NEW_IR + CSG_P
+            },
+            gain: (IR + CSG) - (NEW_IR + CSG_P)
+        };
     }
 
     getInitialState() {
-        var net = 2800;
-        var retraite = 0;
-        var chomage = 0;
-        var couple = 0;
-        var nbEnfants = 0;
-
-        var series = this.generateSeries(net, retraite, chomage, couple, nbEnfants)
+        const net = 0;
+        const retraite = 0;
+        const chomage = 0;
+        const couple = 0;
+        const nbEnfants = 0;
 
         return {
             theme: Constants.Theme.DESIGNED,
@@ -49,99 +54,55 @@ class SimuStore extends ReduceStore {
             chomage: 0,
             isMarried: couple,
             numberOfChildren: nbEnfants,
-            currentSeries: series.current,
-            newSeries: series.new
+            results: this.generateSeries(net, retraite, chomage, couple, nbEnfants)
         }
     }
 
     reduce(state, action) {
-        var series = {}
         switch (action.actionType) {
             case Constants.Action.NET_CHANGED:
-                series = this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren);
-                return {
-                    theme: state.theme,
-                    defaultNet: state.defaultNet,
-                    net: action.net,
-                    retraite: state.retraite,
-                    chomage: state.chomage,
-                    isMarried: state.isMarried,
-                    numberOfChildren: state.numberOfChildren,
-                    currentSeries: series.current,
-                    newSeries: series.new
-                };
+            return {
+                ...state,
+                net: action.net,
+                results: this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren)
+            };
 
             case Constants.Action.RETRAITE_CHANGED:
-                series = this.generateSeries(state.net, action.retraite, state.chomage, state.isMarried, state.numberOfChildren);
-                return {
-                    theme: state.theme,
-                    defaultNet: state.defaultNet,
-                    net: state.net,
-                    retraite: action.retraite,
-                    chomage: state.chomage,
-                    isMarried: state.isMarried,
-                    numberOfChildren: state.numberOfChildren,
-                    currentSeries: series.current,
-                    newSeries: series.new
-                };
+            return {
+                ...state,
+                retraite: action.retraite,
+                results: this.generateSeries(state.net, action.retraite, state.chomage, state.isMarried, state.numberOfChildren)
+            }
 
             case Constants.Action.CHOMAGE_CHANGED:
-                series = this.generateSeries(state.net, state.retraite, action.chomage, state.isMarried, state.numberOfChildren);
-                return {
-                    theme: state.theme,
-                    defaultNet: state.defaultNet,
-                    net: state.net,
-                    retraite: state.retraite,
-                    chomage: action.chomage,
-                    isMarried: state.isMarried,
-                    numberOfChildren: state.numberOfChildren,
-                    currentSeries: series.current,
-                    newSeries: series.new
-                };
+            return {
+                ...state,
+                chomage: action.chomage,
+                results: this.generateSeries(state.net, state.retraite, action.chomage, state.isMarried, state.numberOfChildren)
+            };
 
             case Constants.Action.MARITAL_STATUS_CHANGED:
-                series = this.generateSeries(state.net, state.retraite, state.chomage, action.isMarried, state.numberOfChildren);
-                return {
-                    theme: state.theme,
-                    defaultNet: state.defaultNet,
-                    net: state.net,
-                    retraite: state.retraite,
-                    chomage: state.chomage,
-                    isMarried: action.isMarried,
-                    numberOfChildren: state.numberOfChildren,
-                    currentSeries: series.current,
-                    newSeries: series.new
+            return {
+                ...state,
+                isMarried: action.isMarried,
+                results: this.generateSeries(state.net, state.retraite, state.chomage, action.isMarried, state.numberOfChildren)
+            };
 
-                };
             case Constants.Action.NUMBER_OF_CHILDREN_CHANGED:
-                series = this.generateSeries(state.net, state.retraite, state.chomage, state.isMarried, action.numberOfChildren);
-
-                return {
-                    theme: state.theme,
-                    defaultNet: state.defaultNet,
-                    net: state.net,
-                    retraite: state.retraite,
-                    chomage: state.chomage,
-                    isMarried: state.isMarried,
-                    numberOfChildren: action.numberOfChildren,
-                    currentSeries: series.current,
-                    newSeries: series.new
-                };
+            return {
+                ...state,
+                numberOfChildren: action.numberOfChildren,
+                results: this.generateSeries(state.net, state.retraite, state.chomage, state.isMarried, action.numberOfChildren)
+            };
 
             case Constants.Action.THEME_CHANGED:
-                return {
-                    theme: action.theme,
-                    defaultNet: state.defaultNet,
-                    net: state.net,
-                    retraite: state.retraite,
-                    chomage: state.chomage,
-                    isMarried: state.isMarried,
-                    numberOfChildren: state.numberOfChildren,
-                    currentSeries: state.currentSeries,
-                    newSeries: state.newSeries
-                };
+            return {
+                theme: action.theme,
+                ...state
+            };
+
             default:
-                return state;
+            return state;
         }
     }
 }

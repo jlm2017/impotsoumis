@@ -1,3 +1,4 @@
+$main: #818080;
 $border: #E9E7EA;
 
 $darkred: #9C1B00;
@@ -16,9 +17,10 @@ $blue: #33B9D3;
   }
 
   h3 {
+    color: $main;
     font-size: 18px;
     font-weight: 400;
-    margin-bottom: 42px;
+    margin-bottom: 40px;
 
     @media (max-width: 767px) {margin-bottom: 18px;}
   }
@@ -28,15 +30,16 @@ $blue: #33B9D3;
     line-height: 61px;
     margin-bottom: 15px;
 
+    @media (max-width: 1039px) {
+      font-size: 35px;
+      line-height: 46px;
+    }
+
     @media (max-width: 767px) {
-      font-size: 36px;
-      line-height: 44px;
+      font-size: 30px;
+      line-height: 38px;
       margin-bottom: 10px;
     }
-  }
-
-  sup {
-    font-size: 12px;
   }
 
   .legend {
@@ -54,10 +57,10 @@ $blue: #33B9D3;
       font-size: 13px;
       height: 100%;
       line-height: 16px;
+      padding-bottom: 38px;
       width: 50%;
 
       &:before {
-        background: #000;
         display: block;
         content: '';
         height: 16px;
@@ -74,14 +77,29 @@ $blue: #33B9D3;
     }
 
     .center {width: 100%;}
+
+    .absolute {
+      display: block;
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 18px;
+      margin-bottom: 15px;
+    }
   }
 
   &.red {
     .amount {color: $darkred}
 
     .legend {
-      .left:before {background: $red;}
-      .right:before {background: $darkred;}
+      .center,
+      .left {
+        .absolute {color: $red}
+        &:before {background: $red;}
+      }
+      .right {
+        .absolute {color: $darkred}
+        &:before {background: $darkred;}
+      }
     }
   }
 
@@ -89,9 +107,15 @@ $blue: #33B9D3;
     .amount {color: $darkblue}
 
     .legend {
-      .left:before,
-      .center:before {background: $blue;}
-      .right:before {background: $darkblue;}
+      .center,
+      .left {
+        .absolute {color: $blue;}
+        &:before {background: $blue;}
+      }
+      .right {
+        .absolute {color: $darkblue;}
+        &:before {background: $darkblue;}
+      }
     }
   }
 }

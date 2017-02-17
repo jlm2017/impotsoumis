@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Row, Col, Visible } from 'react-grid-system';
+import { Container, Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
 
 import Filters from './Filters.jsx';
@@ -23,14 +23,7 @@ class DesignedApp extends Component {
   }
 
   render() {
-    const { currentSeries, newSeries } = this.props;
-
-    const IR = currentSeries.IR;
-    const CSG = currentSeries.CSG;
-    const NEW = newSeries.IR;
-    const NEW_CSG = newSeries.CSG
-    const purchase = (IR + CSG) - NEW;
-    const isPositive = (purchase >= 0) ? true : false;
+    const { current, revolution, gain } = this.props.results;
 
     return (
       <Container className="DesignedApp">
@@ -43,16 +36,28 @@ class DesignedApp extends Component {
 
             <Filters {...this.props} />
 
-            <div className="verdict">
-              <Visible xs>Avec la <em>Révolution Fiscale</em></Visible>
-              <strong>
-                C'est {purchase} 
-                <sup>/mois</sup> en
-                <span className={"sign " + ((isPositive) ? "positive" : "negative")}>
-                  {(isPositive) ? " plus " : " moins "}
-                </span>
-              </strong>
-              sur mon pouvoir d'achat !<br/>
+
+            <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
+              Vous gagnez
+              <AnimatedNumber
+                format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+                value={gain}
+              />
+              €<br />
+              en <span className="sign">plus</span> par an.
+            </div>
+            <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
+              Vous faites partie des <AnimatedNumber value={9} />
+              % des plus riches.
+              <div className="negative">
+                Vous contribuez à la <strong>solidarité nationale de
+                <AnimatedNumber
+                  format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+                  value={gain}
+                />
+                € en <span className="sign">plus</span> par an.
+                </strong>
+              </div>
             </div>
 
             <Row>
@@ -61,27 +66,29 @@ class DesignedApp extends Component {
                   color="red"
                   left={{
                     legend: <span>Impôt<br /> sur le revenu<br /> (IR)</span>,
-                    value: IR
+                    value: current.IR
                   }}
                   right={{
                     legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
-                    value: CSG
+                    value: current.CSG
                   }}
                   title="Imposition actuelle"
+                  total={current.total}
                 />
               </Col>
               <Col sm={6}>
                 <ResultCard
                   left={{
-                    legend: "Nouvel Impôt Citoyen",
-                    value: NEW
-                  }} 
+                    legend: <span>Nouvel impôt<br /> citoyen sur les<br /> revenus</span>,
+                    value: revolution.IR
+                  }}
                   right={{
-                    legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
-                    value: NEW_CSG
+                    legend: <span>CSG progressive</span>,
+                    value: revolution.CSG
                   }}
                   color="blue"
                   title="Avec la Révolution Fiscale"
+                  total={revolution.total}
                 />
               </Col>
             </Row>

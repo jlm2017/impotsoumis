@@ -8,10 +8,25 @@ input {
   -moz-appearance: none;
   appearance: none; }
 
-sup {
-  position: static; }
-
 .align-center {
   display: flex;
   justify-content: center;
   align-items: center; }
+
+.hide {
+  display: none; }
+
+/* Hack jlm theme */
+#menu-menu-categories a {
+  font-weight: 700; }
+
+label {
+  font-weight: 400; }
+
+@media (max-width: 1199px) {
+  header.banner .container {
+    width: 95%; }
+  .navbar-default .navbar-nav > li > a {
+    font-size: 13px; }
+  .navbar-default .navbar-brand img {
+    padding: 10px 0; } }
