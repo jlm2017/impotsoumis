@@ -14,7 +14,7 @@ export default ({ color, left, right, title, total }) => {
           format={(val) => numeral(val).format('€0,0')}
           value={total}
         />
-        €
+        €<span className="periodicity">/an</span>
       </div>
       <Chart
         color={color}
