@@ -23,7 +23,13 @@ export default ({ color, top, bottom, title, total }) => {
       </Row>
       <div className="total">
         Total<br />
-        <strong>{total} €/<sup>an</sup></strong>
+        <strong>
+            <AnimatedNumber
+              format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+              value={total}
+            />                  
+           €<sup>/an</sup>
+        </strong>
       </div>
     </div>
   );

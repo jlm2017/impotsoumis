@@ -30,11 +30,7 @@ $blue: #33B9D3;
   }
 
   li {
-    margin-left: 25px;
     margin-bottom: 25px;
-
-    @media (max-width: 767px) {margin-left: 0px;}
-
 
     &:before {
       content: '';
@@ -45,7 +41,7 @@ $blue: #33B9D3;
       width: 9.5px;      
     } 
 
-    span {
+    > span {
       display: inline-block;
       font-size: 14px;
       padding-left: 10px;
@@ -60,6 +56,9 @@ $blue: #33B9D3;
   sup {
     position: relative;
     top: -1px;
+    text-transform: none;
+    font-size: 12px;
+    font-weight: 400;
   }
 
   .total {
