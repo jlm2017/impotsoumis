@@ -21,8 +21,6 @@ $blue: #33B9D3;
     font-size: 18px;
     font-weight: 400;
     margin-bottom: 40px;
-
-    @media (max-width: 767px) {margin-bottom: 18px;}
   }
 
   ul {
@@ -34,6 +32,8 @@ $blue: #33B9D3;
   li {
     margin-left: 25px;
     margin-bottom: 25px;
+
+    @media (max-width: 767px) {margin-left: 0px;}
 
 
     &:before {
