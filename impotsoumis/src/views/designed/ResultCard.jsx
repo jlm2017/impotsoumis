@@ -1,8 +1,6 @@
 import React from 'react';
 import numeral from 'numeral';
 
-import { Row, Col } from 'react-grid-system';
-
 import AnimatedNumber from './AnimatedNumber.jsx';
 import Chart from './ResultChart.jsx';
 import "./ResultCard.css";
@@ -11,17 +9,16 @@ export default ({ color, top, bottom, title, total }) => {
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
-      <Row>
-        <Col>
+        <div className="left">
           <ul>
-            <li>{top}</li>
-            <li>CSG</li>
+            <li>{top.legend}</li>
+            <li>{bottom.legend}</li>
           </ul>
-        </Col>
-        <Col>
-        </Col>
-      </Row>
-      <div>
+        </div>
+        <div className="right">
+          <Chart top={top.value} bottom={bottom.value} />
+        </div>
+      <div className="total">
         Total
       </div>
     </div>

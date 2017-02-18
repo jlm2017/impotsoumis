@@ -25,103 +25,79 @@ $blue: #33B9D3;
     @media (max-width: 767px) {margin-bottom: 18px;}
   }
 
-  span.periodicity {
-    font-size: 12px;
-  }
-  .amount {
-    font-size: 50px;
-    line-height: 61px;
-    margin-bottom: 15px;
-
-    @media (max-width: 1039px) {
-      font-size: 35px;
-      line-height: 46px;
-    }
-
-    @media (max-width: 767px) {
-      font-size: 30px;
-      line-height: 38px;
-      margin-bottom: 10px;
-    }
+  .left {
+    display: inline-block;
+    width: 90%;
   }
 
-  .legend {
-    display: table;
-    height: 125px;
-    margin-top: 42px;
-    width: 100%;
+  ul {
+    list-style: none;
+    text-align: left;
+  }
 
-    @media (max-width: 767px) {margin-top: 15px;}
+  li {
+    margin-bottom: 10px;
 
-    .left,
-    .right,
-    .center {
-      display: table-cell;
-      font-size: 13px;
-      height: 100%;
-      line-height: 16px;
-      padding-bottom: 38px;
-      width: 50%;
+    &:before {
+      content: '';
+      display: inline-block;
+      height: 16px;
+      width: 16px;      
+    } 
 
-      &:before {
-        display: block;
-        content: '';
-        height: 16px;
-        margin: 25px auto 7px;
-        width: 16px;
+    span {
+      display: inline-block;
+      font-size: 16px;
+      padding-left: 10px;
+      text-transform: uppercase;
+      vertical-align: top;
+      width: calc(100% - 26px);      
+    }   
+  }
 
-        @media (max-width: 767px) {margin-bottom: 14px;}
-      }
-    }
+  sup {
+    position: relative;
+    top: -1px;
+  }
 
-    .left {
-      border-right: 1px solid $border;
-      width: calc(50% - 1px);
-    }
+  .right {
+    display: inline-block;
+    width: 10%;
+  }
 
-    .center {width: 100%;}
-
-    .absolute {
-      display: block;
-      font-size: 14px;
-      font-weight: 300;
-      line-height: 18px;
-      margin-bottom: 15px;
-    }
+  .total {
+    border-top: 1px solid $border;
+    margin: auto;
+    width: 386px;
   }
 
   &.red {
     h3 strong {
       color: $red;
     }
-    .amount {color: $darkred}
 
-    .legend {
-      .center,
-      .left {
-        .absolute {color: $red}
-        &:before {background: $red;}
-      }
-      .right {
-        .absolute {color: $darkred}
-        &:before {background: $darkred;}
-      }
+    li:first-child{
+      color: $red;
+      &:before {background: $red;}
+    }
+    li:last-child{
+      color: $darkred;
+      &:before {background: $darkred;}
     }
   }
 
   &.blue {
-    .amount {color: $darkblue}
+    h3 strong {
+      color: $blue;
+    }
 
-    .legend {
-      .center,
-      .left {
-        .absolute {color: $blue;}
-        &:before {background: $blue;}
-      }
-      .right {
-        .absolute {color: $darkblue;}
-        &:before {background: $darkblue;}
-      }
+    li:first-child{
+      color: $blue;
+      &:before {background: $blue;}
+    }
+    li:last-child{
+      color: $darkblue;
+      &:before {background: $darkblue;}
     }
   }
 }

@@ -65,23 +65,29 @@ class DesignedApp extends Component {
                   color="red"
                   title={<span>Inmposition <strong>actuelle</strong></span>}
                   total={current.total} 
-                  top={<span>Votre impôt sur le revenu est de : <strong>{current.IR}</strong></span>}
-                  bottom={<span>Votre impôt sur le revenu est de : <strong>{current.CSG}</strong></span>}
+                  top={{
+                    legend: <span>Votre impôt sur le revenu est de : <strong>{current.IR} €<sup>/an</sup></strong></span>,
+                    value: current.IR
+                  }}
+                  bottom={{
+                    legend: <span>Votre contribution sociale généralisée est de: <strong>{current.CSG} €<sup>/an</sup></strong></span>,
+                    value: current.CSG
+                  }}
                 />
               </Col>
               <Col sm={6}>
                 <ResultCard
-                  left={{
-                    legend: <span>Nouvel impôt<br /> citoyen sur les<br /> revenus</span>,
-                    value: revolution.IR
-                  }}
-                  right={{
-                    legend: <span>CSG progressive</span>,
-                    value: revolution.CSG
-                  }}
                   color="blue"
                   title="Avec la Révolution Fiscale"
                   total={revolution.total}
+                  top={{
+                    legend: <span>Votre impôt sur le revenu sera de : <strong>{revolution.IR} €<sup>/an</sup></strong></span>,
+                    value: revolution.IR
+                  }}
+                  bottom={{
+                    legend: <span>Votre contribution sociale généralisée sera de: <strong>{revolution.CSG}</strong></span>,
+                    value: revolution.CSG
+                  }}                  
                 />
               </Col>
             </Row>
