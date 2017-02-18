@@ -71,7 +71,7 @@ class DesignedApp extends Component {
                     legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
                     value: current.CSG
                   }}
-                  title={<span>Inmposition <b>actuelle</b></span>}
+                  title={<span>Inmposition <strong>actuelle</strong></span>}
                   total={current.total}
                 />
               </Col>
