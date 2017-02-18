@@ -9,7 +9,7 @@ $blue: #33B9D3;
 .ResultCard {
   border-radius: 8px;
   box-shadow: 0 2px 12px transparentize(#000, 0.88);
-  padding: 26px 0 0;
+  padding: 26px 30px 0;
 
   @media (max-width: 767px) {
     margin-bottom: 31px;
@@ -25,13 +25,21 @@ $blue: #33B9D3;
     @media (max-width: 767px) {margin-bottom: 18px;}
   }
 
-  .left {
-    display: inline-block;
-    width: 90%;
+  .content {
+    display: table;
   }
+
+  .left,
+  .right {
+    display: table-cell;
+    height: 100%;
+  }
+
+  .left {width: calc(100% - 18px);}
 
   ul {
     list-style: none;
+    margin: 0;
     text-align: left;
   }
 
@@ -58,11 +66,6 @@ $blue: #33B9D3;
   sup {
     position: relative;
     top: -1px;
-  }
-
-  .right {
-    display: inline-block;
-    width: 10%;
   }
 
   .total {

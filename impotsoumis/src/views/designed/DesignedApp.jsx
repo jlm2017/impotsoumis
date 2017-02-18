@@ -60,25 +60,25 @@ class DesignedApp extends Component {
             </div>
 
             <Row>
-              <Col sm={6}>
+              <Col sm={6} md={5} offset={{md: 1}}>
                 <ResultCard
                   color="red"
-                  title={<span>Inmposition <strong>actuelle</strong></span>}
+                  title={<span>Imposition <strong>actuelle</strong></span>}
                   total={current.total} 
                   top={{
-                    legend: <span>Votre impôt sur le revenu est de : <strong>{current.IR} €<sup>/an</sup></strong></span>,
+                    legend: <span>Votre impôt<br /> sur le revenu<br /> est de :<br /> <strong>{current.IR} €<sup>/an</sup></strong></span>,
                     value: current.IR
                   }}
                   bottom={{
-                    legend: <span>Votre contribution sociale généralisée est de: <strong>{current.CSG} €<sup>/an</sup></strong></span>,
+                    legend: <span>Votre contribution<br /> sociale généralisée<br /> est de:<br /><strong>{current.CSG} €<sup>/an</sup></strong></span>,
                     value: current.CSG
                   }}
                 />
               </Col>
-              <Col sm={6}>
+              <Col sm={6} md={5}>
                 <ResultCard
                   color="blue"
-                  title="Avec la Révolution Fiscale"
+                  title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
                   total={revolution.total}
                   top={{
                     legend: <span>Votre impôt sur le revenu sera de : <strong>{revolution.IR} €<sup>/an</sup></strong></span>,

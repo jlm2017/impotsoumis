@@ -7,13 +7,14 @@ $blue: #33B9D3;
   border-radius: 100px;
   height: 100%;
   overflow: hidden;
-  width: 44px;
+  width: 18px;
 
   .top,
   .bottom {
     display: inline-block;
     height: 50%;
     transition: .7s height;
+    width: 100%;
   }
 
   &.red {

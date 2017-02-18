@@ -8,16 +8,14 @@ export default ({ color, top, bottom }) => {
 
   return (
     <div className={`ResultChart ${color}`}>
-      <div>
-        <span
-          className="top"
-          style={{width: `${topRatio}%`}}
-        ></span>
-        <span
-          className="bottom"
-          style={{width: `${bottomRatio}%`}}
-        ></span>
-      </div>
+      <span
+        className="top"
+        style={{height: `${topRatio}%`}}
+      ></span>
+      <span
+        className="bottom"
+        style={{height: `${bottomRatio}%`}}
+      ></span>
     </div>
   );
 };
