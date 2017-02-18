@@ -63,16 +63,10 @@ class DesignedApp extends Component {
               <Col sm={6}>
                 <ResultCard
                   color="red"
-                  left={{
-                    legend: <span>Impôt<br /> sur le revenu<br /> (IR)</span>,
-                    value: current.IR
-                  }}
-                  right={{
-                    legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
-                    value: current.CSG
-                  }}
                   title={<span>Inmposition <strong>actuelle</strong></span>}
-                  total={current.total}
+                  total={current.total} 
+                  top={<span>Votre impôt sur le revenu est de : <strong>{current.IR}</strong></span>}
+                  bottom={<span>Votre impôt sur le revenu est de : <strong>{current.CSG}</strong></span>}
                 />
               </Col>
               <Col sm={6}>
