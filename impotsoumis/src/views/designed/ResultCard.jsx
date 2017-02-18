@@ -1,4 +1,5 @@
 import React from 'react';
+import{ Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
 
 import AnimatedNumber from './AnimatedNumber.jsx';
@@ -9,19 +10,20 @@ export default ({ color, top, bottom, title, total }) => {
   return (
     <div className={`ResultCard ${color}`}>
       <h3>{title}</h3>
-      <div className="content">
-        <div className="left">
+      <Row>
+        <Col xs={9}>
           <ul>
             <li>{top.legend}</li>
             <li>{bottom.legend}</li>
           </ul>
-        </div>
-        <div className="right">
+        </Col>
+        <Col xs={2} offset={{xs: 1}}>
           <Chart color={color} top={top.value} bottom={bottom.value} />
-        </div>
-      </div>
+        </Col>
+      </Row>
       <div className="total">
-        Total
+        Total<br />
+        <strong>{total} €/<sup>an</sup></strong>
       </div>
     </div>
   );

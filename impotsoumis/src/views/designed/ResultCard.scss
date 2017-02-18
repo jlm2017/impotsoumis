@@ -25,18 +25,6 @@ $blue: #33B9D3;
     @media (max-width: 767px) {margin-bottom: 18px;}
   }
 
-  .content {
-    display: table;
-  }
-
-  .left,
-  .right {
-    display: table-cell;
-    height: 100%;
-  }
-
-  .left {width: calc(100% - 18px);}
-
   ul {
     list-style: none;
     margin: 0;
@@ -44,23 +32,29 @@ $blue: #33B9D3;
   }
 
   li {
-    margin-bottom: 10px;
+    margin-left: 25px;
+    margin-bottom: 25px;
+
 
     &:before {
       content: '';
       display: inline-block;
-      height: 16px;
-      width: 16px;      
+      height: 9.5px;
+      position: relative;
+      top: -2px;
+      width: 9.5px;      
     } 
 
     span {
       display: inline-block;
-      font-size: 16px;
+      font-size: 14px;
       padding-left: 10px;
       text-transform: uppercase;
       vertical-align: top;
       width: calc(100% - 26px);      
     }   
+
+    strong {font-size: 30px;}
   }
 
   sup {
@@ -70,8 +64,13 @@ $blue: #33B9D3;
 
   .total {
     border-top: 1px solid $border;
-    margin: auto;
-    width: 386px;
+    font-weight: 700;
+    margin: 12px auto;
+    padding: 12px 0;
+    text-transform: uppercase;
+    width: 95%;  
+
+    strong {font-size: 30px;}  
   }
 
   &.red {
@@ -87,6 +86,8 @@ $blue: #33B9D3;
       color: $darkred;
       &:before {background: $darkred;}
     }
+
+    .total {color: $darkred;}
   }
 
   &.blue {
@@ -102,5 +103,7 @@ $blue: #33B9D3;
       color: $darkblue;
       &:before {background: $darkblue;}
     }
+
+    .total {color: $darkblue;}
   }
 }

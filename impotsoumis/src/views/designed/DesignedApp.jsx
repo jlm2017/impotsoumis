@@ -36,7 +36,6 @@ class DesignedApp extends Component {
 
             <Filters {...this.props} />
 
-
             <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
               Vous gagnez
               <AnimatedNumber
@@ -57,7 +56,7 @@ class DesignedApp extends Component {
                   value={gain}
                 />
                 € en <span className="sign">plus</span> par an <br/>pour la solidarité nationale.
-            </div>
+            </div>             
 
             <Row>
               <Col sm={6} md={5} offset={{md: 1}}>
@@ -66,11 +65,11 @@ class DesignedApp extends Component {
                   title={<span>Imposition <strong>actuelle</strong></span>}
                   total={current.total} 
                   top={{
-                    legend: <span>Votre impôt<br /> sur le revenu<br /> est de :<br /> <strong>{current.IR} €<sup>/an</sup></strong></span>,
+                    legend: <span>Votre impôt sur le revenu est de :<br /><strong>{current.IR} €<sup>/an</sup></strong></span>,
                     value: current.IR
                   }}
                   bottom={{
-                    legend: <span>Votre contribution<br /> sociale généralisée<br /> est de:<br /><strong>{current.CSG} €<sup>/an</sup></strong></span>,
+                    legend: <span>Votre contribution sociale généralisée est de:<br /><strong>{current.CSG} €<sup>/an</sup></strong></span>,
                     value: current.CSG
                   }}
                 />
@@ -81,16 +80,16 @@ class DesignedApp extends Component {
                   title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
                   total={revolution.total}
                   top={{
-                    legend: <span>Votre impôt sur le revenu sera de : <strong>{revolution.IR} €<sup>/an</sup></strong></span>,
+                    legend: <span>Votre impôt sur le revenu sera de :<br /><strong>{revolution.IR} €<sup>/an</sup></strong></span>,
                     value: revolution.IR
                   }}
                   bottom={{
-                    legend: <span>Votre contribution sociale généralisée sera de: <strong>{revolution.CSG}</strong></span>,
+                    legend: <span>Votre contribution sociale généralisée sera de:<br /> <strong>{revolution.CSG} €<sup>/an</sup></strong></span>,
                     value: revolution.CSG
                   }}                  
                 />
               </Col>
-            </Row>
+            </Row>           
           </Col>
         </Row>
       </Container>
