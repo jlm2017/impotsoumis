@@ -91,6 +91,9 @@ $blue: #33B9D3;
   }
 
   &.red {
+    h3 b {
+      color: $red;
+    }
     .amount {color: $darkred}
 
     .legend {
