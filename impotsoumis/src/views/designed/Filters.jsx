@@ -8,8 +8,8 @@ import './Filters.css';
 
 export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
   const onlyNumber = (e) => {
-    if (e.target.value.length > 9) {
-      e.target.value = e.target.value.slice(0, 9);
+    if (e.target.value.length > 8) {
+      e.target.value = e.target.value.slice(0, 8);
     }
   };
 

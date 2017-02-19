@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
 
+numeral.register('locale', 'fr', {
+    delimiters: {
+        thousands: ' ',
+        decimal: ','
+    }
+});
+
+numeral.locale('fr');
+
 import Filters from './Filters.jsx';
 import AnimatedNumber from './AnimatedNumber.jsx';
 import ResultCard from './ResultCard.jsx';
@@ -36,7 +45,6 @@ class DesignedApp extends Component {
 
             <Filters {...this.props} />
 
-
             <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
               Vous gagnez
               <AnimatedNumber
@@ -57,40 +65,57 @@ class DesignedApp extends Component {
                   value={gain}
                 />
                 € en <span className="sign">plus</span> par an <br/>pour la solidarité nationale.
-            </div>
+            </div>             
 
             <Row>
-              <Col sm={6}>
+              <Col sm={6} md={5} offset={{md: 1}}>
                 <ResultCard
                   color="red"
-                  left={{
-                    legend: <span>Impôt<br /> sur le revenu<br /> (IR)</span>,
+                  title={<span>Imposition <strong>actuelle</strong></span>}
+                  total={current.total} 
+                  top={{
+                    legend: 
+                      <span>Votre impôt sur le revenu est de :<br /><strong>            <AnimatedNumber
+                            format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                            value={current.IR}
+                          /> €<sup>/an</sup></strong></span>,
                     value: current.IR
                   }}
-                  right={{
-                    legend: <span>Contribution <br />sociale généralisée<br /> (CSG)</span>,
+                  bottom={{
+                    legend: 
+                    <span>Votre contribution sociale généralisée est de:<br /><strong>
+                    <AnimatedNumber
+                      format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                      value={current.CSG}
+                    /> €<sup>/an</sup></strong></span>,
                     value: current.CSG
                   }}
-                  title="Imposition actuelle"
-                  total={current.total}
                 />
               </Col>
-              <Col sm={6}>
+              <Col sm={6} md={5}>
                 <ResultCard
-                  left={{
-                    legend: <span>Nouvel impôt<br /> citoyen sur les<br /> revenus</span>,
+                  color="blue"
+                  title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
+                  total={revolution.total}
+                  top={{
+                    legend: <span>Votre impôt sur le revenu sera de :<br /><strong>   <AnimatedNumber
+                      format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                      value={revolution.IR}
+                    /> €<sup>/an</sup></strong></span>,
                     value: revolution.IR
                   }}
-                  right={{
-                    legend: <span>CSG progressive</span>,
+                  bottom={{
+                    legend: 
+                    <span>Votre contribution sociale généralisée sera de:<br /> <strong>
+                    <AnimatedNumber
+                        format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                        value={revolution.CSG}
+                      /> €<sup>/an</sup></strong></span>,
                     value: revolution.CSG
-                  }}
-                  color="blue"
-                  title="Avec la Révolution Fiscale"
-                  total={revolution.total}
+                  }}                  
                 />
               </Col>
-            </Row>
+            </Row>           
           </Col>
         </Row>
       </Container>

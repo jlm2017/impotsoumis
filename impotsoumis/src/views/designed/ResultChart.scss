@@ -5,42 +5,27 @@ $blue: #33B9D3;
 
 .ResultChart {
   border-radius: 100px;
-  height: 44px;
-  margin: auto;
+  height: 100%;
   overflow: hidden;
-  width: 75%;
+  width: 18px;
+  height: 200px;
+  margin: auto;
 
-  @media (max-width: 1039px) {width: 90%;}
-
-  .center,
-  .left,
-  .right {
-    color: #fff;
+  .top,
+  .bottom {
     display: inline-block;
-    font-size: 22px;
-    font-weight: 300;
-    line-height: 44px;
-  }
-
-  .left,
-  .right {
-    width: 50%;
-    transition: .7s width;
-
-    @media (max-width: 1039px) {
-      vertical-align: top;
-      font-size: 18px;
-    }
-    @media(max-width: 767px) {font-size: 16px;}
+    height: 50%;
+    transition: .7s height;
+    width: 100%;
   }
 
   &.red {
     background: $red;
-    .right {background: $darkred;}
+    .bottom {background: $darkred;}
   }
 
   &.blue {
     background: $blue;
-    .right {background: $darkblue;}
+    .bottom {background: $darkblue;}
   }
 }

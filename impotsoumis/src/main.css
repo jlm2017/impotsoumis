@@ -8,6 +8,9 @@ input {
   -moz-appearance: none;
   appearance: none; }
 
+strong {
+  font-weight: 700; }
+
 .align-center {
   display: flex;
   justify-content: center;
