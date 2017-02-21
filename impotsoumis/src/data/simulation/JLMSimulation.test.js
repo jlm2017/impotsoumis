@@ -4,7 +4,7 @@ import JLMSimulation from './JLMSimulation'
 
 var assert = require('assert');
 
-describe("Révolution fiscale ", () => {
+xdescribe("Révolution fiscale ", () => {
 
     describe("Test 2800 euros ", () => {
         describe('Le Revenu imposable par la part fiscale', () => {
