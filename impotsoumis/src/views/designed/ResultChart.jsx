@@ -4,7 +4,7 @@ import './ResultChart.css';
 
 export default ({ color, top, bottom }) => {
   let topRatio = top * 100 / (top + bottom);
-  let bottomRatio = 100 - topRatio;
+  let bottomRatio = bottom * 100 / (top + bottom);
 
   return (
     <div className={`ResultChart ${color}`}>
