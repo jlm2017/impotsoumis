@@ -17,8 +17,8 @@ function JLMSimulation(revenu_fiscal_ref, couple, nbenf) {
     var somme_apres_seuil_recouv = (d24 > seuil_recouv) ? d24 : 0
     var e24 = (d24 > 0) ? somme_apres_seuil_recouv : d24
 
+    var ir = e24 - calcul.csg
     var csg = calcul.csg
-    var ir = calcul.ir
 
     return {
         "revenu": {
@@ -44,7 +44,7 @@ function JLMSimulation(revenu_fiscal_ref, couple, nbenf) {
             "du": e24
         },
         "csg": csg,
-        "newIR": ir
+        "ir": ir
     }
 }
 
