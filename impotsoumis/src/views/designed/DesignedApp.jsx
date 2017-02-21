@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
+import Info from 'grommet/components/icons/base/Info';
+import Pulse from 'grommet/components/icons/Pulse';
+
 
 numeral.register('locale', 'fr', {
     delimiters: {
@@ -39,8 +42,8 @@ class DesignedApp extends Component {
         <Row>
           <Col>
             <h2>
-              <span>10 secondes</span> pour calculer votre imposition avec<br />
-              <strong>la Révolution Fiscale</strong>
+              <span>10 secondes</span> pour <b>simuler</b> votre imposition avec<br/>
+              <span className="laRevolution">la Révolution</span><br/><span className="fiscale">Fiscale</span>
             </h2>
 
             <Filters {...this.props} />
@@ -115,9 +118,21 @@ class DesignedApp extends Component {
                   }}                  
                 />
               </Col>
-            </Row>           
+            </Row>   
+
+            <br/>
+            <br/>
+            <br/>
+            <Pulse icon={<Info />} />
+            <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
+
           </Col>
+            <h2>Version<br/>
+            <span className="laRevolution">0.1</span><br/>
+            <span className="fiscale">22</span>
+            </h2>
         </Row>
+
       </Container>
     );
   }

@@ -1,5 +1,6 @@
 $main: #818080;
 $blue: #33B9D3;
+$red: #D1270C;
 
 .DesignedApp {
   color: $main;
@@ -15,7 +16,7 @@ $blue: #33B9D3;
 
   h2 {
     color: $blue;
-    font-weight: 400;
+    font-weight: 200;
     font-size: 24px;
     line-height: 29px;
     margin: 25px auto 34px;
@@ -30,6 +31,32 @@ $blue: #33B9D3;
     span {
       font-size: 28px;
       line-height: 34px;
+
+      @media (max-width: 767px) {
+        font-size: 24px;
+        line-height: 29px;
+      }
+    }
+
+    span.laRevolution {
+      font-family: Montserrat, sans-serif;
+      color: $blue;
+      font-weight: 800;
+      font-size: 25px;
+      text-transform: uppercase;
+
+      @media (max-width: 767px) {
+        font-size: 24px;
+        line-height: 29px;
+      }
+    }
+
+    span.fiscale {
+      font-family: Montserrat, sans-serif;
+      color: $red;
+      font-weight: 800;
+      font-size: 55px;
+      text-transform: uppercase;
 
       @media (max-width: 767px) {
         font-size: 24px;
@@ -58,8 +85,8 @@ $blue: #33B9D3;
     @media (max-width: 767px) {
       border-radius: 8px;
       box-shadow: 0 2px 12px transparentize(#000, .88);
-      font-size: 16px;
-      line-height: 19px;
+      font-size: 20px;
+      line-height: 20px;
       margin: 36px auto;
       padding: 25px 15px;
     }
