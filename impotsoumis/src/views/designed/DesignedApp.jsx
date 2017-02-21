@@ -76,7 +76,7 @@ class DesignedApp extends Component {
                   top={{
                     legend: 
                       <span>Votre impôt sur le revenu est de :<br /><strong>            <AnimatedNumber
-                            format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                            format={(val) => ` ${numeral(val).format('€0,0')} `}
                             value={current.IR}
                           /> €<sup>/an</sup></strong></span>,
                     value: current.IR
@@ -85,7 +85,7 @@ class DesignedApp extends Component {
                     legend: 
                     <span>Votre contribution sociale généralisée est de:<br /><strong>
                     <AnimatedNumber
-                      format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                      format={(val) => ` ${numeral(val).format('€0,0')} `}
                       value={current.CSG}
                     /> €<sup>/an</sup></strong></span>,
                     value: current.CSG
@@ -99,7 +99,7 @@ class DesignedApp extends Component {
                   total={revolution.total}
                   top={{
                     legend: <span>Votre impôt sur le revenu sera de :<br /><strong>   <AnimatedNumber
-                      format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                      format={(val) => ` ${numeral(val).format('€0,0')} `}
                       value={revolution.IR}
                     /> €<sup>/an</sup></strong></span>,
                     value: revolution.IR
@@ -108,7 +108,7 @@ class DesignedApp extends Component {
                     legend: 
                     <span>Votre contribution sociale généralisée sera de:<br /> <strong>
                     <AnimatedNumber
-                        format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+                        format={(val) => ` ${numeral(val).format('€0,0')} `}
                         value={revolution.CSG}
                       /> €<sup>/an</sup></strong></span>,
                     value: revolution.CSG
