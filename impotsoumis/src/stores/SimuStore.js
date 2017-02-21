@@ -24,6 +24,7 @@ class SimuStore extends ReduceStore {
         }
         return percentage
     }
+    
     generateSeries(net, retraite, chomage, couple, nbEnfants) {
         const userParams = UserParams(net, retraite, chomage, couple, nbEnfants)
         const irParams = IRParams(userParams)
@@ -34,7 +35,7 @@ class SimuStore extends ReduceStore {
 
         const IR = Math.round(simulation.impot.du.value) * 12,
               CSG = Math.round(simulation.csg.du.value) * 12,
-              NEW_IR = Math.round(jlmSimulation.newIR) * 12,
+              NEW_IR = Math.round(jlmSimulation.ir) * 12,
               CSG_P = Math.round(jlmSimulation.csg) * 12;
 
         return {
