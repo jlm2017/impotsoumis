@@ -25,7 +25,7 @@ export default ({ color, top, bottom, title, total }) => {
         Total<br />
         <strong>
             <AnimatedNumber
-              format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')} `}
+              format={(val) => ` ${numeral(val).format('€0,0')} `}
               value={total}
             />                  
            €<sup>/an</sup>
