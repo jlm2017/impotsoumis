@@ -14,17 +14,10 @@ function JLMSimulation(revenu_total, couple, nbenf) {
     var seuil_recouv = CurrentIR.seuilRecouvrement.value
 
     var somme = revenu_total.salarie + revenu_total.chomeur + revenu_total.retraite
-    console.log("somme")
-    console.log(somme)
 
     var diviseur = 1 + couple
-    console.log("diviseur")
-
-    console.log(diviseur)
-
+    // a24 = revenu imposable par part fiscale
     var a24 = somme / diviseur
-    console.log("a24")
-    console.log(a24)
 
     var calculSommeIR = CalculParTauxMoyen(a24, NewIR.bareme)
     var calculSommeCSG = CalculParTauxMoyen(a24, NewCSG.bareme)
@@ -33,15 +26,20 @@ function JLMSimulation(revenu_total, couple, nbenf) {
     var calculCSG = calculSommeCSG.total
     var calculIR = calculTotal - calculSommeCSG.total;
 
+    // b24 = impot par part fiscale avant ci qf
     var b24 = calculIR
 
+    // c24 = impot total
     var c24 = b24 * (1 + couple)
 
+    // d24 = impot après CI QF
     var d24 = c24 - cI_enfant * nbenf
 
     var somme_apres_seuil_recouv = (d24 > seuil_recouv)
         ? d24
         : 0
+
+    // e24 : Impot du (après seuil de recouvrement)
     var e24 = (d24 > 0)
         ? somme_apres_seuil_recouv
         : d24
@@ -52,7 +50,12 @@ function JLMSimulation(revenu_total, couple, nbenf) {
     return {
         "calcul": {
             "sommeIR": calculSommeIR,
-            "sommeCSG": calculSommeCSG
+            "sommeCSG": calculSommeCSG,
+            "a24": a24,
+            "b24": b24,
+            "c24": c24,
+            "d24": d24,
+            "e24": e24
         },
         "revenu": {
             "imposable": a24
