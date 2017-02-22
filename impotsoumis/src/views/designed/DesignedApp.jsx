@@ -145,7 +145,14 @@ class DesignedApp extends Component {
           <Pulse icon={<Info />} />
           <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
         </div>
-        <h2>Version: 0.1.26</h2>
+        <article>
+          <header>
+          Version
+          <h1>
+            0.<strong>30</strong>
+          </h1>
+        </header>
+          </article>
       </Container>
     );
   }
