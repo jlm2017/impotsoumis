@@ -9,18 +9,39 @@ $blue: #33B9D3;
 .ResultCard {
   border-radius: 8px;
   box-shadow: 0 2px 12px transparentize(#000, 0.88);
+  margin: auto;
   padding: 26px 30px 0;
+  width: 95%;
 
   @media (max-width: 767px) {
     margin-bottom: 31px;
     padding-bottom: 4px;
   }
 
-  h3 {
+  h2 {
     color: $main;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+
+    @media (max-width: 1039px) {font-size: 18px;}
+    @media (max-width: 767px) {font-size: 15px;}
+  }
+
+  .content {
+    display: table;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+
+  .left,
+  .right {display: table-cell;}
+
+  .left {
+    padding: 0 5px 0 10px;
+    width: 90%;
+
+    @media (max-width: 767px) {padding: 0;}
   }
 
   ul {
@@ -30,16 +51,16 @@ $blue: #33B9D3;
   }
 
   li {
-    margin-bottom: 25px;
+    &:first-child {margin-bottom: 25px;}
 
     &:before {
       content: '';
       display: inline-block;
-      height: 9.5px;
+      height: 10px;
       position: relative;
       top: -2px;
-      width: 9.5px;      
-    } 
+      width: 10px;
+    }
 
     > span {
       display: inline-block;
@@ -47,10 +68,19 @@ $blue: #33B9D3;
       padding-left: 10px;
       text-transform: uppercase;
       vertical-align: top;
-      width: calc(100% - 26px);      
-    }   
+      width: calc(100% - 20px);
 
-    strong {font-size: 30px;}
+      @media (max-width: 1039px) {font-size: 13px;}
+      @media (max-width: 767px) {font-size: 12px;}
+    }
+
+    strong {
+      display: block;
+      font-size: 30px;
+
+      @media (max-width: 1039px) {font-size: 28px;}
+      @media (max-width: 767px) {font-size: 24px;}
+    }
   }
 
   sup {
@@ -61,19 +91,28 @@ $blue: #33B9D3;
     font-weight: 400;
   }
 
+  .right {
+    height: 100%;
+    width: 10%;
+  }
+
   .total {
     border-top: 1px solid $border;
     font-weight: 700;
     margin: 12px auto;
     padding: 12px 0;
     text-transform: uppercase;
-    width: 95%;  
 
-    strong {font-size: 30px;}  
+    strong {
+      font-size: 30px;
+
+      @media (max-width: 1039px) {font-size: 28px;}
+      @media (max-width: 767px) {font-size: 24px;}
+    }
   }
 
   &.red {
-    h3 strong {
+    h2 strong {
       color: $red;
     }
 
@@ -86,11 +125,11 @@ $blue: #33B9D3;
       &:before {background: $darkred;}
     }
 
-    .total {color: $darkred;}
+    .total {color: $red;}
   }
 
   &.blue {
-    h3 strong {
+    h2 strong {
       color: $blue;
     }
 
@@ -103,6 +142,6 @@ $blue: #33B9D3;
       &:before {background: $darkblue;}
     }
 
-    .total {color: $darkblue;}
+    .total {color: $blue;}
   }
 }

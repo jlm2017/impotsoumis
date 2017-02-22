@@ -1,0 +1,40 @@
+$facebook: #3b5998;
+$twitter: #4099FF;
+
+.ShareButtons {
+  margin-top: 30px;
+
+  @media (max-width: 767px) {margin-top: 20px;}
+
+  .facebook,
+  .twitter {
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    line-height: 45px;
+    margin: 0 15px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .1s linear;
+    width: 310px;
+
+    @media (max-width: 767px) {
+      font-size: 14px;
+      margin: 5px 0;
+      width: 100%;
+    }
+  }
+
+  .facebook {
+    background: $facebook;
+
+    &:hover {background: lighten($facebook, 8%);}
+  }
+
+  .twitter {
+    background: $twitter;
+
+    &:hover {background: lighten($twitter, 5%);}
+  }
+}
