@@ -12,12 +12,12 @@ $red: #D1270C;
     color: $blue;
     font-size: 24px;
     line-height: 29px;
-    margin: 30px auto 34px;
+    margin: 50px auto 35px;
 
     @media (max-width: 767px) {
       font-size: 20px;
       line-height: 25px;
-      margin: 15px auto 34px;
+      margin: 25px auto;
     }
 
     h1 {
@@ -164,6 +164,22 @@ $red: #D1270C;
           }
         }
       }
+    }
+  }
+
+  .disclaimer {
+    margin: 45px 0;
+
+    .grommetux-pulse {
+      margin-bottom: 15px;
+      pointer-events: none;
+
+      svg {
+        background: $blue;
+        stroke: #fff;
+      }
+
+      .grommetux-pulse__icon-anim {border-color: $blue;}
     }
   }
 }
