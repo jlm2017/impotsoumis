@@ -6,7 +6,7 @@ export default ({ gain }) => {
   let twitterText = `Avec la #RévolutionFiscale de Mélenchon, je gagne ${gain} €. Testez vous aussi ! #JLM2017 ${window.location.href}`;
 
   if (gain < 0) {
-    twitterText = `Avec la #RévolutionFiscale de Mélenchon, je contribue de ${Math.abs(gain)}€ pour la solidarité nationale. Testez-vous aussi ! #JLM2017 ${window.location.href}`;
+    twitterText = `Avec la #RévolutionFiscale de Mélenchon, je contribue pour ${Math.abs(gain)}€ à la solidarité nationale. Testez ! #JLM2017 ${window.location.href}`;
   }
 
   return (
