@@ -149,7 +149,7 @@ class DesignedApp extends Component {
             <header>
               Version
               <h1>
-                0.<strong>32</strong>
+                0.<strong>34</strong>
               </h1>
             </header>
         </div>
