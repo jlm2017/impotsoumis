@@ -141,7 +141,7 @@ class DesignedApp extends Component {
           </Col>
             <h2>Version<br/>
             <span className="laRevolution">0.1</span><br/>
-            <span className="fiscale">23</span>
+            <span className="fiscale">24</span>
             </h2>
         </Row>
 

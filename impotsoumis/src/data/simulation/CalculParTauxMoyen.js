@@ -1,7 +1,11 @@
 import TauxEffectif from './TauxEffectif'
 
 function _calcul_derniereTranche_taux_marginal(revenu, tranche) {
-    return tranche.min * tranche.tauxMin + (revenu - tranche.min) * tranche.tauxMax
+    return {
+        "revenu": revenu,
+        "taux": tranche.tauxMax,
+        "total": revenu * tranche.tauxMin + (revenu - tranche.min) * tranche.tauxMax
+    }
 }
 
 function CalculParTauxMoyen(revenu, tranches) {
@@ -15,7 +19,7 @@ function CalculParTauxMoyen(revenu, tranches) {
                 "total": revenu * tranche.tauxMin
             }
         }
-        
+
         if (revenu === tranche.max) {
             return {
                 "revenu": revenu,

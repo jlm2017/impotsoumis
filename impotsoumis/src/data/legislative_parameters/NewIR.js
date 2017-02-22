@@ -89,7 +89,7 @@ const NewIR = {
             "name": "90%",
             "min": 33000,
             "max": Number.MAX_SAFE_INTEGER,
-            "tauxMin": 0.9,
+            "tauxMin": 0.6,
             "tauxMax": 0.9
         }
     ]
