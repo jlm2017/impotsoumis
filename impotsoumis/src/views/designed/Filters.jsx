@@ -37,11 +37,9 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             value={(net === 0) ? "" : net}
           />
         </div>
-        {/*
         <div className="pension">
           <div className="left">
             <label htmlFor="retraite">Pensions de retraite</label>
-            <br/>
             <input
               id="retraite"
               placeholder="en €/mois"
@@ -65,7 +63,6 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             />
           </div>
         </div>
-        */}
       </div>
       <div className="right">
         <div className="situation">
