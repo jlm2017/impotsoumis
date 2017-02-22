@@ -161,7 +161,7 @@ class DesignedApp extends Component {
           <p>[D24] : Impot après CI QF : {developer.d24}</p>
           <p>[E24] : Impot du après seuil recouvrement : {developer.e24}</p>
         </div>
-        <h2 className="hide">Version: 0.1.24</h2>
+        <h2>Version: 0.1.27</h2>
       </Container>
     );
   }
