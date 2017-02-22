@@ -41,7 +41,6 @@ class DesignedApp extends Component {
 
     return (
       <Container className="DesignedApp">
-
         <header>
           10 secondes<br />
           pour <strong>simuler</strong> votre imposition avec<br />
@@ -141,18 +140,19 @@ class DesignedApp extends Component {
           </Col>
         </Row>
 
-        <div className="disclaimer">
-          <Pulse icon={<Info />} />
-          <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
+          <div className="disclaimer">
+            <Pulse icon={<Info />} />
+            <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
+          </div>
+
+          <div>
+            <header>
+              Version
+              <h1>
+                0.<strong>31</strong>
+              </h1>
+            </header>
         </div>
-        <article>
-          <header>
-          Version
-          <h1>
-            0.<strong>30</strong>
-          </h1>
-        </header>
-          </article>
       </Container>
     );
   }
