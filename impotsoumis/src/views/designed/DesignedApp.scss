@@ -167,9 +167,9 @@ $red: #D1270C;
   }
 
   .disclaimer {
-    margin: 50px 0 80px;
+    margin: 50px 0;
 
-    @media (max-width: 767px) {margin: 15px 0 60px;}
+    @media (max-width: 767px) {margin: 15px;}
 
     .grommetux-pulse {
       margin-bottom: 15px;
@@ -182,5 +182,43 @@ $red: #D1270C;
 
       .grommetux-pulse__icon-anim {border-color: $blue;}
     }
+  }
+}
+
+.video {
+  background: $blue;
+  margin-bottom: 80px;
+  padding: 30px 0;
+  text-align: center;
+
+  h2 {
+    color: #fff;
+    font-size: 35px;
+    line-height: 40px;
+
+    @media (max-width: 767px) {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  strong {text-transform: uppercase;}
+}
+
+.version {
+  color: $blue;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 50px auto 35px;
+  text-align: center;
+
+  h1 {
+    color: $blue;
+    font-size: 42px;
+    line-height: 54px;
+    font-weight: 700;
+    text-transform: uppercase;
+
+    strong {color: $red;}
   }
 }
