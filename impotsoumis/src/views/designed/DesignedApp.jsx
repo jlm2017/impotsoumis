@@ -48,18 +48,6 @@ class DesignedApp extends Component {
 
             <Filters {...this.props} />
 
-            <p>[Calcul Nouvel Impot Citoyen]<br/>R = {developer.sommeIR.revenu}.<br/>t = {developer.sommeIR.taux}.<br/>R * t = {developer.sommeIR.total}. <br/> R * t * 12 = {developer.sommeIR.total * 12}.</p>
-            <p>[Calcul Nouvelle CSG]<br/>R = {developer.sommeCSG.revenu}.<br/>t = {developer.sommeCSG.taux}.<br/>R*t = {developer.sommeCSG.total}.<br/> R * t * 12 = {developer.sommeCSG.total * 12}.</p>
-            <hr/>
-            <p>[A24] : Revenu imposable par part fiscale: {developer.a24}</p>
-            <p>Nouvel Impot Citoyen = Nouveau IR + Nouvelle CSG  : {developer.sommeIR.total}</p>
-            <p>Dont Nouveau IR : {developer.sommeIR.total - developer.sommeCSG.total}</p>
-            <p>Dont Nouveau CSG : {developer.sommeCSG.total}</p>
-
-            <p>[B24] : Impot par part fiscale avant CI QF (avec soustraction CSG) {developer.b24}</p>
-            <p>[C24] : Impot total : {developer.c24}</p>
-            <p>[D24] : Impot après CI QF : {developer.d24}</p>
-            <p>[E24] : Impot du après seuil recouvrement : {developer.e24}</p>
             <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
               Vous gagnez
               <AnimatedNumber
@@ -139,6 +127,19 @@ class DesignedApp extends Component {
             <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
 
           </Col>
+          <h2>Developer Data</h2>
+            <p>[Calcul Nouvel Impot Citoyen]<br/>R = {developer.sommeIR.revenu}.<br/>t = {developer.sommeIR.taux}.<br/>R * t = {developer.sommeIR.total}. <br/> R * t * 12 = {developer.sommeIR.total * 12}.</p>
+            <p>[Calcul Nouvelle CSG]<br/>R = {developer.sommeCSG.revenu}.<br/>t = {developer.sommeCSG.taux}.<br/>R*t = {developer.sommeCSG.total}.<br/> R * t * 12 = {developer.sommeCSG.total * 12}.</p>
+            <hr/>
+            <p>[A24] : Revenu imposable par part fiscale: {developer.a24}</p>
+            <p>Nouvel Impot Citoyen = Nouveau IR + Nouvelle CSG  : {developer.sommeIR.total}</p>
+            <p>Dont Nouveau IR : {developer.sommeIR.total - developer.sommeCSG.total}</p>
+            <p>Dont Nouveau CSG : {developer.sommeCSG.total}</p>
+
+            <p>[B24] : Impot par part fiscale avant CI QF (avec soustraction CSG) {developer.b24}</p>
+            <p>[C24] : Impot total : {developer.c24}</p>
+            <p>[D24] : Impot après CI QF : {developer.d24}</p>
+            <p>[E24] : Impot du après seuil recouvrement : {developer.e24}</p>
             <h2>Version<br/>
             <span className="laRevolution">0.1</span><br/>
             <span className="fiscale">24</span>
