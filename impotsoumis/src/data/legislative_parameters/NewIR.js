@@ -23,7 +23,7 @@ const NewIR = {
             "name": "6%",
             "min": 800,
             "max": 1300,
-            "tauxMin": 0.03,
+            "tauxMin": 0.04,
             "tauxMax": 0.06
         }, {
             "name": "8%",
