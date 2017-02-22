@@ -35,7 +35,7 @@ class DesignedApp extends Component {
   }
 
   render() {
-    const { current, revolution, gain } = this.props.results;
+    const { current, revolution, gain, developer } = this.props.results;
 
     return (
       <Container className="DesignedApp">
@@ -48,6 +48,8 @@ class DesignedApp extends Component {
 
             <Filters {...this.props} />
 
+            <p>[IR]<br/>R = {developer.sommeIR.revenu}.<br/>t = {developer.sommeIR.taux}.<br/>R * t = {developer.sommeIR.total}. <br/> R * t * 12 = {developer.sommeIR.total * 12}.</p>
+            <p>[CSG]<br/>R = {developer.sommeCSG.revenu}.<br/>t = {developer.sommeCSG.taux}.<br/>R*t = {developer.sommeCSG.total}.<br/> R * t * 12 = {developer.sommeCSG.total * 12}.</p>
             <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
               Vous gagnez
               <AnimatedNumber

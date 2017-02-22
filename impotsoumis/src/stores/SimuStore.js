@@ -31,8 +31,16 @@ class SimuStore extends ReduceStore {
 
         const simulation = Simulation(irParams.revenu.fiscalDeReference, userParams.nbPartsFiscales.value, couple, irParams.csg.taux.plein.salarie, irParams.csg.taux.reduit.salarie)
 
-        const jlmSimulation = JLMSimulation(irParams.revenu.fiscalDeReference, couple, nbEnfants)
-
+        const newRFR = {
+            "salarie": net,
+            "chomeur": chomage,
+            "retraite": retraite
+        }
+        console.log("newRFR")
+        console.log(newRFR)
+        const jlmSimulation = JLMSimulation(newRFR, couple, nbEnfants)
+        //console.log("jlmSimulation")
+        //console.log(jlmSimulation)
         const IR = Math.round(simulation.impot.du.value) * 12,
               CSG = Math.round(simulation.csg.du.value) * 12,
               NEW_IR = Math.round(jlmSimulation.ir) * 12,
@@ -49,7 +57,8 @@ class SimuStore extends ReduceStore {
                 CSG: CSG_P,
                 total: NEW_IR + CSG_P
             },
-            gain: (IR + CSG) - (NEW_IR + CSG_P)
+            gain: (IR + CSG) - (NEW_IR + CSG_P),
+            developer: jlmSimulation.calcul
         };
     }
 
