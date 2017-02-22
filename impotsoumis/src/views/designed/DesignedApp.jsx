@@ -6,17 +6,19 @@ import Pulse from 'grommet/components/icons/Pulse';
 
 
 numeral.register('locale', 'fr', {
-    delimiters: {
-        thousands: ' ',
-        decimal: ','
-    }
+  delimiters: {
+    thousands: ' ',
+    decimal: ','
+  }
 });
 
 numeral.locale('fr');
 
 import Filters from './Filters.jsx';
 import AnimatedNumber from './AnimatedNumber.jsx';
+import ShareButtons from './ShareButtons.jsx';
 import ResultCard from './ResultCard.jsx';
+
 import './DesignedApp.css';
 
 class DesignedApp extends Component {
@@ -41,84 +43,95 @@ class DesignedApp extends Component {
       <Container className="DesignedApp">
         <Row>
           <Col>
-            <h2>
-              <span>10 secondes</span> pour <b>simuler</b> votre imposition avec<br/>
-              <span className="laRevolution">la Révolution</span><br/><span className="fiscale">Fiscale</span>
-            </h2>
+            <header>
+              10 secondes<br />
+              pour <strong>simuler</strong> votre imposition avec<br />
+              <h1>
+                La Révolution <strong>Fiscale</strong>
+              </h1>
+            </header>
 
-            <Filters {...this.props} />
+        <Filters {...this.props} />
 
-            <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
-              Vous gagnez
-              <AnimatedNumber
-                format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-                value={gain}
-              />
-              €<br />
-              en <span className="sign">plus</span> par an.
-            </div>
-            <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
-              <div className="negative">
-              Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
-              % les plus riches.
-              </div>
-                <span className="smallTitle">Vous contribuez à hauteur de</span><br/>
+        <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
+          Vous gagnez
+          <AnimatedNumber
+            format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+            value={gain}
+          />
+          €<br />
+          en <span className="sign">plus</span> par an.
+
+          <ShareButtons gain={gain} />
+        </div>
+
+        <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
+          <div className="negative">
+            Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
+            % les plus riches.<br />
+            Vous contribuez à hauteur de
+          </div>
+          <AnimatedNumber
+            format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+            value={gain}
+          />
+          € en <span className="sign">plus</span> par an <br />
+          pour la solidarité nationale.
+
+          <ShareButtons gain={gain} />
+        </div>
+
+        <Row>
+          <Col sm={6} md={5} offset={{md: 1}}>
+            <ResultCard
+              color="red"
+              title={<span>Imposition <strong>actuelle</strong></span>}
+              total={current.total}
+              top={{
+                legend:
+                <span>Votre impôt sur le revenu est de :<br /><strong>
                 <AnimatedNumber
-                  format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-                  value={gain}
-                />
-                € en <span className="sign">plus</span> par an <br/>pour la solidarité nationale.
-            </div>             
-
-            <Row>
-              <Col sm={6} md={5} offset={{md: 1}}>
-                <ResultCard
-                  color="red"
-                  title={<span>Imposition <strong>actuelle</strong></span>}
-                  total={current.total} 
-                  top={{
-                    legend: 
-                      <span>Votre impôt sur le revenu est de :<br /><strong>            <AnimatedNumber
-                            format={(val) => ` ${numeral(val).format('€0,0')} `}
-                            value={current.IR}
-                          /> €<sup>/an</sup></strong></span>,
-                    value: current.IR
-                  }}
-                  bottom={{
-                    legend: 
-                    <span>Votre contribution sociale généralisée est de:<br /><strong>
+                  format={(val) => ` ${numeral(val).format('€0,0')} `}
+                  value={current.IR}
+                /> €<sup>/an</sup></strong></span>,
+                value: current.IR
+              }}
+              bottom={{
+                legend: (
+                  <span>Votre contribution sociale généralisée est de:<br /><strong>
+                  <AnimatedNumber
+                    format={(val) => ` ${numeral(val).format('€0,0')} `}
+                    value={current.CSG}
+                  /> €<sup>/an</sup></strong></span>
+                ),
+                value: current.CSG
+              }} />
+            </Col>
+            <Col sm={6} md={5}>
+              <ResultCard
+                color="blue"
+                title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
+                total={revolution.total}
+                top={{
+                  legend: <span>Votre impôt sur le revenu sera de :<br /><strong>
+                  <AnimatedNumber
+                    format={(val) => ` ${numeral(val).format('€0,0')} `}
+                    value={revolution.IR}
+                  /> €<sup>/an</sup></strong></span>,
+                  value: revolution.IR
+                }}
+                bottom={{
+                  legend:
+                  <span>Votre contribution sociale généralisée sera de:<br /> <strong>
                     <AnimatedNumber
                       format={(val) => ` ${numeral(val).format('€0,0')} `}
-                      value={current.CSG}
+                      value={revolution.CSG}
                     /> €<sup>/an</sup></strong></span>,
-                    value: current.CSG
-                  }}
-                />
-              </Col>
-              <Col sm={6} md={5}>
-                <ResultCard
-                  color="blue"
-                  title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
-                  total={revolution.total}
-                  top={{
-                    legend: <span>Votre impôt sur le revenu sera de :<br /><strong>   <AnimatedNumber
-                      format={(val) => ` ${numeral(val).format('€0,0')} `}
-                      value={revolution.IR}
-                    /> €<sup>/an</sup></strong></span>,
-                    value: revolution.IR
-                  }}
-                  bottom={{
-                    legend: 
-                    <span>Votre contribution sociale généralisée sera de:<br /> <strong>
-                    <AnimatedNumber
-                        format={(val) => ` ${numeral(val).format('€0,0')} `}
-                        value={revolution.CSG}
-                      /> €<sup>/an</sup></strong></span>,
                     value: revolution.CSG
-                  }}                  
+                  }}
                 />
               </Col>
-            </Row>   
+            </Row>
 
             <br/>
             <br/>
@@ -151,4 +164,4 @@ class DesignedApp extends Component {
   }
 };
 
-export default DesignedApp;
+    export default DesignedApp;

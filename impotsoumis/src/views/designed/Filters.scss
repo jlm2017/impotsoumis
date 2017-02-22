@@ -9,10 +9,14 @@ $blue: #33B9D3;
   display: table;
   border-radius: 8px;
   box-shadow: 0 2px 12px transparentize(#000, .88);
+  height: 275px;
   position: relative;
   width: 100%;
 
-  @media (max-width: 767px) {display: block;}
+  @media (max-width: 767px) {
+    display: block;
+    height: auto;
+  }
 
   .left,
   .right {
@@ -27,6 +31,7 @@ $blue: #33B9D3;
 
   .left {
     border-right: 1px solid $border;
+    vertical-align: middle;
     width: calc(50% - 1px);
 
     @media (max-width: 767px) {
@@ -35,7 +40,7 @@ $blue: #33B9D3;
     }
   }
 
-  .revenu,
+  //.revenu,
   .situation {border-bottom: 1px solid $border;}
 
   input {
@@ -67,9 +72,13 @@ $blue: #33B9D3;
   }
 
   .revenu {
-    padding: 34px 0 28px;
+    //padding: 34px 0 28px;
+    vertical-align: middle;
 
-    @media (max-width: 767px) {padding: 25px 0 22px;}
+    @media (max-width: 767px) {
+      border-bottom: 1px solid $border;
+      padding: 25px 0 22px;
+    }
 
     label {
       display: inline-block;
@@ -98,7 +107,7 @@ $blue: #33B9D3;
 
       @media (max-width: 767px) {
         display: table-cell;
-        padding: 18px 12px 20px;
+        padding: 18px 15px 20px;
         width: 50%;
       }
     }
@@ -117,15 +126,19 @@ $blue: #33B9D3;
       margin-top: 13px;
       width: 58%;
 
-      @media (max-width: 767px) {margin-top: 2px;}
+      @media (max-width: 767px) {
+        margin-top: 2px;
+        width: 85%;
+      }
     }
   }
 
   .situation {
     font-size: 14px;
-    padding-bottom: 48px;
+    padding: 40px 0;
+    //padding-bottom: 50px;
 
-    @media (max-width: 767px) {padding-top: 15px;}
+    @media (max-width: 767px) {padding: 15px 0 0;}
 
     p {margin-bottom: 13px;}
 
@@ -160,7 +173,9 @@ $blue: #33B9D3;
   }
 
   .enfant {
-    @media (max-width: 767px) {padding-bottom: 25px;}
+    padding-top: 10px;
+
+    @media (max-width: 767px) {padding: 0 0 25px;}
 
     p {
       font-size: 14px;

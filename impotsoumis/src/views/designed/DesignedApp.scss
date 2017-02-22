@@ -8,70 +8,31 @@ $red: #D1270C;
   padding-bottom: 80px;
   text-align: center;
 
-  .smallTitle {
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 30px;
-  }
-
-  h2 {
+  header {
     color: $blue;
-    font-weight: 200;
     font-size: 24px;
     line-height: 29px;
-    margin: 25px auto 34px;
-    width: 70%;
+    margin: 30px auto 34px;
 
     @media (max-width: 767px) {
       font-size: 20px;
-      line-height: 24px;
-      margin: 32px auto 34px;
+      line-height: 25px;
+      margin: 15px auto 34px;
     }
 
-    span {
-      font-size: 28px;
-      line-height: 34px;
-
-      @media (max-width: 767px) {
-        font-size: 24px;
-        line-height: 29px;
-      }
-    }
-
-    span.laRevolution {
-      font-family: Montserrat, sans-serif;
+    h1 {
       color: $blue;
-      font-weight: 800;
-      font-size: 25px;
+      font-size: 42px;
+      line-height: 54px;
+      font-weight: 700;
       text-transform: uppercase;
 
       @media (max-width: 767px) {
-        font-size: 24px;
-        line-height: 29px;
+        font-size: 30px;
+        line-height: 35px;
       }
-    }
 
-    span.fiscale {
-      font-family: Montserrat, sans-serif;
-      color: $red;
-      font-weight: 800;
-      font-size: 55px;
-      text-transform: uppercase;
-
-      @media (max-width: 767px) {
-        font-size: 24px;
-        line-height: 29px;
-      }
-    }
-
-    strong {
-      font-size: 36px;
-      line-height: 44px; 
-
-      @media (max-width: 767px) {
-        font-size: 28px;
-        line-height: 34px;
-      }
+      strong {color: $red;}
     }
   }
 
@@ -80,13 +41,13 @@ $red: #D1270C;
     font-size: 36px;
     font-weight: 700;
     line-height: 40px;
-    margin: 40px auto 35px;
+    margin: 50px auto 45px;
 
     @media (max-width: 767px) {
       border-radius: 8px;
       box-shadow: 0 2px 12px transparentize(#000, .88);
-      font-size: 20px;
-      line-height: 20px;
+      font-size: 22px;
+      line-height: 26px;
       margin: 36px auto;
       padding: 25px 15px;
     }
@@ -104,10 +65,10 @@ $red: #D1270C;
 
       @media (max-width: 767px) {
         border-width: 2px;
-        height: 18px;
-        margin: 0 6px;
-        top: 3px;
-        width: 18px;
+        height: 22px;
+        margin: 0 2px;
+        top: 4px;
+        width: 22px;
       }
 
       &:before,
@@ -155,8 +116,8 @@ $red: #D1270C;
       line-height: 30px;
 
       @media (max-width: 767px) {
-        font-size: 13px;
-        line-height: 16px;
+        font-size: 16px;
+        line-height: 22px;
         margin-top: 10px;
       }
 
