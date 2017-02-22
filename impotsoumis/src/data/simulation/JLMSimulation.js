@@ -2,6 +2,7 @@ import NewIR from './../legislative_parameters/NewIR'
 import NewCSG from './../legislative_parameters/NewCSG'
 import CurrentIR from './../legislative_parameters/CurrentIR'
 import CalculParTauxMoyen from './CalculParTauxMoyen'
+import CalculTauxParTranche from './CalculTauxParTranche'
 
 function JLMSimulation(revenu_total, couple, nbenf) {
     console.log("revenu_total")
@@ -20,7 +21,7 @@ function JLMSimulation(revenu_total, couple, nbenf) {
     var a24 = somme / diviseur
 
     var calculSommeIR = CalculParTauxMoyen(a24, NewIR.bareme)
-    var calculSommeCSG = CalculParTauxMoyen(a24, NewCSG.bareme)
+    var calculSommeCSG = CalculTauxParTranche(a24, NewCSG.bareme)
 
     var calculTotal = calculSommeIR.total
     var calculCSG = calculSommeCSG.total
