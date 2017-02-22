@@ -5,83 +5,49 @@ import CalculParTauxMoyen from './CalculParTauxMoyen'
 import CalculTauxParTranche from './CalculTauxParTranche'
 
 function JLMSimulation(revenu_total, couple, nbenf) {
-    console.log("revenu_total")
-    console.log(revenu_total)
-    console.log("couple")
-    console.log(couple)
-    console.log("nbenf")
-    console.log(nbenf)
-    var cI_enfant = NewIR.creditImpotEnfant
+    var ci_enfant = NewIR.creditImpotEnfant
     var seuil_recouv = CurrentIR.seuilRecouvrement.value
+    var abattement = 0.98
 
-    var somme = revenu_total.salarie + revenu_total.chomeur + revenu_total.retraite
+    var a24 = revenu_total.salarie + revenu_total.chomeur + revenu_total.retraite
 
-    var diviseur = 1 + couple
-    // a24 = revenu imposable par part fiscale
-    var a24 = somme / diviseur
+    var calculCSG = CalculTauxParTranche(a24, NewCSG.bareme, abattement)
 
-    var calculSommeIR = CalculParTauxMoyen(a24, NewIR.bareme)
-    var calculSommeCSG = CalculTauxParTranche(a24, NewCSG.bareme)
+    var b24 = calculCSG.taux
+    var c24 = a24 * b24 * abattement
 
-    var calculTotal = calculSommeIR.total
-    var calculCSG = calculSommeCSG.total
-    var calculIR = calculTotal - calculSommeCSG.total;
+    var d24 = a24 * 0.92 / (1 + couple)
 
-    // b24 = impot par part fiscale avant ci qf
-    var b24 = calculIR
+    var calculIR = CalculParTauxMoyen(d24, NewIR.bareme)
+    var e24 = calculIR.total
 
-    // c24 = impot total
-    var c24 = b24 * (1 + couple)
+    var f24 = e24 * (1 + couple)
 
-    // d24 = impot après CI QF
-    var d24 = c24 - cI_enfant * nbenf
+    var g24 = f24 - c24 - ci_enfant * nbenf
 
-    var somme_apres_seuil_recouv = (d24 > seuil_recouv)
-        ? d24
+    var somme_apres_seuil_recouv = (g24 > seuil_recouv)
+        ? g24
         : 0
 
-    // e24 : Impot du (après seuil de recouvrement)
-    var e24 = (d24 > 0)
+    var h24 = (g24 > 0)
         ? somme_apres_seuil_recouv
-        : d24
+        : g24
 
-    var ir = e24
-    var csg = calculCSG
+    var i24 = h24
 
     return {
         "calcul": {
-            "sommeIR": calculSommeIR,
-            "sommeCSG": calculSommeCSG,
             "a24": a24,
             "b24": b24,
             "c24": c24,
             "d24": d24,
-            "e24": e24
+            "e24": e24,
+            "f24": f24,
+            "g24": g24,
+            "h24": h24
         },
-        "revenu": {
-            "imposable": a24
-        },
-        "impot": {
-            "par": {
-                "partFiscal": {
-                    "avant": {
-                        "ci": {
-                            "qf": b24
-                        }
-                    }
-
-                }
-            },
-            "total": c24,
-            "apres": {
-                "ci": {
-                    "qf": d24
-                }
-            },
-            "du": e24
-        },
-        "csg": csg,
-        "ir": ir
+        "csg": c24,
+        "ir": i24
     }
 }
 

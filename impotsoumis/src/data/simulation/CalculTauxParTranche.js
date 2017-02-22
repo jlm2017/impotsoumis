@@ -6,8 +6,10 @@ function _calcul_derniereTranche(revenu, tranche) {
     }
 }
 
-function CalculTauxParTranche(revenu, tranches) {
+function CalculTauxParTranche(revenu_avant_abattement, tranches, abattement) {
 
+    var revenu = revenu_avant_abattement * abattement
+    
     for (var tranche of tranches) {
 
         if (revenu === tranche.min) {
