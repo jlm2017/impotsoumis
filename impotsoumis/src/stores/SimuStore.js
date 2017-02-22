@@ -36,15 +36,13 @@ class SimuStore extends ReduceStore {
             "chomeur": chomage,
             "retraite": retraite
         }
-        console.log("newRFR")
-        console.log(newRFR)
+
         const jlmSimulation = JLMSimulation(newRFR, couple, nbEnfants)
-        //console.log("jlmSimulation")
-        //console.log(jlmSimulation)
-        const IR = Math.round(simulation.impot.du.value) * 12,
-              CSG = Math.round(simulation.csg.du.value) * 12,
-              NEW_IR = Math.round(jlmSimulation.ir) * 12,
-              CSG_P = Math.round(jlmSimulation.csg) * 12;
+
+        const IR = Math.round(simulation.impot.du.value  * 12),
+              CSG = Math.round(simulation.csg.du.value  * 12),
+              NEW_IR = Math.round(jlmSimulation.ir * 12),
+              CSG_P = Math.round(jlmSimulation.csg * 12);
 
         return {
             current: {

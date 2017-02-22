@@ -37,7 +37,7 @@ class DesignedApp extends Component {
   }
 
   render() {
-    const { current, revolution, gain, developer } = this.props.results;
+    const { current, revolution, gain } = this.props.results;
 
     return (
       <Container className="DesignedApp">
@@ -149,7 +149,7 @@ class DesignedApp extends Component {
             <header>
               Version
               <h1>
-                0.<strong>32</strong>
+                0.<strong>34</strong>
               </h1>
             </header>
         </div>
