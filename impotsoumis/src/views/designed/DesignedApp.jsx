@@ -81,14 +81,14 @@ class DesignedApp extends Component {
         </div>
 
         <Row>
-          <Col sm={6} md={5} offset={{md: 1}}>
+          <Col sm={6}>
             <ResultCard
               color="red"
               title={<span>Imposition <strong>actuelle</strong></span>}
               total={current.total}
               top={{
                 legend: (
-                  <span>Votre impôt sur le revenu est de :<br />
+                  <span>Votre impôt sur le revenu est de :
                   <strong>
                   <AnimatedNumber
                     format={(val) => ` ${numeral(val).format('€0,0')} `}
@@ -99,7 +99,7 @@ class DesignedApp extends Component {
               }}
               bottom={{
                 legend: (
-                  <span>Votre contribution sociale généralisée est de:<br />
+                  <span>Votre contribution sociale généralisée est de:
                   <strong>
                   <AnimatedNumber
                     format={(val) => ` ${numeral(val).format('€0,0')} `}
@@ -110,14 +110,14 @@ class DesignedApp extends Component {
               }}
             />
           </Col>
-          <Col sm={6} md={5}>
+          <Col sm={6}>
             <ResultCard
               color="blue"
               title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
               total={revolution.total}
               top={{
                 legend: (
-                  <span>Votre impôt sur le revenu sera de :<br />
+                  <span>Votre impôt sur le revenu sera de :
                   <strong>
                   <AnimatedNumber
                     format={(val) => ` ${numeral(val).format('€0,0')} `}
@@ -128,7 +128,7 @@ class DesignedApp extends Component {
               }}
               bottom={{
                 legend: (
-                  <span>Votre contribution sociale généralisée sera de:<br />
+                  <span>Votre contribution sociale généralisée sera de :
                   <strong>
                   <AnimatedNumber
                     format={(val) => ` ${numeral(val).format('€0,0')} `}
@@ -146,7 +146,7 @@ class DesignedApp extends Component {
           <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
         </div>
 
-        <div>
+        <div className="hide">
           <h2>Developer Data</h2>
           <p>[Calcul Nouvel Impot Citoyen]<br/>R = {developer.sommeIR.revenu}.<br/>t = {developer.sommeIR.taux}.<br/>R * t = {developer.sommeIR.total}. <br/> R * t * 12 = {developer.sommeIR.total * 12}.</p>
           <p>[Calcul Nouvelle CSG]<br/>R = {developer.sommeCSG.revenu}.<br/>t = {developer.sommeCSG.taux}.<br/>R*t = {developer.sommeCSG.total}.<br/> R * t * 12 = {developer.sommeCSG.total * 12}.</p>
