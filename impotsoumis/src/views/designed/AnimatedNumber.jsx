@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class AnimatedNumber extends Component {
+  /*
   static defaultProps = {
     format: (val) => val
   }
@@ -44,11 +45,11 @@ class AnimatedNumber extends Component {
       }
     }
     return nextState;
-  }
+  }*/
 
   render() {
     return (
-      <span>{this.props.format(this.state.number)}</span>
+      <span>{this.props.value}</span>
     );
   }
 }

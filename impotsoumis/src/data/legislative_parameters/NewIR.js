@@ -1,93 +1,98 @@
 const NewIR = {
-    "creditImpotEnfant": 1000/12,
+    "creditImpotEnfant": 1000 / 12,
     "bareme": [
         {
-            "name": "0%",
+            "name": "2%",
             "min": 0,
-            "max": 500,
-            "tauxMarginal": 0.01,
-            "tauxCSG": 0.5
+            "max": 200,
+            "tauxMin": 0,
+            "tauxMax": 0.02
         }, {
-            "name": "5%",
+            "name": "3%",
+            "min": 200,
+            "max": 500,
+            "tauxMin": 0.02,
+            "tauxMax": 0.03
+        }, {
+            "name": "4%",
             "min": 500,
-            "max": 750,
-            "tauxMarginal": 0.05,
-            "tauxCSG": 0.5
+            "max": 800,
+            "tauxMin": 0.03,
+            "tauxMax": 0.04
+        }, {
+            "name": "6%",
+            "min": 800,
+            "max": 1300,
+            "tauxMin": 0.03,
+            "tauxMax": 0.06
+        }, {
+            "name": "8%",
+            "min": 1300,
+            "max": 1500,
+            "tauxMin": 0.06,
+            "tauxMax": 0.08
         }, {
             "name": "10%",
-            "min": 750,
-            "max": 1000,
-            "tauxMarginal": 0.1,
-            "tauxCSG": 0.5
-        }, {
-            "name": "15%",
-            "min": 1000,
-            "max": 1250,
-            "tauxMarginal": 0.15,
-            "tauxCSG": 0.5
-        }, {
-            "name": "20%",
-            "min": 1250,
-            "max": 1500,
-            "tauxMarginal": 0.2,
-            "tauxCSG": 0.5
-        }, {
-            "name": "25%",
             "min": 1500,
-            "max": 1750,
-            "tauxMarginal": 0.25,
-            "tauxCSG": 0.5
-        }, {
-            "name": "30%",
-            "min": 1750,
             "max": 1800,
-            "tauxMarginal": 0.3,
-            "tauxCSG": 0.5
+            "tauxMin": 0.08,
+            "tauxMax": 0.1
         }, {
-            "name": "35%",
+            "name": "12%",
             "min": 1800,
-            "max": 2000,
-            "tauxMarginal": 0.35,
-            "tauxCSG": 0.5
+            "max": 2200,
+            "tauxMin": 0.08,
+            "tauxMax": 0.12
         }, {
-            "name": "40%",
-            "min": 2000,
+            "name": "14%",
+            "min": 2200,
             "max": 3000,
-            "tauxMarginal": 0.4,
-            "tauxCSG": 0.5
+            "tauxMin": 0.12,
+            "tauxMax": 0.14
         }, {
-            "name": "50%",
+            "name": "18%",
             "min": 3000,
             "max": 4000,
-            "tauxMarginal": 0.5,
-            "tauxCSG": 0.5
+            "tauxMin": 0.14,
+            "tauxMax": 0.18
         }, {
-            "name": "55%",
+            "name": "25%",
             "min": 4000,
-            "max": 15000,
-            "tauxMarginal": 0.55,
-            "tauxCSG": 0.5
+            "max": 4500,
+            "tauxMin": 0.18,
+            "tauxMax": 0.25
+        }, {
+            "name": "30%",
+            "min": 4500,
+            "max": 5500,
+            "tauxMin": 0.25,
+            "tauxMax": 0.3
+        }, {
+            "name": "40%",
+            "min": 5500,
+            "max": 10000,
+            "tauxMin": 0.3,
+            "tauxMax": 0.4
+        }, {
+            "name": "50%",
+            "min": 10000,
+            "max": 25000,
+            "tauxMin": 0.4,
+            "tauxMax": 0.5
         }, {
             "name": "60%",
-            "min": 15000,
-            "max": 25000,
-            "tauxMarginal": 0.60,
-            "tauxCSG": 0.5
-        }, {
-            "name": "65%",
             "min": 25000,
             "max": 33000,
-            "tauxMarginal": 0.65,
-            "tauxCSG": 0.5
+            "tauxMin": 0.5,
+            "tauxMax": 0.6
         }, {
             "name": "90%",
             "min": 33000,
             "max": Number.MAX_SAFE_INTEGER,
-            "tauxMarginal": 0.9,
-            "tauxCSG": 0.5
+            "tauxMin": 0.6,
+            "tauxMax": 0.9
         }
     ]
-
 }
 
 export default NewIR;

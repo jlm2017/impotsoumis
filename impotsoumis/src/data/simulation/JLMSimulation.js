@@ -1,26 +1,63 @@
 import NewIR from './../legislative_parameters/NewIR'
+import NewCSG from './../legislative_parameters/NewCSG'
 import CurrentIR from './../legislative_parameters/CurrentIR'
-import CalculParTranche from './CalculParTranche'
+import CalculParTauxMoyen from './CalculParTauxMoyen'
+import CalculTauxParTranche from './CalculTauxParTranche'
 
-function JLMSimulation(revenu_fiscal_ref, couple, nbenf) {
+function JLMSimulation(revenu_total, couple, nbenf) {
+    console.log("revenu_total")
+    console.log(revenu_total)
+    console.log("couple")
+    console.log(couple)
+    console.log("nbenf")
+    console.log(nbenf)
     var cI_enfant = NewIR.creditImpotEnfant
     var seuil_recouv = CurrentIR.seuilRecouvrement.value
-    var a24 = (revenu_fiscal_ref.salarie + revenu_fiscal_ref.chomeur + revenu_fiscal_ref.retraite) / (1 + couple)
 
-    var calcul = CalculParTranche(a24, NewIR.bareme)
-    var b24 = calcul.total
+    var somme = revenu_total.salarie + revenu_total.chomeur + revenu_total.retraite
 
+    var diviseur = 1 + couple
+    // a24 = revenu imposable par part fiscale
+    var a24 = somme / diviseur
+
+    var calculSommeIR = CalculParTauxMoyen(a24, NewIR.bareme)
+    var calculSommeCSG = CalculTauxParTranche(a24, NewCSG.bareme)
+
+    var calculTotal = calculSommeIR.total
+    var calculCSG = calculSommeCSG.total
+    var calculIR = calculTotal - calculSommeCSG.total;
+
+    // b24 = impot par part fiscale avant ci qf
+    var b24 = calculIR
+
+    // c24 = impot total
     var c24 = b24 * (1 + couple)
 
+    // d24 = impot après CI QF
     var d24 = c24 - cI_enfant * nbenf
 
-    var somme_apres_seuil_recouv = (d24 > seuil_recouv) ? d24 : 0
-    var e24 = (d24 > 0) ? somme_apres_seuil_recouv : d24
+    var somme_apres_seuil_recouv = (d24 > seuil_recouv)
+        ? d24
+        : 0
 
-    var ir = e24 - calcul.csg
-    var csg = calcul.csg
+    // e24 : Impot du (après seuil de recouvrement)
+    var e24 = (d24 > 0)
+        ? somme_apres_seuil_recouv
+        : d24
+
+    var ir = e24
+    var csg = calculCSG
 
     return {
+        "calcul": {
+            "sommeIR": calculSommeIR,
+            "sommeCSG": calculSommeCSG,
+            "a24": a24,
+            "b24": b24,
+            "c24": c24,
+            "d24": d24,
+            "e24": e24
+        },
         "revenu": {
             "imposable": a24
         },
