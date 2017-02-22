@@ -1,5 +1,4 @@
 import React from 'react';
-import{ Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
 
 import AnimatedNumber from './AnimatedNumber.jsx';

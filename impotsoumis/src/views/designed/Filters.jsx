@@ -24,6 +24,55 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
   return (
     <div className="Filters">
       <HelpPopin />
+
+      <div className="content">
+        <div className="revenu">
+          <label htmlFor="revenu">Salaire net <strong>mensuel</strong> du foyer</label>
+          <br/>
+          <input
+            id="revenu"
+            placeholder="en €/mois"
+            onChange={(e) => SimuActions.netChanged(e.target.value)}
+            onInput={onlyNumber}
+            type="number"
+            value={(net === 0) ? "" : net}
+          />
+        </div>
+        <div className="situation">
+          <p>Situation familiale</p>
+          <input
+            checked={(isMarried === 1)}
+            id="marie"
+            name="situation"
+            onChange={() => SimuActions.maritalStatusChanged(1)}
+            type="radio"
+            value={1}
+          />
+          <label htmlFor="marie">Marié/Pacsé</label>
+          <input
+            checked={(isMarried === 0)}
+            id="celibataire"
+            name="situation"
+            onChange={() => SimuActions.maritalStatusChanged(0)}
+            type="radio"
+            value={0}
+          />
+          <label htmlFor="celibataire">Célibataire</label>
+        </div>
+        <div className="enfant">
+          <p>Nombre d'enfants à charge</p>
+          <Select
+            clearable={false}
+            onChange={(option) => SimuActions.numberofChildrenChanged(option.value)}
+            options={childrenOpt}
+            placeholder=""
+            searchable={false}
+            value={numberOfChildren}
+          />
+        </div>
+      </div>
+
+      {/*
       <div className="left">
         <div className="revenu">
           <label htmlFor="revenu">Salaire net <strong>mensuel</strong> du foyer</label>
@@ -98,6 +147,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
           />
         </div>
       </div>
+      */}
     </div>
   );
 };

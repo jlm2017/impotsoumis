@@ -34,13 +34,13 @@ $blue: #22B9D0;
     opacity: 0;
     pointer-events: none;
     position: absolute;
-    //right: -100px;
     right: -45px;
     text-align: left;
     top: 28px;
     transform: translateY(-20px);
     transition: .3s;
     width: 200px;
+    z-index: 20;
 
     &:before {
       content: '';
