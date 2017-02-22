@@ -8,7 +8,7 @@ import "./ResultCard.css";
 export default ({ color, top, bottom, title, total }) => {
   return (
     <div className={`ResultCard ${color}`}>
-      <h3>{title}</h3>
+      <h2>{title}</h2>
       <div className="content">
         <div className="left">
           <ul>

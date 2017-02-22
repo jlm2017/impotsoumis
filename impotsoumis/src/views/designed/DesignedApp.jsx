@@ -7,7 +7,7 @@ import Pulse from 'grommet/components/icons/Pulse';
 
 numeral.register('locale', 'fr', {
   delimiters: {
-    thousands: ' ',
+    thousands: '\u00a0',
     decimal: ','
   }
 });
@@ -160,11 +160,8 @@ class DesignedApp extends Component {
           <p>[C24] : Impot total : {developer.c24}</p>
           <p>[D24] : Impot après CI QF : {developer.d24}</p>
           <p>[E24] : Impot du après seuil recouvrement : {developer.e24}</p>
-          <h2>Version<br/>
-          <span className="laRevolution">0.1</span><br/>
-          <span className="fiscale">24</span>
-        </h2>
-      </div>
+        </div>
+        <h2 className="hide">Version: 0.1.24</h2>
       </Container>
     );
   }

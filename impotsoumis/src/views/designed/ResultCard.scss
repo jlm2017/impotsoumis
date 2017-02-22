@@ -18,11 +18,14 @@ $blue: #33B9D3;
     padding-bottom: 4px;
   }
 
-  h3 {
+  h2 {
     color: $main;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 400;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+
+    @media (max-width: 1039px) {font-size: 18px;}
+    @media (max-width: 767px) {font-size: 15px;}
   }
 
   .content {
@@ -36,6 +39,8 @@ $blue: #33B9D3;
   .left {
     padding: 0 5px 0 10px;
     width: 90%;
+
+    @media (max-width: 767px) {padding: 0;}
   }
 
   ul {
@@ -63,11 +68,17 @@ $blue: #33B9D3;
       text-transform: uppercase;
       vertical-align: top;
       width: calc(100% - 20px);
+
+      @media (max-width: 1039px) {font-size: 13px;}
+      @media (max-width: 767px) {font-size: 12px;}
     }
 
     strong {
       display: block;
       font-size: 30px;
+
+      @media (max-width: 1039px) {font-size: 28px;}
+      @media (max-width: 767px) {font-size: 24px;}
     }
   }
 
@@ -91,11 +102,16 @@ $blue: #33B9D3;
     padding: 12px 0;
     text-transform: uppercase;
 
-    strong {font-size: 30px;}
+    strong {
+      font-size: 30px;
+
+      @media (max-width: 1039px) {font-size: 28px;}
+      @media (max-width: 767px) {font-size: 24px;}
+    }
   }
 
   &.red {
-    h3 strong {
+    h2 strong {
       color: $red;
     }
 
@@ -112,7 +128,7 @@ $blue: #33B9D3;
   }
 
   &.blue {
-    h3 strong {
+    h2 strong {
       color: $blue;
     }
 

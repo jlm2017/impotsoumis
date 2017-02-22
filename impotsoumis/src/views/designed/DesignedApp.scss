@@ -5,7 +5,6 @@ $red: #D1270C;
 .DesignedApp {
   color: $main;
   font-family: Montserrat, sans-serif;
-  padding-bottom: 80px;
   text-align: center;
 
   header {
@@ -168,7 +167,9 @@ $red: #D1270C;
   }
 
   .disclaimer {
-    margin: 50px 0;
+    margin: 50px 0 80px;
+
+    @media (max-width: 767px) {margin: 15px 0 60px;}
 
     .grommetux-pulse {
       margin-bottom: 15px;
