@@ -33,7 +33,6 @@ function JLMSimulation(revenu_total, couple, nbenf) {
         ? somme_apres_seuil_recouv
         : g24
 
-    var i24 = h24 + c24
     return {
         "csg": c24,
         "ir": h24

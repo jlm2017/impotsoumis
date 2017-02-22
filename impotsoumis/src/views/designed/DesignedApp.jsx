@@ -37,7 +37,7 @@ class DesignedApp extends Component {
   }
 
   render() {
-    const { current, revolution, gain, developer } = this.props.results;
+    const { current, revolution, gain } = this.props.results;
 
     return (
       <Container className="DesignedApp">
