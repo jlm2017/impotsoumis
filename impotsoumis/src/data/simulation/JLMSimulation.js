@@ -35,6 +35,7 @@ function JLMSimulation(revenu_total, couple, nbenf) {
 
     var i24 = h24
 
+    var i24 = h24 + c24
     return {
         "calcul": {
             "a24": a24,
@@ -47,7 +48,7 @@ function JLMSimulation(revenu_total, couple, nbenf) {
             "h24": h24
         },
         "csg": c24,
-        "ir": i24
+        "ir": h24
     }
 }
 
