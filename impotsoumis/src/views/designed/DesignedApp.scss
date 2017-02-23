@@ -7,20 +7,21 @@ $red: #D1270C;
   font-family: Montserrat, sans-serif;
   text-align: center;
 
-  a {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16px;
-  }
-
-  a.marge {
-    margin-top: 20px;
-  }
-
-  span.small {
+  .anchor {
+    color: $blue;
+    display: inline-block;
     font-size: 16px;
-    line-height: 12px;
     font-weight: 400;
+    line-height: 18px;
+    margin: 45px 0 0;
+    text-transform: uppercase;
+
+    svg {
+      display: block;
+      margin: 5px auto;
+      stroke: $blue;
+      width: 24px;
+    }
   }
 
   header {
@@ -141,6 +142,13 @@ $red: #D1270C;
           width: 2px;
         }
       }
+    }
+
+    .small {
+      display: block;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 18px;
     }
 
     .negative {
