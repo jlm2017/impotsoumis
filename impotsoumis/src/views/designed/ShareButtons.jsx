@@ -3,10 +3,10 @@ import React from 'react';
 import './ShareButtons.css'
 
 export default ({ gain }) => {
-  let twitterText = `Avec la #RévolutionFiscale de Mélenchon, je gagne ${gain} €. Testez vous aussi ! #JLM2017`;
+  let twitterText = `Avec la #RévolutionFiscale de Mélenchon, je gagnerai ${gain} €. Testez vous aussi sur :`;
 
   if (gain < 0) {
-    twitterText = `Avec la #RévolutionFiscale de Mélenchon, je contribue de ${Math.abs(gain)}€ à la solidarité nationale. Testez ! #JLM2017`;
+    twitterText = `Avec la #RévolutionFiscale de Mélenchon, je contribuerai de ${Math.abs(gain)}€ à la solidarité nationale. Testez sur :`;
   }
 
   return (

@@ -7,6 +7,12 @@ $red: #D1270C;
   font-family: Montserrat, sans-serif;
   text-align: center;
 
+  span.small {
+    font-size: 16px;
+    line-height: 12px;
+    font-weight: 400;
+  }
+
   header {
     color: $blue;
     font-size: 24px;
