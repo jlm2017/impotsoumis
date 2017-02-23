@@ -1,6 +1,6 @@
 {
   "name": "impotsoumis",
-  "version": "0.1.0",
+  "version": "0.39.0",
   "private": true,
   "devDependencies": {
     "gh-pages": "^0.12.0",
