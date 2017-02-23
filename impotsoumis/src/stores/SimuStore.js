@@ -12,11 +12,11 @@ import DistributionRevenus from '../data/DistributionRevenus'
 // Catch: State must be immutable
 class SimuStore extends ReduceStore {
 
-    percentageRicher(net) {
+    percentageRicher(net, couple) {
         var bareme = DistributionRevenus.bareme
         var percentage = 0
         for (var item of bareme) {
-            if (net > item.revenu) {
+            if ((net / (1 + couple)) > item.revenu) {
                 percentage = item.percentile
             } else {
                 break;
@@ -73,7 +73,7 @@ class SimuStore extends ReduceStore {
             net: net,
             retraite: 0,
             chomage: 0,
-            percentile: this.percentageRicher(0),
+            percentile: this.percentageRicher(0, couple),
             isMarried: couple,
             numberOfChildren: nbEnfants,
             results: this.generateSeries(net, retraite, chomage, couple, nbEnfants)
@@ -86,7 +86,7 @@ class SimuStore extends ReduceStore {
             return {
                 ...state,
                 net: action.net,
-                percentile: this.percentageRicher(action.net),
+                percentile: this.percentageRicher(action.net, state.isMarried),
                 results: this.generateSeries(action.net, 0, 0, state.isMarried, state.numberOfChildren)
             };
 
@@ -108,6 +108,7 @@ class SimuStore extends ReduceStore {
             return {
                 ...state,
                 isMarried: action.isMarried,
+                percentile:this.percentageRicher(state.net, action.isMarried),
                 results: this.generateSeries(state.net, state.retraite, state.chomage, action.isMarried, state.numberOfChildren)
             };
 
