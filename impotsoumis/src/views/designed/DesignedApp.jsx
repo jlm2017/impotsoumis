@@ -52,32 +52,38 @@ class DesignedApp extends Component {
 
           <Filters {...this.props} />
 
-          <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
-            Vous gagnez
-            <AnimatedNumber
-              format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-              value={gain}
-            />
-            €<br />
-            en <span className="sign">plus</span> par an.
-
-            <ShareButtons gain={gain} />
-          </div>
-
-          <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
-            <div className="negative">
-              Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
-              % les plus riches.<br />
-              Vous contribuez à hauteur de
+          <div className="verdict">
+            <div className={`info${(gain !== 0) ? ' hide' : ''}`}>
+              Renseignez le <strong>salaire net mensuel</strong> de votre foyer pour connaître votre situation.
             </div>
-            <AnimatedNumber
-              format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-              value={gain}
-            />
-            € en <span className="sign">plus</span> par an <br />
-            pour la solidarité nationale.
 
-            <ShareButtons gain={gain} />
+            <div className={(gain <= 0) ? 'hide' : ''}>
+              Vous gagnez
+              <AnimatedNumber
+                format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+                value={gain}
+              />
+              €<br />
+              en <span className="sign">plus</span> par an.
+
+              <ShareButtons gain={gain} />
+            </div>
+
+            <div className={(gain >= 0) ? 'hide' : ''}>
+              <div className="negative">
+                Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
+                % les plus riches.<br />
+                Vous contribuez à hauteur de
+              </div>
+              <AnimatedNumber
+                format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+                value={gain}
+              />
+              € en <span className="sign">plus</span> par an <br />
+              pour la solidarité nationale.
+
+              <ShareButtons gain={gain} />
+            </div>
           </div>
 
           <Row>

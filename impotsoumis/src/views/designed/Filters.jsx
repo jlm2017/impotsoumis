@@ -30,6 +30,7 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
           <label htmlFor="revenu">Salaire net <strong>mensuel</strong> du foyer</label>
           <br/>
           <input
+            className={(net === 0) ? 'empty' : ''}
             id="revenu"
             placeholder="en €/mois"
             onChange={(e) => SimuActions.netChanged(e.target.value)}

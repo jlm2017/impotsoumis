@@ -41,6 +41,7 @@ $red: #D1270C;
     font-weight: 700;
     line-height: 40px;
     margin: 50px auto;
+    transition: .4s;
 
     @media (max-width: 767px) {
       border-radius: 8px;
@@ -49,6 +50,16 @@ $red: #D1270C;
       line-height: 26px;
       margin: 36px auto;
       padding: 25px 15px;
+    }
+
+    .info {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 30px;
+      margin: auto;
+      width: 60%;
+
+      strong {color: $red;}
     }
 
     .sign {
