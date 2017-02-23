@@ -18,9 +18,16 @@ $red: #D1270C;
 
     svg {
       display: block;
-      margin: 5px auto;
+      margin: 2px auto;
       stroke: $blue;
+      transition: .3s;
       width: 24px;
+    }
+
+    &:hover {
+      text-decoration: none;
+
+      svg {transform: translateY(5px);}
     }
   }
 
