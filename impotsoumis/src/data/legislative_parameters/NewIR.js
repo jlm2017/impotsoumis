@@ -20,52 +20,52 @@ const NewIR = {
             "tauxMin": 0.03,
             "tauxMax": 0.04
         }, {
-            "name": "6%",
+            "name": "5%",
             "min": 800,
             "max": 1300,
             "tauxMin": 0.04,
-            "tauxMax": 0.06
+            "tauxMax": 0.05
         }, {
             "name": "8%",
             "min": 1300,
             "max": 1500,
-            "tauxMin": 0.06,
+            "tauxMin": 0.05,
             "tauxMax": 0.08
         }, {
-            "name": "10%",
+            "name": "12%",
             "min": 1500,
             "max": 1800,
-            "tauxMin": 0.08,
-            "tauxMax": 0.1
-        }, {
-            "name": "12%",
-            "min": 1800,
-            "max": 2200,
             "tauxMin": 0.08,
             "tauxMax": 0.12
         }, {
             "name": "14%",
-            "min": 2200,
-            "max": 3000,
+            "min": 1800,
+            "max": 2200,
             "tauxMin": 0.12,
             "tauxMax": 0.14
         }, {
-            "name": "18%",
+            "name": "20%",
+            "min": 2200,
+            "max": 3000,
+            "tauxMin": 0.14,
+            "tauxMax": 0.2
+        }, {
+            "name": "26%",
             "min": 3000,
             "max": 4000,
-            "tauxMin": 0.14,
-            "tauxMax": 0.18
+            "tauxMin": 0.2,
+            "tauxMax": 0.26
         }, {
-            "name": "25%",
+            "name": "28%",
             "min": 4000,
             "max": 4500,
-            "tauxMin": 0.18,
-            "tauxMax": 0.25
+            "tauxMin": 0.26,
+            "tauxMax": 0.28
         }, {
             "name": "30%",
             "min": 4500,
             "max": 5500,
-            "tauxMin": 0.25,
+            "tauxMin": 0.28,
             "tauxMax": 0.3
         }, {
             "name": "40%",

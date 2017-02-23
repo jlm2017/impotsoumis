@@ -16,9 +16,10 @@ function JLMSimulation(revenu_total, couple, nbenf) {
     var b24 = calculCSG.taux
     var c24 = a24 * b24 * abattement
 
-    var d24 = a24 * 0.92 / (1 + couple)
+    var d24 = a24 / (1 + couple)
 
     var calculIR = CalculParTauxMoyen(d24, NewIR.bareme)
+
     var e24 = calculIR.total
 
     var f24 = e24 * (1 + couple)
