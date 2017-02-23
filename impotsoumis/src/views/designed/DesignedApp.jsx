@@ -39,6 +39,16 @@ class DesignedApp extends Component {
   render() {
     const { current, revolution, gain } = this.props.results;
 
+    let verdict;
+    if (gain === 0 && this.props.net === 0) {
+      verdict = 'default';
+    } else if (gain >= 0) {
+      verdict = 'positive';
+    }
+    if (gain < 0) {
+      verdict = 'negative';
+    }
+
     return (
       <div>
         <Container className="DesignedApp">
@@ -53,11 +63,11 @@ class DesignedApp extends Component {
           <Filters {...this.props} />
 
           <div className="verdict">
-            <div className={`info${(gain !== 0) ? ' hide' : ''}`}>
+            <div className={`info${(verdict !== 'default') ? ' hide' : ''}`}>
               Renseignez le <strong>salaire net mensuel</strong> de votre foyer pour connaître votre situation.
             </div>
 
-            <div className={(gain <= 0) ? 'hide' : ''}>
+            <div className={(verdict !== 'positive') ? 'hide' : ''}>
               Vous gagnez
               <AnimatedNumber
                 format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
@@ -69,7 +79,7 @@ class DesignedApp extends Component {
               <ShareButtons gain={gain} />
             </div>
 
-            <div className={(gain >= 0) ? 'hide' : ''}>
+            <div className={(verdict !== 'negative') ? 'hide' : ''}>
               <div className="negative">
                 Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
                 % les plus riches.<br />
