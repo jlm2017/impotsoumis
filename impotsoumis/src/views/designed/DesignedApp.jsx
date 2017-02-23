@@ -79,7 +79,7 @@ class DesignedApp extends Component {
 
               <ShareButtons gain={gain} />
             </div>
-
+            <a href="#detail">Voir le détail</a>
             <div className={(verdict !== 'negative') ? 'hide' : ''}>
               <div className="negative">
                 Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
@@ -97,7 +97,7 @@ class DesignedApp extends Component {
             </div>
           </div>
 
-          <Row>
+          <Row id="detail">
             <Col sm={6}>
               <ResultCard
                 color="red"
@@ -157,6 +157,8 @@ class DesignedApp extends Component {
               />
             </Col>
           </Row>
+          <br/>
+          <a href="#how" className="marge">Comment ça marche ?</a>
 
             <div className="disclaimer">
               <Pulse icon={<Info />} />
@@ -164,7 +166,7 @@ class DesignedApp extends Component {
             </div>
         </Container>
 
-        <div className="video">
+        <div className="video" id="how">
           <Container>
             <h2>La <strong>Révolution Fiscale</strong>,<br /> comment ça marche ?</h2>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/uK5vCgC9EN4" frameBorder="0" allowFullScreen></iframe>
@@ -174,7 +176,7 @@ class DesignedApp extends Component {
         <div className="version">
           Version
           <h1>
-            0.<strong>41</strong>
+            0.<strong>40</strong>
           </h1>
         </div>
       </div>

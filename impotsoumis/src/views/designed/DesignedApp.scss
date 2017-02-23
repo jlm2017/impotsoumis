@@ -7,6 +7,16 @@ $red: #D1270C;
   font-family: Montserrat, sans-serif;
   text-align: center;
 
+  a {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
+  a.marge {
+    margin-top: 20px;
+  }
+
   span.small {
     font-size: 16px;
     line-height: 12px;
