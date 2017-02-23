@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
+import smoothScroll from 'smoothscroll';
 import Info from 'grommet/components/icons/base/Info';
 import Calculator from 'grommet/components/icons/base/Calculator';
+import Down from 'grommet/components/icons/base/Down';
 import Pulse from 'grommet/components/icons/Pulse';
 
 
@@ -37,6 +39,13 @@ class DesignedApp extends Component {
     };
   }
 
+  scroll(e) {
+    e.preventDefault();
+    let id = e.target.href.split('#')[1];
+    let destination = document.querySelector(`#${id}`);
+    smoothScroll(destination);
+  }
+
   render() {
     const { current, revolution, gain } = this.props.results;
 
@@ -69,7 +78,9 @@ class DesignedApp extends Component {
             </div>
 
             <div className={(verdict !== 'positive') ? 'hide' : ''}>
-              <span className="small">Si Jean-Luc <strong>Mélenchon</strong> est élu,<br/> </span>
+              <span className="small">
+                Si Jean-Luc <strong>Mélenchon</strong> est élu,
+              </span>
               vous gagnerez
               <AnimatedNumber
                 format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
@@ -79,8 +90,13 @@ class DesignedApp extends Component {
               en <span className="sign">plus</span> par an.
 
               <ShareButtons gain={gain} />
+
+              <a className="anchor" href="#detail" onClick={this.scroll}>
+                Voir le détail
+                <Down />
+              </a>
             </div>
-            <a href="#detail">Voir le détail</a>
+
             <div className={(verdict !== 'negative') ? 'hide' : ''}>
               <div className="negative">
                 Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
@@ -95,6 +111,11 @@ class DesignedApp extends Component {
               pour la solidarité nationale.
 
               <ShareButtons gain={gain} />
+
+              <a className="anchor" href="#detail" onClick={this.scroll}>
+                Voir le détail
+                <Down />
+              </a>
             </div>
           </div>
 
@@ -158,18 +179,24 @@ class DesignedApp extends Component {
               />
             </Col>
           </Row>
-          <br/>
-          <a href="#how" className="marge">Comment ça marche ?</a>
 
-            <div className="disclaimer">
-              <Pulse icon={<Info />} />
-              <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale proposé par la France Insoumise.<br/><b>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </b><br/>Un impôt négatif est un crédit d'impôt : le montant indiqué est alors versé par le service des impôts.</p>
-            </div>
+          <a className="anchor" href="#how" onClick={this.scroll}>
+            Comment ça marche ?
+            <Down />
+          </a>
+
+          <div className="disclaimer">
+            <Pulse icon={<Info />} />
+            <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale proposé par la France Insoumise.<br/><b>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </b><br/>Un impôt négatif est un crédit d'impôt : le montant indiqué est alors versé par le service des impôts.</p>
+          </div>
         </Container>
 
         <div className="video" id="how">
           <Container>
-            <h2>La <strong>Révolution Fiscale</strong>,<br /> comment ça marche ?</h2>
+            <h2>
+              La Révolution Fiscale,<br />
+              <strong>comment ça marche ?</strong>
+            </h2>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/uK5vCgC9EN4" frameBorder="0" allowFullScreen></iframe>
           </Container>
         </div>
