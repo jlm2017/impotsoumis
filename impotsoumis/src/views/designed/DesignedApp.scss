@@ -57,7 +57,7 @@ $red: #D1270C;
     font-size: 36px;
     font-weight: 700;
     line-height: 40px;
-    margin: 50px auto;
+    margin: 50px auto 0;
     transition: .4s;
 
     @media (max-width: 767px) {
@@ -212,6 +212,8 @@ $red: #D1270C;
       }
     }
   }
+
+  #detail {padding-top: 50px;}
 
   .disclaimer {
     margin: 50px 0;
