@@ -13,6 +13,7 @@ export default ({ gain }) => {
     <div className="ShareButtons">
       <a className="facebook" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`} target="_blank">Partager sur Facebook</a>
       <a className="twitter" href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(window.location.href)}`} target="_blank">Partager sur Twitter</a>
+      <a className="jlm" href="http://www.jlm2017.fr" target="_blank">Je soutiens JLM</a>
     </div>
   );
 }

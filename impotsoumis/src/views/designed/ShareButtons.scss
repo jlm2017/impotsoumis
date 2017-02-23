@@ -1,5 +1,6 @@
 $facebook: #3b5998;
 $twitter: #4099FF;
+$red: #D1270C;
 
 .ShareButtons {
   margin-top: 30px;
@@ -7,20 +8,26 @@ $twitter: #4099FF;
   @media (max-width: 767px) {margin-top: 20px;}
 
   .facebook,
-  .twitter {
+  .twitter,
+  .jlm {
     border-radius: 5px;
     color: #fff;
     display: inline-block;
     font-size: 18px;
-    line-height: 45px;
-    margin: 0 15px;
+    line-height: 40px;
+    margin: 0 8px;
     text-decoration: none;
     text-transform: uppercase;
     transition: .1s linear;
-    width: 310px;
+    width: 290px;
+
+    @media (max-width: 1039px) {
+      font-size: 13px;
+      margin: 0 5px;
+      width: 210px;
+    }
 
     @media (max-width: 767px) {
-      font-size: 14px;
       margin: 5px 0;
       width: 100%;
     }
@@ -36,5 +43,11 @@ $twitter: #4099FF;
     background: $twitter;
 
     &:hover {background: lighten($twitter, 5%);}
+  }
+
+  .jlm {
+    background: $red;
+
+    &:hover {background: lighten($red, 5%);}
   }
 }
