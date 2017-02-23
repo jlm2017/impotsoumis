@@ -24,7 +24,7 @@ function JLMSimulation(revenu_total, couple, nbenf) {
 
     var f24 = e24 * (1 + couple)
 
-    var g24 = f24 - c24 - ci_enfant * nbenf
+    var g24 = f24 - c24 - ci_enfant * nbenf - (nbenf === 1 ? 63 : 0)
 
     var somme_apres_seuil_recouv = (g24 > seuil_recouv)
         ? g24
