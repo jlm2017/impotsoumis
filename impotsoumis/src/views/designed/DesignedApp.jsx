@@ -40,120 +40,127 @@ class DesignedApp extends Component {
     const { current, revolution, gain } = this.props.results;
 
     return (
-      <Container className="DesignedApp">
-        <header>
-          10 secondes<br />
-          pour <strong>simuler</strong> votre imposition avec<br />
+      <div>
+        <Container className="DesignedApp">
+          <header>
+            10 secondes<br />
+            pour <strong>simuler</strong> votre imposition avec<br />
+            <h1>
+              La Révolution <strong>Fiscale</strong>
+            </h1>
+          </header>
+
+          <Filters {...this.props} />
+
+          <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
+            Vous gagnez
+            <AnimatedNumber
+              format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+              value={gain}
+            />
+            €<br />
+            en <span className="sign">plus</span> par an.
+
+            <ShareButtons gain={gain} />
+          </div>
+
+          <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
+            <div className="negative">
+              Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
+              % les plus riches.<br />
+              Vous contribuez à hauteur de
+            </div>
+            <AnimatedNumber
+              format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
+              value={gain}
+            />
+            € en <span className="sign">plus</span> par an <br />
+            pour la solidarité nationale.
+
+            <ShareButtons gain={gain} />
+          </div>
+
+          <Row>
+            <Col sm={6}>
+              <ResultCard
+                color="red"
+                title={<span>Imposition <strong>actuelle</strong></span>}
+                total={current.total}
+                top={{
+                  legend: (
+                    <span>Votre impôt sur le revenu est de :
+                    <strong>
+                    <AnimatedNumber
+                      format={(val) => ` ${numeral(val).format('€0,0')} `}
+                      value={current.IR}
+                    /> €<sup>/an</sup></strong></span>
+                  ),
+                  value: current.IR
+                }}
+                bottom={{
+                  legend: (
+                    <span>Votre contribution sociale généralisée est de:
+                    <strong>
+                    <AnimatedNumber
+                      format={(val) => ` ${numeral(val).format('€0,0')} `}
+                      value={current.CSG}
+                    /> €<sup>/an</sup></strong></span>
+                  ),
+                  value: current.CSG
+                }}
+              />
+            </Col>
+            <Col sm={6}>
+              <ResultCard
+                color="blue"
+                title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
+                total={revolution.total}
+                top={{
+                  legend: (
+                    <span>Votre impôt sur le revenu sera de :
+                    <strong>
+                    <AnimatedNumber
+                      format={(val) => ` ${numeral(val).format('€0,0')} `}
+                      value={revolution.IR}
+                    /> €<sup>/an</sup></strong></span>
+                  ),
+                  value: revolution.IR
+                }}
+                bottom={{
+                  legend: (
+                    <span>Votre contribution sociale généralisée sera de :
+                    <strong>
+                    <AnimatedNumber
+                      format={(val) => ` ${numeral(val).format('€0,0')} `}
+                      value={revolution.CSG}
+                    /> €<sup>/an</sup></strong></span>
+                  ),
+                  value: revolution.CSG
+                }}
+              />
+            </Col>
+          </Row>
+
+            <div className="disclaimer">
+              <Pulse icon={<Info />} />
+              <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
+            </div>
+        </Container>
+
+        <div className="video">
+          <Container>
+            <h2>La <strong>Révolution Fiscale</strong>,<br /> comment ça marche ?</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/8fF40FiZ36c?start=988" frameBorder="0" allowFullScreen></iframe>
+          </Container>
+        </div>
+
+        <div className="version">
+          Version
           <h1>
-            La Révolution <strong>Fiscale</strong>
+            0.<strong>35</strong>
           </h1>
-        </header>
-
-        <Filters {...this.props} />
-
-        <div className={"verdict" + ((gain < 0) ? " hide" : "")}>
-          Vous gagnez
-          <AnimatedNumber
-            format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-            value={gain}
-          />
-          €<br />
-          en <span className="sign">plus</span> par an.
-
-          <ShareButtons gain={gain} />
         </div>
-
-        <div className={"verdict" + ((gain >= 0) ? " hide" : "")}>
-          <div className="negative">
-            Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
-            % les plus riches.<br />
-            Vous contribuez à hauteur de
-          </div>
-          <AnimatedNumber
-            format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
-            value={gain}
-          />
-          € en <span className="sign">plus</span> par an <br />
-          pour la solidarité nationale.
-
-          <ShareButtons gain={gain} />
-        </div>
-
-        <Row>
-          <Col sm={6}>
-            <ResultCard
-              color="red"
-              title={<span>Imposition <strong>actuelle</strong></span>}
-              total={current.total}
-              top={{
-                legend: (
-                  <span>Votre impôt sur le revenu est de :
-                  <strong>
-                  <AnimatedNumber
-                    format={(val) => ` ${numeral(val).format('€0,0')} `}
-                    value={current.IR}
-                  /> €<sup>/an</sup></strong></span>
-                ),
-                value: current.IR
-              }}
-              bottom={{
-                legend: (
-                  <span>Votre contribution sociale généralisée est de:
-                  <strong>
-                  <AnimatedNumber
-                    format={(val) => ` ${numeral(val).format('€0,0')} `}
-                    value={current.CSG}
-                  /> €<sup>/an</sup></strong></span>
-                ),
-                value: current.CSG
-              }}
-            />
-          </Col>
-          <Col sm={6}>
-            <ResultCard
-              color="blue"
-              title={<span>Avec la <strong>Révolution Fiscale</strong></span>}
-              total={revolution.total}
-              top={{
-                legend: (
-                  <span>Votre impôt sur le revenu sera de :
-                  <strong>
-                  <AnimatedNumber
-                    format={(val) => ` ${numeral(val).format('€0,0')} `}
-                    value={revolution.IR}
-                  /> €<sup>/an</sup></strong></span>
-                ),
-                value: revolution.IR
-              }}
-              bottom={{
-                legend: (
-                  <span>Votre contribution sociale généralisée sera de :
-                  <strong>
-                  <AnimatedNumber
-                    format={(val) => ` ${numeral(val).format('€0,0')} `}
-                    value={revolution.CSG}
-                  /> €<sup>/an</sup></strong></span>
-                ),
-                value: revolution.CSG
-              }}
-            />
-          </Col>
-        </Row>
-
-          <div className="disclaimer">
-            <Pulse icon={<Info />} />
-            <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
-          </div>
-
-          <div>
-            <header>
-              Version
-              <h1>
-                0.<strong>34</strong>
-              </h1>
-            </header>
-        </div>
-      </Container>
+      </div>
     );
   }
 };
