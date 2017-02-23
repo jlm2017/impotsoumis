@@ -6,19 +6,37 @@ import SimuActions from '../../actions/SimuActions';
 import HelpPopin from './HelpPopin.jsx';
 import './Filters.css';
 
-export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
-  const onlyNumber = (e) => {
-    if (e.target.value.length > 8) {
-      e.target.value = e.target.value.slice(0, 8);
-    }
-  };
+let timerGA;
 
+export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
   const childrenOpt = [];
   for (var i = 0; i < 10; i++) {
     childrenOpt.push({
       value: i,
       label: i
     });
+  }
+
+  const onlyNumber = (e) => {
+    if (e.target.value.length > 8) {
+      e.target.value = e.target.value.slice(0, 8);
+    }
+  };
+
+  const timerGATracker = (data) => {
+    if (timerGA) {
+      clearTimeout(timerGA);
+    }
+    if (data.net !== '') {
+      timerGA = setTimeout(() => {
+        window.ga('send', {
+          hitType: 'event',
+          eventCategory: 'Simulateur',
+          eventAction: 'Simulation',
+          eventLabel: `Salaire net : ${data.net} | Situation familiale : ${(data.isMarried) ? 'Marié/Pacsé' : 'Célibataire'} | Nbr d'enfants à charge : ${data.numberOfChildren}`
+        })
+      }, 3000);
+    }
   }
 
   return (
@@ -30,9 +48,17 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
           <label htmlFor="revenu">Salaire net <strong>mensuel</strong> du foyer</label>
           <br/>
           <input
+            className={(net === 0) ? 'empty' : ''}
             id="revenu"
             placeholder="en €/mois"
-            onChange={(e) => SimuActions.netChanged(e.target.value)}
+            onChange={(e => {
+              SimuActions.netChanged(e.target.value);
+              timerGATracker({
+                net: e.target.value,
+                isMarried,
+                numberOfChildren
+              });
+            })}
             onInput={onlyNumber}
             type="number"
             value={(net === 0) ? "" : net}
@@ -44,7 +70,14 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             checked={(isMarried === 1)}
             id="marie"
             name="situation"
-            onChange={() => SimuActions.maritalStatusChanged(1)}
+            onChange={() => {
+              SimuActions.maritalStatusChanged(1);
+              timerGATracker({
+                isMarried: 1,
+                net,
+                numberOfChildren
+              });
+            }}
             type="radio"
             value={1}
           />
@@ -53,7 +86,14 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
             checked={(isMarried === 0)}
             id="celibataire"
             name="situation"
-            onChange={() => SimuActions.maritalStatusChanged(0)}
+            onChange={() => {
+              SimuActions.maritalStatusChanged(0);
+              timerGATracker({
+                isMarried: 0,
+                net,
+                numberOfChildren
+              });
+            }}
             type="radio"
             value={0}
           />
@@ -63,7 +103,14 @@ export default ({ chomage, isMarried, net, numberOfChildren, retraite }) => {
           <p>Nombre d'enfants à charge</p>
           <Select
             clearable={false}
-            onChange={(option) => SimuActions.numberofChildrenChanged(option.value)}
+            onChange={(option) => {
+              SimuActions.numberofChildrenChanged(option.value);
+              timerGATracker({
+                numberOfChildren: option.value,
+                net,
+                isMarried
+              });
+            }}
             options={childrenOpt}
             placeholder=""
             searchable={false}

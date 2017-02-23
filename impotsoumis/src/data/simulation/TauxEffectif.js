@@ -1,6 +1,6 @@
 function TauxEffectif(revenu, tranche) {
     var lambda = 0
-    if (tranche.min == 0) {
+    if (tranche.min === 0) {
         if(revenu < tranche.max) {
             lambda = revenu/tranche.max
         }

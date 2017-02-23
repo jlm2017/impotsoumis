@@ -4,6 +4,7 @@ $input-border: #C1C1C1;
 $input-placeholder: #B8B8BB;
 
 $blue: #33B9D3;
+$red: #D1270C;
 
 .Filters {
   border-radius: 8px;
@@ -46,6 +47,11 @@ $blue: #33B9D3;
     font-family: 'Open Sans', sans-serif;
     height: 38px;
     padding: 0px 14px;
+
+    &.empty {
+      border-color: $red;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 0 3px transparentize($red, .9);
+    }
 
     &:focus {
       outline: 0;
