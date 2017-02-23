@@ -105,7 +105,7 @@ class DesignedApp extends Component {
                 }}
                 bottom={{
                   legend: (
-                    <span>Votre contribution sociale généralisée est de:
+                    <span>Votre contribution sociale généralisée (CSG) est de:
                     <strong>
                     <AnimatedNumber
                       format={(val) => ` ${numeral(val).format('€0,0')} `}
@@ -134,7 +134,7 @@ class DesignedApp extends Component {
                 }}
                 bottom={{
                   legend: (
-                    <span>Votre contribution sociale généralisée sera de :
+                    <span>Votre contribution sociale généralisée (CSG) sera de :
                     <strong>
                     <AnimatedNumber
                       format={(val) => ` ${numeral(val).format('€0,0')} `}
@@ -163,7 +163,7 @@ class DesignedApp extends Component {
         <div className="version">
           Version
           <h1>
-            0.<strong>38</strong>
+            0.<strong>39</strong>
           </h1>
         </div>
       </div>
