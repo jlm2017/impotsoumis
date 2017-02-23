@@ -26,6 +26,17 @@ strong {
 label {
   font-weight: 400; }
 
+@media (max-width: 990px) {
+  .navbar-supporter .collapse {
+    border: 0;
+    display: block; }
+  .navbar-supporter .collapse .navbar-nav {
+    margin: 0; } }
+
+@media (max-width: 767px) {
+  .navbar-supporter a {
+    font-size: 14px; } }
+
 @media (max-width: 1199px) {
   header.banner .container {
     width: 95%; }
