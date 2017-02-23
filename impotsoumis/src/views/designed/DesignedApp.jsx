@@ -68,7 +68,8 @@ class DesignedApp extends Component {
             </div>
 
             <div className={(verdict !== 'positive') ? 'hide' : ''}>
-              Vous gagnerez
+              <span className="small">Si Jean-Luc <strong>Mélenchon</strong> est élu,<br/> </span>
+              vous gagnerez
               <AnimatedNumber
                 format={(val) => ` ${numeral(Math.abs(val)).format('€0,0')}`}
                 value={gain}
