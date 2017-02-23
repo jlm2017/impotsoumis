@@ -203,25 +203,24 @@ $red: #D1270C;
   .disclaimer {
     margin: 50px 0;
 
-    @media (max-width: 767px) {margin: 15px;}
-
-    .grommetux-pulse {
-      margin-bottom: 15px;
-      pointer-events: none;
-
-      svg {
-        background: $blue;
-        stroke: #fff;
-      }
-
-      .grommetux-pulse__icon-anim {border-color: $blue;}
-    }
+    @media (max-width: 767px) {margin: 15px 0 45px;}
   }
+}
+
+.grommetux-pulse {
+  margin-bottom: 15px;
+  pointer-events: none;
+
+  svg {
+    background: $blue;
+    stroke: #fff;
+  }
+
+  .grommetux-pulse__icon-anim {border-color: $blue;}
 }
 
 .video {
   background: $blue;
-  margin-bottom: 80px;
   padding: 30px 0;
   text-align: center;
 
@@ -237,6 +236,22 @@ $red: #D1270C;
   }
 
   strong {text-transform: uppercase;}
+}
+
+.explanation {
+  color: $main;
+  font-family: Montserrat, sans-serif;
+  margin: 50px 0;
+  text-align: center;
+
+  @media (max-width: 767px) {margin: 45px 0 80px;}
+
+  .grommetux-pulse__icon {
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  svg {border-radius: 0;}
 }
 
 .version {

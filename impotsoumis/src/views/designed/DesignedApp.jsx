@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
 import Info from 'grommet/components/icons/base/Info';
+import Calculator from 'grommet/components/icons/base/Calculator';
 import Pulse from 'grommet/components/icons/Pulse';
 
 
@@ -172,6 +173,17 @@ class DesignedApp extends Component {
             <iframe width="560" height="315" src="https://www.youtube.com/embed/uK5vCgC9EN4" frameBorder="0" allowFullScreen></iframe>
           </Container>
         </div>
+
+        <Container className="explanation">
+          <Pulse icon={<Calculator />} />
+          <p>
+            Ce simulateur est un outil pédagogique qui simplifie légèrement le système de calcul de l'impôt actuel.
+            Vous pourrez ainsi voir quelques faibles différences avec votre situation réelle.
+            Par exemple, ce simulateur ne tient pas compte des crédits et des réductions d'impôt du système actuel.<br />
+            Avec la #RévolutionFiscale, la nouvelle imposition introduit un crédit d'impôt égal pour chaque enfant.
+            La CSG est progressive, découpée en cinq tranches et totalement déductible de l'impôt sur les revenus.
+          </p>
+        </Container>
 
         <div className="version">
           Version
