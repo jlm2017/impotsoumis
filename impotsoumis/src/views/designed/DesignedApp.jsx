@@ -193,7 +193,10 @@ class DesignedApp extends Component {
 
         <div className="video" id="how">
           <Container>
-            <h2>La <strong>Révolution Fiscale</strong>,<br /> comment ça marche ?</h2>
+            <h2>
+              La Révolution Fiscale,<br />
+              <strong>comment ça marche ?</strong>
+            </h2>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/uK5vCgC9EN4" frameBorder="0" allowFullScreen></iframe>
           </Container>
         </div>
