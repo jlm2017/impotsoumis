@@ -177,11 +177,11 @@ class DesignedApp extends Component {
         <Container className="explanation">
           <Pulse icon={<Calculator />} />
           <p>
-            Ce simulateur est un outil pédagogique qui simplifie légèrement le système de calcul de l'impôt actuel.
-            Vous pourrez ainsi voir quelques faibles différences avec votre situation réelle.
-            Par exemple, ce simulateur ne tient pas compte des crédits et des réductions d'impôt du système actuel.<br />
-            Avec la #RévolutionFiscale, la nouvelle imposition introduit un crédit d'impôt égal pour chaque enfant.
-            La CSG est progressive, découpée en cinq tranches et totalement déductible de l'impôt sur les revenus.
+            Ce simulateur est un <b>outil pédagogique</b> qui simplifie légèrement le système de calcul de l'impôt actuel.
+            <br/>Vous pourrez ainsi voir quelques faibles différences avec votre situation réelle.
+            <br/>Par exemple, ce simulateur ne tient pas compte des crédits et des réductions d'impôt du système actuel.<br />
+            <br/>Avec la #RévolutionFiscale, la nouvelle imposition introduit un <b>crédit d'impôt égal pour chaque enfant</b>.
+            <br/>La <b>CSG est progressive</b>, découpée en cinq tranches et totalement déductible de l'impôt sur les revenus.
           </p>
         </Container>
 
