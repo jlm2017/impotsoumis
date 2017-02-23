@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Row, Col } from 'react-grid-system';
 import numeral from 'numeral';
+import smoothScroll from 'smoothscroll';
 import Info from 'grommet/components/icons/base/Info';
 import Calculator from 'grommet/components/icons/base/Calculator';
 import Down from 'grommet/components/icons/base/Down';
@@ -36,6 +37,13 @@ class DesignedApp extends Component {
       containerWidths: [728, 1000],
       gutterWidth: 40
     };
+  }
+
+  scroll(e) {
+    e.preventDefault();
+    let id = e.target.href.split('#')[1];
+    let destination = document.querySelector(`#${id}`);
+    smoothScroll(destination);
   }
 
   render() {
@@ -83,7 +91,7 @@ class DesignedApp extends Component {
 
               <ShareButtons gain={gain} />
 
-              <a className="anchor" href="#detail">
+              <a className="anchor" href="#detail" onClick={this.scroll}>
                 Voir le détail
                 <Down />
               </a>
@@ -104,7 +112,10 @@ class DesignedApp extends Component {
 
               <ShareButtons gain={gain} />
 
-              <a className="anchor" href="#detail">Voir le détail</a>
+              <a className="anchor" href="#detail" onClick={this.scroll}>
+                Voir le détail
+                <Down />
+              </a>
             </div>
           </div>
 
@@ -169,7 +180,7 @@ class DesignedApp extends Component {
             </Col>
           </Row>
 
-          <a className="anchor" href="#how">
+          <a className="anchor" href="#how" onClick={this.scroll}>
             Comment ça marche ?
             <Down />
           </a>
