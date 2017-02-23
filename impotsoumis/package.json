@@ -27,5 +27,5 @@
     "eject": "react-scripts eject",
     "deploy": "npm run build&&gh-pages -d build"
   },
-  "homepage": "https://jlm2017.github.io/impotsoumis/"
+  "homepage": "https://impots.jlm2017.fr/"
 }
