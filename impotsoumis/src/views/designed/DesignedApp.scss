@@ -148,7 +148,12 @@ $red: #D1270C;
       display: block;
       font-size: 18px;
       font-weight: 400;
-      line-height: 18px;
+      line-height: 23px;
+
+      @media (max-width: 767px) {
+        font-size: 16px;
+        line-height: 21px;
+      }
     }
 
     .negative {
