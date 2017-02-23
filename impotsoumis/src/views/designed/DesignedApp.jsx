@@ -162,7 +162,7 @@ class DesignedApp extends Component {
 
             <div className="disclaimer">
               <Pulse icon={<Info />} />
-              <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale que nous proposons.<br/>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </p>
+              <p>Ce simulateur vous permet d'expérimenter la Révolution Fiscale proposé par la France Insoumise.<br/><b>C'est un outil pédagogique qui n'a pas vocation à être exact à l'euro près. </b><br/>Un impôt négatif est un crédit d'impôt : le montant indiqué est alors versé par le service des impôts.</p>
             </div>
         </Container>
 
