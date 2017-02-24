@@ -2,11 +2,11 @@ import TauxEffectif from './TauxEffectif'
 
 function _calcul_derniereTranche_taux_marginal(revenu, tranche) {
     var total = tranche.min * tranche.tauxMin + (revenu - tranche.min) * tranche.tauxMax
-    if (total > revenu * 0.7) {
-        var result = {
+    var difference = revenu - total
+    if (difference < tranche.min) {
+        return {
             "revenu": revenu,
-            "taux": 0.7,
-            "total": revenu * 0.7
+            "total": revenu - tranche.min
         }
     }
     var result = {"revenu": revenu, "taux": tranche.tauxMax, "total": total}
