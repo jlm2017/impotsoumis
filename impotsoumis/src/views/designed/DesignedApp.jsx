@@ -215,7 +215,7 @@ class DesignedApp extends Component {
         <div className="version">
           Version
           <h1>
-            1.<strong>1</strong>
+            1.<strong>1</strong>.60
           </h1>
         </div>
       </div>
