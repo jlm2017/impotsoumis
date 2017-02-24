@@ -99,8 +99,8 @@ class DesignedApp extends Component {
 
             <div className={(verdict !== 'negative') ? 'hide' : ''}>
               <div className="negative">
-                Vous faites partie des {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
-                % les plus riches.<br />
+                Votre salaire appartient aux {this.props.percentile < 1 ? Number(Math.round(this.props.percentile+'e2')+'e-2') : this.props.percentile}
+                % les plus élevés.<br />
                 Vous contribuerez à hauteur de
               </div>
               <AnimatedNumber
@@ -198,24 +198,31 @@ class DesignedApp extends Component {
               <strong>comment ça marche ?</strong>
             </h2>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/uK5vCgC9EN4" frameBorder="0" allowFullScreen></iframe>
+            <p>
+              Pour en savoir plus consulter la proposition de l'Avenir en Commun <a href="https://laec.fr/s36">«Faire la révolution fiscale»</a>
+            </p>
           </Container>
         </div>
 
         <Container className="explanation">
           <Pulse icon={<Calculator />} />
           <p>
-            Ce simulateur est un <b>outil pédagogique</b> qui simplifie légèrement le système de calcul de l'impôt actuel.
-            <br/>Vous pourrez ainsi voir quelques faibles différences avec votre situation réelle.
-            <br/>Par exemple, ce simulateur ne tient pas compte des crédits et des réductions d'impôt du système actuel.<br />
-            <br/>Avec la #RévolutionFiscale, la nouvelle imposition introduit un <b>crédit d'impôt égal pour chaque enfant</b>.
-            <br/>La <b>CSG est progressive</b>, découpée en cinq tranches et totalement déductible de l'impôt sur les revenus.
+            Ce simulateur est un <strong>outil pédagogique</strong> qui simplifie légèrement le système de calcul de l'impôt actuel.<br/>
+            Vous pourrez ainsi voir quelques faibles différences avec votre situation réelle.<br/>
+            Par exemple, ce simulateur ne tient pas compte des crédits et des réductions d'impôt du système actuel.
+          </p>
+          <p>
+            Avec la #RévolutionFiscale, la nouvelle imposition remplace le système injuste du quotient familial fiscal par un <strong>crédit d'impôt égal pour chaque enfant</strong>. Ainsi le nouvel impôt intègre une diminution de 1 000 € par an pour chaque enfant  et quel que soit le revenu des parents.
+          </p>
+          <p>
+            La <strong>CSG est progressive</strong>, découpée en cinq tranches et totalement déductible de l'impôt sur les revenus.
           </p>
         </Container>
 
         <div className="version">
           Version
           <h1>
-            1.<strong>1</strong>.60
+            1.<strong>1</strong>.61
           </h1>
         </div>
       </div>

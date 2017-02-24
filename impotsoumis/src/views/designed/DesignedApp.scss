@@ -251,6 +251,8 @@ $red: #D1270C;
 
 .video {
   background: $blue;
+  color: #fff;
+  font-family: Montserrat, sans-serif;
   padding: 30px 0;
   text-align: center;
 
@@ -263,6 +265,12 @@ $red: #D1270C;
       font-size: 20px;
       line-height: 25px;
     }
+  }
+
+  a {
+    color: #fff;
+    display: block;
+    font-size: 20px;
   }
 
   strong {text-transform: uppercase;}
