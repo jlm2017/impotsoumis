@@ -222,7 +222,7 @@ class DesignedApp extends Component {
         <div className="version">
           Version
           <h1>
-            1.<strong>1</strong>.61
+            1.<strong>2</strong>
           </h1>
         </div>
       </div>
