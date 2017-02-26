@@ -3,15 +3,12 @@ function _salaireMentuelBrutDuLoyer(sal_net) {
 }
 
 function _nombreDePartsFiscales(couple, nbenf) {
-    var nbPartsFiscales = 1 + couple;
-    if (couple === 0) {
-        nbPartsFiscales += 1 * (nbenf >= 1) + 0.5 * (nbenf === 2)
-    } else {
-        nbPartsFiscales += 0.5 * Math.min(nbenf, 2)
-    }
-    nbPartsFiscales += Math.max(nbenf - 2, 0)
+  let nbPartsFiscales = 1 + couple + nbenf * 0.5;
 
-    return nbPartsFiscales
+  nbPartsFiscales += (nbenf > 2) ? ( nbenf-2 ) * 0.5 : 0;
+  nbPartsFiscales += (couple === 0 && nbenf > 0) ? 0.5 : 0;
+
+  return nbPartsFiscales
 }
 
 function UserParams(net, retraite, chomage, couple, nbEnfants) {
